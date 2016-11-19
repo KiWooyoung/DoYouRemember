@@ -1,15 +1,14 @@
 package com.omjoonkim.doyouremember.realm.entitiy;
 
 
+import com.omjoonkim.doyouremember.realm.CommonRealmObjcet;
+
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
 
-public class AccountRealmObject extends RealmObject {
-
-	@PrimaryKey
-	long id = -1;
+public class AccountRealmObject extends CommonRealmObjcet {
 
 	@Index
 	String accountNumber = null;

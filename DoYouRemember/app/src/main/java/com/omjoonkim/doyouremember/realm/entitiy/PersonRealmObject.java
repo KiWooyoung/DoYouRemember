@@ -1,18 +1,14 @@
 package com.omjoonkim.doyouremember.realm.entitiy;
 
 
-import java.util.List;
+import com.omjoonkim.doyouremember.realm.CommonRealmObjcet;
 
 import io.realm.RealmList;
-import io.realm.RealmObject;
 import io.realm.annotations.Index;
-import io.realm.annotations.PrimaryKey;
 
 
-public class PersonRealmObject extends RealmObject{
+public class PersonRealmObject extends CommonRealmObjcet {
 
-	@PrimaryKey
-	long id;
 
 	@Index
 	String name;

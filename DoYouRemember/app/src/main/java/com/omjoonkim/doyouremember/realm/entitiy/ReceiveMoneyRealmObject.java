@@ -1,12 +1,13 @@
 package com.omjoonkim.doyouremember.realm.entitiy;
 
 
+import com.omjoonkim.doyouremember.realm.CommonRealmObjcet;
+
 import io.realm.RealmList;
-import io.realm.RealmObject;
 
-public class ReceiveMoneyRealmObject extends RealmObject{
 
-	long id = -1;
+public class ReceiveMoneyRealmObject extends CommonRealmObjcet {
+
 
 	String title;
 

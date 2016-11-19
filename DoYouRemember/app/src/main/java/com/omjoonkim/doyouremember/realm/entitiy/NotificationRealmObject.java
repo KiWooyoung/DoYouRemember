@@ -1,14 +1,13 @@
 package com.omjoonkim.doyouremember.realm.entitiy;
 
 
+import com.omjoonkim.doyouremember.realm.CommonRealmObjcet;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 
-public class NotificationRealmObject extends RealmObject {
-
-	@PrimaryKey
-	long id = -1;
+public class NotificationRealmObject extends CommonRealmObjcet {
 
 	long deadline;
 
