@@ -8,7 +8,10 @@ import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
 
 
-public class AccountRealmObject extends CommonRealmObjcet {
+public class AccountRealmObject extends RealmObject {
+
+	@PrimaryKey
+	long id;
 
 	@Index
 	String accountNumber = null;
@@ -16,19 +19,16 @@ public class AccountRealmObject extends CommonRealmObjcet {
 	@Index
 	String bankType = null;
 
-	@Index
 	PersonRealmObject person;
 
 	@Index
 	boolean favorite = false;
 
 	public long getId() {
-
 		return id;
 	}
 
 	public AccountRealmObject setId( long id ) {
-
 		this.id = id;
 		return this;
 	}

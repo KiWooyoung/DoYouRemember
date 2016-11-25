@@ -4,10 +4,14 @@ package com.omjoonkim.doyouremember.realm.entitiy;
 import com.omjoonkim.doyouremember.realm.CommonRealmObjcet;
 
 import io.realm.RealmList;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 
-public class ReceiveMoneyRealmObject extends CommonRealmObjcet {
+public class ReceiveMoneyRealmObject extends RealmObject {
 
+	@PrimaryKey
+	long id;
 
 	String title;
 

@@ -4,9 +4,12 @@ package com.omjoonkim.doyouremember.realm.entitiy;
 import com.omjoonkim.doyouremember.realm.CommonRealmObjcet;
 
 import io.realm.RealmList;
+import io.realm.RealmObject;
 
 
-public class SendMoneyRealmObject extends CommonRealmObjcet {
+public class SendMoneyRealmObject extends RealmObject {
+
+
 
 	String title;
 

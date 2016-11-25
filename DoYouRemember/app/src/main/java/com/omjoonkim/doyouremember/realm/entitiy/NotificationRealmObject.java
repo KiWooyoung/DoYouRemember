@@ -7,7 +7,10 @@ import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
 
-public class NotificationRealmObject extends CommonRealmObjcet {
+public class NotificationRealmObject extends RealmObject {
+
+	@PrimaryKey
+	long id;
 
 	long deadline;
 

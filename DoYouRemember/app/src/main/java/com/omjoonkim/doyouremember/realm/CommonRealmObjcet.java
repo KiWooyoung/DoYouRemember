@@ -5,7 +5,7 @@ import io.realm.Realm;
 import io.realm.RealmObject;
 
 
-public abstract class CommonRealmObjcet extends RealmObject {
+public class CommonRealmObjcet extends RealmObject {
 
 	protected long id = -1;
 
