@@ -13,11 +13,10 @@ public class SplashActivity extends AppCompatActivity {
 
     @AfterViews
     protected void initialize(){
-
         findViewById(R.id.splash).postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                startActivity(new Intent(SplashActivity.this, MainActivity_.class));
                 finish();
             }
         }, 1500);

@@ -1,42 +1,41 @@
 package com.omjoonkim.doyouremember;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.widget.Toast;
 
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+
+
+@EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity {
 
-	@Override
-	protected void onCreate( Bundle savedInstanceState ) {
-		super.onCreate( savedInstanceState );
-		setContentView( R.layout.activity_main );
+	@ViewById(R.id.toolbar)
+	Toolbar toolbar;
 
-		initView();
+	@ViewById(R.id.viewpager)
+	ViewPager viewPager;
+
+	@ViewById(R.id.tabs_main)
+	TabLayout tabLayout;
+
+	@Click(R.id.fab_writing)
+	void onClickFab(){
+		Toast.makeText(MainActivity.this, "floatingbutton click", Toast.LENGTH_SHORT).show();
 	}
 
-	private void initView(){
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+	@AfterViews
+	protected void initialize(){
 		setSupportActionBar(toolbar);
 		getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-		ViewPager viewPager = (ViewPager) findViewById(R.id.container);
 		viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager()));
-
-		TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
 		tabLayout.setupWithViewPager(viewPager);
-
-		FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-		fab.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-						.setAction("Action", null).show();
-			}
-		});
 	}
+
 }
