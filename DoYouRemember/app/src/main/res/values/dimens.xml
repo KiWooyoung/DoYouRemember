@@ -6,4 +6,8 @@
     <dimen name="fab_margin">20dp</dimen>
     <dimen name="actionbar_size">55dp</dimen>
     <dimen name="tablayout_size">48dp</dimen>
+
+    <dimen name="subtab_top_margin">14dp</dimen>
+    <dimen name="subtab_side_margin">24dp</dimen>
+    <dimen name="subtab_height">33dp</dimen>
 </resources>

@@ -15,8 +15,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="7dp"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@drawable/logo_example"/>
 
     </android.support.v7.widget.Toolbar>
 
@@ -24,6 +25,7 @@
         android:id="@+id/tabs_main"
         android:layout_width="match_parent"
         android:layout_height="@dimen/tablayout_size"
+        android:background="@color/white"
         app:tabBackground="@drawable/tab_ripple_effect"
         app:tabIndicatorColor="@color/colorAccent"
         app:tabIndicatorHeight="4dp"

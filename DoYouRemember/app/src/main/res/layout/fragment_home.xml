@@ -1,15 +1,52 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/background_gray"
-    android:padding="20dp"
     tools:context="com.omjoonkim.doyouremember.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <info.hoang8f.android.segmented.SegmentedGroup
+        xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/segmented2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/subtab_height"
+        android:layout_marginTop="@dimen/subtab_top_margin"
+        android:layout_marginLeft="@dimen/subtab_side_margin"
+        android:layout_marginRight="@dimen/subtab_side_margin"
+        android:background="@color/white"
+        segmentedgroup:sc_border_width="0dp"
+        segmentedgroup:sc_tint_color="@color/colorPrimary"
+        segmentedgroup:sc_checked_text_color="@color/white"
+        segmentedgroup:sc_corner_radius="0dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/button21"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="보내자"
+            style="@style/RadioButton" />
+
+        <RadioButton
+            android:id="@+id/button22"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="받자"
+            style="@style/RadioButton" />
+
+    </info.hoang8f.android.segmented.SegmentedGroup>
+
+    <FrameLayout
+        android:id="@+id/fragment_master"
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
 
-</FrameLayout>
+</LinearLayout>
