@@ -1,4 +1,4 @@
-package com.omjoonkim.doyouremember;
+package com.omjoonkim.doyouremember.app;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,6 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
+
+import com.omjoonkim.doyouremember.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

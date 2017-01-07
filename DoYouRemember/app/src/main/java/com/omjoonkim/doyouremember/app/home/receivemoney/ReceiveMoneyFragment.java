@@ -1,4 +1,4 @@
-package com.omjoonkim.doyouremember;
+package com.omjoonkim.doyouremember.app.home.receivemoney;
 
 
 import android.os.Bundle;

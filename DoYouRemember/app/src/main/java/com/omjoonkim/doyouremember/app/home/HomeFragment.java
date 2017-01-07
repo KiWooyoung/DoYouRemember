@@ -1,4 +1,4 @@
-package com.omjoonkim.doyouremember;
+package com.omjoonkim.doyouremember.app.home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,7 +7,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import com.omjoonkim.doyouremember.R;
+import com.omjoonkim.doyouremember.app.home.receivemoney.ReceiveMoneyFragment;
+import com.omjoonkim.doyouremember.app.home.sendmoney.SendMoneyFragment;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;

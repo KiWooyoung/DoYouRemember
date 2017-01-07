@@ -1,9 +1,11 @@
-package com.omjoonkim.doyouremember;
+package com.omjoonkim.doyouremember.app;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.omjoonkim.doyouremember.R;
 
 public class SplashActivity extends AppCompatActivity {
 
