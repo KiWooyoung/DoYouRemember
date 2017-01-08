@@ -5,37 +5,39 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.omjoonkim.doyouremember.app.home.HomeFragment;
+import com.omjoonkim.doyouremember.app.home.receivemoney.ReceiveMoneyFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "홈", "자주쓰는 계좌", "내 계좌" };
-
+    private List<Fragment> fragments;
+    private List<String> tabTitles;
 
     public MainFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
+        fragments = new ArrayList<>();
+        tabTitles = new ArrayList<>();
+    }
+
+    public void addFragment(Fragment fragment, String title){
+        fragments.add(fragment);
+        tabTitles.add(title);
     }
 
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return new HomeFragment();
-            case 1:
-                return new HomeFragment();
-            case 2:
-                return new HomeFragment();
-        }
-        return null;
+        return fragments.get(position);
     }
 
     @Override
     public int getCount() {
-        return PAGE_COUNT;
+        return fragments.size();
     }
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return tabTitles[position];
+        return tabTitles.get(position);
     }
 }

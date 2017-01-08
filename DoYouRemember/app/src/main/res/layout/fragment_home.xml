@@ -1,52 +1,50 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/background_gray"
     tools:context="com.omjoonkim.doyouremember.app.home.HomeFragment">
 
-    <info.hoang8f.android.segmented.SegmentedGroup
-        xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/segmented2"
+    <RadioGroup
+        android:id="@+id/subtab_home"
         android:layout_width="match_parent"
         android:layout_height="@dimen/subtab_height"
         android:layout_marginTop="@dimen/subtab_top_margin"
         android:layout_marginLeft="@dimen/subtab_side_margin"
         android:layout_marginRight="@dimen/subtab_side_margin"
-        android:background="@color/white"
-        segmentedgroup:sc_border_width="0dp"
-        segmentedgroup:sc_tint_color="@color/colorPrimary"
-        segmentedgroup:sc_checked_text_color="@color/white"
-        segmentedgroup:sc_corner_radius="0dp"
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/button21"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:id="@+id/btn_subtab_send"
             android:checked="true"
             android:text="보내자"
-            style="@style/RadioButton" />
+            style="@style/SubTab" />
 
         <RadioButton
-            android:id="@+id/button22"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:id="@+id/btn_subtab_receive"
             android:text="받자"
-            style="@style/RadioButton" />
+            style="@style/SubTab" />
 
-    </info.hoang8f.android.segmented.SegmentedGroup>
+    </RadioGroup>
 
     <FrameLayout
         android:id="@+id/fragment_master"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"/>
+        android:layout_below="@+id/subtab_home"
+        android:layout_marginTop="5dp" />
 
-</LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_writing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/fab_margin"
+        app:srcCompat="@drawable/write_button" />
+
+</RelativeLayout>

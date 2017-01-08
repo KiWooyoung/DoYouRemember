@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<color name="colorPrimary">#0cd7a5</color>
-	<color name="colorPrimaryDark">#15b58b</color>
-	<color name="colorAccent">#f8ef6c</color>
+	<!--theme-->
+	<color name="colorPrimary">#5966db</color>
+	<color name="colorPrimaryDark">#7886f8</color>
+	<color name="colorAccent">#5966db</color>
 	<color name="background_gray">#efefef</color>
+
+	<!--text-->
+	<color name="text_DarkGray">#4a4a4a</color>
+	<color name="text_LightGray">#aeaeaf</color>
+
+	<!--deadline-->
+	<color name="deadline_red">#f9684d</color>
+	<color name="deadline_yellow">#f9e150</color>
+	<color name="deadline_blue">#48cbcf</color>
+	<color name="deadline_gray">#c8c8c8</color>
 
 	<color name="white">#fff</color>
 </resources>

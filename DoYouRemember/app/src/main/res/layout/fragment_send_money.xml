@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     tools:context="com.omjoonkim.doyouremember.app.home.sendmoney.SendMoneyFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_home_send"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="send money fragment" />
+        android:scrollbars="vertical" />
 
 </FrameLayout>

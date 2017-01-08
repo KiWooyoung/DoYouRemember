@@ -15,9 +15,8 @@ import com.omjoonkim.doyouremember.R;
  */
 public class ReceiveMoneyFragment extends Fragment {
 
-
-    public ReceiveMoneyFragment() {
-        // Required empty public constructor
+    public static ReceiveMoneyFragment newInstance() {
+        return new ReceiveMoneyFragment();
     }
 
     @Override
