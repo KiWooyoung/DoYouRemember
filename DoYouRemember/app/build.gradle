@@ -36,6 +36,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
     compile 'com.daimajia.swipelayout:library:1.2.0@aar'
+    compile 'com.bignerdranch.android:expandablerecyclerview:3.0.0-RC1'
 
     testCompile 'junit:junit:4.12'
 }

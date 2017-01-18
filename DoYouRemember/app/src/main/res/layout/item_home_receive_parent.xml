@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_home_receive_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/list_side_margin"
+    android:layout_marginRight="@dimen/list_side_margin"
+    app:clickToClose="true"
+    app:leftEdgeSwipeOffset="0dp"
+    app:rightEdgeSwipeOffset="0dp">
+
+    <LinearLayout
+        android:id="@+id/swipe_home_receive_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingTop="11dp">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/list_item_height"
+            app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/imageview_receive_edit"
+                    android:layout_width="@dimen/list_item_height"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="13dp"
+                    android:background="#4990e2"
+                    android:gravity="center"
+                    android:src="@drawable/revise_icon"/>
+
+                <ImageView
+                    android:id="@+id/imageview_receive_delete"
+                    android:layout_width="@dimen/list_item_height"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="13dp"
+                    android:background="#596ad8"
+                    android:gravity="center"
+                    android:src="@drawable/delete_icon"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_item_height"
+            android:layout_marginTop="-11dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_below="@+id/frame_receive_deadline">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/list_top_padding"
+                android:paddingLeft="@dimen/list_left_padding"
+                android:paddingBottom="@dimen/list_bottom_padding"
+                android:paddingRight="17dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textview_receive_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:textSize="19sp"
+                        android:textColor="@color/text_DarkGray"
+                        android:text="hello" />
+
+                    <TextView
+                        android:id="@+id/textview_receive_debtor_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="11sp"
+                        android:textColor="@color/text_LightGray"
+                        android:text="hello" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textview_receive_price_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="right"
+                    android:textSize="19sp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/text_DarkGray"
+                    android:text="12,000원" />
+
+                <ImageView
+                    android:id="@+id/imageView_receive_parent_arrow"
+                    android:layout_width="12dp"
+                    android:layout_height="7.4dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/expand_icon_grey" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <FrameLayout
+            android:id="@+id/frame_receive_deadline"
+            android:elevation="0dp"
+            android:layout_width="@dimen/frame_deadline_width"
+            android:layout_height="@dimen/frame_deadline_height"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/rounded_corner_gray">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="11sp"
+                android:textColor="@color/white"
+                android:text="10시간 전"/>
+
+        </FrameLayout>
+    </RelativeLayout>
+
+</com.daimajia.swipe.SwipeLayout>

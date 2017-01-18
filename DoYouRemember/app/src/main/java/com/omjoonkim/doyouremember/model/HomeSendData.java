@@ -6,14 +6,14 @@ public class HomeSendData {
     String creditor;
     String account;
     int price;
-    int dealine;
+    int deadline;
 
     public HomeSendData(String title, String creditor, String account, int price, int deadline){
         this.title = title;
         this.creditor = creditor;
         this.account = account;
         this.price = price;
-        this.dealine = deadline;
+        this.deadline = deadline;
     }
 
     public void setCreditor(String creditor) {
@@ -32,8 +32,8 @@ public class HomeSendData {
         this.price = price;
     }
 
-    public void setDealine(int dealine) {
-        this.dealine = dealine;
+    public void setDeadline(int dealine) {
+        this.deadline = dealine;
     }
 
     public String getCreditor() {
@@ -52,7 +52,7 @@ public class HomeSendData {
         return price;
     }
 
-    public int getDealine() {
-        return dealine;
+    public int getDeadline() {
+        return deadline;
     }
 }

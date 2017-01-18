@@ -11,6 +11,8 @@
     <dimen name="subtab_side_margin">26dp</dimen>
     <dimen name="subtab_height">33dp</dimen>
 
+    <!--home list-->
+    <dimen name="list_item_height">76dp</dimen>
     <dimen name="list_side_margin">15dp</dimen>
     <dimen name="list_top_padding">15dp</dimen>
     <dimen name="list_bottom_padding">12dp</dimen>
