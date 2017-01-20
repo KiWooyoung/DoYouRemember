@@ -25,10 +25,6 @@ public class MainActivity extends AppCompatActivity {
 	@BindView(R.id.tabs_main)
 	TabLayout tabLayout;
 
-	@OnClick(R.id.fab_writing)
-	void onClickFab(){
-		Toast.makeText(MainActivity.this, "floatingbutton click", Toast.LENGTH_SHORT).show();
-	}
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {

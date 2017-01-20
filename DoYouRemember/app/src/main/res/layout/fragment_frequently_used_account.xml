@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#efefef"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/image_view_background"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="218dp"
+        android:layout_width="160dp"
+        android:layout_height="182dp"
+        android:src="@drawable/empty_note_image"
+        />
+    
+    <TextView
+        android:id="@+id/text_view_default_text"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="134dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="자주쓰는 계좌를 등록해주세요."
+        android:textSize="15sp"
+        android:textColor="#4a4a4a"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_writing_frequently_used_account"
+        android:src="@drawable/add_button"
+        app:backgroundTint="#596ad8"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="bottom|right"
+         />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_FUAccount"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+</FrameLayout>

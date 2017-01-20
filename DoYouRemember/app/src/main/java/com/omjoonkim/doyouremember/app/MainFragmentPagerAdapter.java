@@ -4,7 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.omjoonkim.doyouremember.app.frequentlyusedaccount.FrequentlyUsedAccountFragment;
 import com.omjoonkim.doyouremember.app.home.HomeFragment;
+import com.omjoonkim.doyouremember.app.myaccount.MyAccountFragment;
 
 public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
 
@@ -22,9 +24,9 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return new HomeFragment();
             case 1:
-                return new HomeFragment();
+                return new FrequentlyUsedAccountFragment();
             case 2:
-                return new HomeFragment();
+                return new MyAccountFragment();
         }
         return null;
     }

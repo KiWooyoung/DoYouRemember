@@ -20,6 +20,10 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
+        <activity android:name=".app.frequentlyusedaccount.registeraccount.RegisterFrequentlyUsedAccountActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
     </application>
 
 </manifest>
