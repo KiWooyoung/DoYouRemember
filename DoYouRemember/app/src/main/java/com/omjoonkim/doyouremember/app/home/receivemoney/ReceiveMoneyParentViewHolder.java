@@ -8,6 +8,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bignerdranch.expandablerecyclerview.ExpandableRecyclerAdapter;
 import com.bignerdranch.expandablerecyclerview.ParentViewHolder;
 import com.daimajia.swipe.SwipeLayout;
 import com.omjoonkim.doyouremember.R;
@@ -37,6 +38,9 @@ public class ReceiveMoneyParentViewHolder extends ParentViewHolder {
     @BindView(R.id.frame_receive_deadline)
     FrameLayout frameReceiveDeadline;
 
+    @BindView(R.id.imageView_receive_parent_arrow)
+    ImageView imgReceiveParentArrow;
+
     @BindView(R.id.swipe_home_receive_item)
     SwipeLayout swipeHomeReceive;
 
@@ -49,18 +53,68 @@ public class ReceiveMoneyParentViewHolder extends ParentViewHolder {
     }
 
     public void updateData(HomeReceiveParentData parentData){
+        swipeHomeReceive.setShowMode(SwipeLayout.ShowMode.PullOut);
+
+        swipeHomeReceive.addDrag(SwipeLayout.DragEdge.Right,
+                swipeHomeReceive.findViewById(R.id.swipe_home_receive_menu));
+
         tvReceiveTitle.setText(parentData.getTitle());
         parentData.sumChecked();
         String countReceiveDebtors = parentData.getCheckedCount() + "명/" + parentData.getChildList().size()+"명";
-        Log.v(TAG, countReceiveDebtors);
         tvReceiveDebtorCount.setText(countReceiveDebtors);
         String priceReceiveTotalKRW = NumberFormat.getInstance(Locale.KOREA).format(parentData.getTotalPrice());
         tvReceivePriceTotal.setText(priceReceiveTotalKRW+"원");
     }
 
-    public void occurEvent(final HomeReceiveChildData homeReceiveChildData,
-                           final OnHomeReceiveClickListener listener){
+    public void occurEvent(){
 
+        swipeHomeReceive.addSwipeListener(new SwipeLayout.SwipeListener() {
+            @Override
+            public void onStartOpen(SwipeLayout layout) {
+                Log.v(TAG, "========swipe onStartOpen 클릭=========");
+                collapseView();
+            }
+
+            @Override
+            public void onOpen(SwipeLayout layout) {
+                Log.v(TAG, "========swipe onOpen 클릭=========");
+                setExpanded(false);
+            }
+
+            @Override
+            public void onStartClose(SwipeLayout layout) {
+                Log.v(TAG, "========swipe onStartClose 클릭=========");
+                setExpanded(false);
+            }
+
+            @Override
+            public void onClose(SwipeLayout layout) {
+                Log.v(TAG, "========swipe onClose 클릭=========");
+                setExpanded(true);
+            }
+
+            @Override
+            public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
+                Log.v(TAG, "========swipe onUpdate 클릭=========");
+            }
+
+            @Override
+            public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
+                Log.v(TAG, "========swipe onHandRelease 클릭=========");
+            }
+        });
+
+        swipeHomeReceive.getSurfaceView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v(TAG, "========swipe surface 클릭=========");
+                if (isExpanded()){
+                    collapseView();
+                }else{
+                    expandView();
+                }
+            }
+        });
     }
 }
 

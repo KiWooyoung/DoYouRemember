@@ -2,23 +2,17 @@ package com.omjoonkim.doyouremember.app.home.receivemoney;
 
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bignerdranch.expandablerecyclerview.ChildViewHolder;
-import com.daimajia.swipe.SwipeLayout;
-import com.daimajia.swipe.implments.SwipeItemRecyclerMangerImpl;
 import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.home.receivemoney.listener.OnHomeReceiveClickListener;
-import com.omjoonkim.doyouremember.app.home.sendmoney.listener.OnHomeSendClickListener;
 import com.omjoonkim.doyouremember.model.HomeReceiveChildData;
 import com.omjoonkim.doyouremember.model.HomeReceiveParentData;
-import com.omjoonkim.doyouremember.model.HomeSendData;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -74,6 +68,5 @@ public class ReceiveMoneyChildViewHolder extends ChildViewHolder {
                 listener.onCheckedDebtors(parentPosition);
             }
         });
-
     }
 }

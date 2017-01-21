@@ -72,17 +72,7 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
         final List<HomeReceiveParentData> parentDatas = Arrays.asList(parent1, parent2);
 
         adapter = new HomeReceiveAdapter(getActivity().getApplicationContext(), parentDatas);
-        adapter.setExpandCollapseListener(new ExpandableRecyclerAdapter.ExpandCollapseListener() {
-            @Override
-            public void onParentExpanded(int parentPosition) {
-                Toast.makeText(getActivity(), "expanded", Toast.LENGTH_SHORT).show();
-            }
 
-            @Override
-            public void onParentCollapsed(int parentPosition) {
-                Toast.makeText(getActivity(), "collapsed", Toast.LENGTH_SHORT).show();
-            }
-        });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         recyclerView.setAdapter(adapter);
         adapter.setClickListener(new OnHomeReceiveClickListener() {
@@ -95,7 +85,6 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
             public void onCheckedDebtors(int parentPosition) {
                 homeReceivePresenter.onClickedChecked(parentPosition);
             }
-
         });
     }
 

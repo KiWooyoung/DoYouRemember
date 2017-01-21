@@ -2,6 +2,8 @@ package com.omjoonkim.doyouremember.app.home.receivemoney;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,11 +40,13 @@ public class HomeReceiveAdapter extends ExpandableRecyclerAdapter
      * @param parentList List of all parents to be displayed in the RecyclerView that this
      *                   adapter is linked to
      */
+
     private OnHomeReceiveClickListener listener;
     private Context mContext;
     private List<HomeReceiveParentData> homeReceiveParentDatas;
 
-    public HomeReceiveAdapter(Context context, @NonNull List<HomeReceiveParentData> parentList) {
+    public HomeReceiveAdapter(Context context,
+                              @NonNull List<HomeReceiveParentData> parentList) {
         super(parentList);
         this.mContext = context;
         this.homeReceiveParentDatas = parentList;
@@ -66,9 +70,16 @@ public class HomeReceiveAdapter extends ExpandableRecyclerAdapter
         return new ReceiveMoneyChildViewHolder(v);
     }
 
+    @NonNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        return super.onCreateViewHolder(viewGroup, viewType);
+    }
+
     @Override
     public void onBindParentViewHolder(@NonNull ReceiveMoneyParentViewHolder parentViewHolder, int parentPosition, @NonNull HomeReceiveParentData parent) {
         parentViewHolder.updateData(parent);
+        parentViewHolder.occurEvent();
     }
 
     @Override
