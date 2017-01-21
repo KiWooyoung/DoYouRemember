@@ -47,7 +47,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="12dp"
             android:elevation="0dp"
-            android:src="@drawable/delete_icon"
+            android:src="@drawable/kakao_talk"
             android:background="@drawable/btn_kakao_link"/>
 
     </LinearLayout>

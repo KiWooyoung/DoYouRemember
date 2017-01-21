@@ -2,6 +2,7 @@ package com.omjoonkim.doyouremember.app.home.receivemoney;
 
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,9 @@ import android.widget.Toast;
 
 import com.bignerdranch.expandablerecyclerview.ExpandableRecyclerAdapter;
 import com.omjoonkim.doyouremember.R;
+import com.omjoonkim.doyouremember.app.home.receivemoney.listener.OnHomeReceiveClickListener;
+import com.omjoonkim.doyouremember.app.home.receivemoney.presenter.HomeReceivePresenter;
+import com.omjoonkim.doyouremember.app.home.receivemoney.presenter.HomeReceivePresenterImpl;
 import com.omjoonkim.doyouremember.model.HomeReceiveChildData;
 import com.omjoonkim.doyouremember.model.HomeReceiveParentData;
 
@@ -22,18 +26,25 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class ReceiveMoneyFragment extends Fragment {
+public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePresenter.View {
+
+    public static final String TAG = HomeReceiveMoneyFragment.class.getSimpleName();
 
     @BindView(R.id.recycler_home_receive)
     RecyclerView recyclerView;
 
     private HomeReceiveAdapter adapter;
+    private HomeReceivePresenter homeReceivePresenter;
 
-    public static ReceiveMoneyFragment newInstance() {
-        return new ReceiveMoneyFragment();
+    public static HomeReceiveMoneyFragment newInstance() {
+        return new HomeReceiveMoneyFragment();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        homeReceivePresenter = new HomeReceivePresenterImpl();
+        homeReceivePresenter.setView(this);
     }
 
     @Override
@@ -55,8 +66,10 @@ public class ReceiveMoneyFragment extends Fragment {
         HomeReceiveChildData child2 = new HomeReceiveChildData("신선아", 15000);
         HomeReceiveChildData child3 = new HomeReceiveChildData("박은명", 20000);
 
-        HomeReceiveParentData parent1 = new HomeReceiveParentData("Mash-Up 신년파티DDDDDDDDDDD", "정민", Arrays.asList(child1, child2, child3));
-        final List<HomeReceiveParentData> parentDatas = Arrays.asList(parent1);
+        HomeReceiveParentData parent1 = new HomeReceiveParentData("Mash-Up 신년파티DDDDDDDDDDD", Arrays.asList(child1, child2, child3));
+        HomeReceiveParentData parent2 = new HomeReceiveParentData("내일도 출근이다....ㅠㅠㅠ", Arrays.asList(child1, child2, child3));
+
+        final List<HomeReceiveParentData> parentDatas = Arrays.asList(parent1, parent2);
 
         adapter = new HomeReceiveAdapter(getActivity().getApplicationContext(), parentDatas);
         adapter.setExpandCollapseListener(new ExpandableRecyclerAdapter.ExpandCollapseListener() {
@@ -72,5 +85,27 @@ public class ReceiveMoneyFragment extends Fragment {
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         recyclerView.setAdapter(adapter);
+        adapter.setClickListener(new OnHomeReceiveClickListener() {
+            @Override
+            public void onSendKakaoLink() {
+                homeReceivePresenter.onClickKakaoLink();
+            }
+
+            @Override
+            public void onCheckedDebtors(int parentPosition) {
+                homeReceivePresenter.onClickedChecked(parentPosition);
+            }
+
+        });
+    }
+
+    @Override
+    public void updateDebtorCount(final int parentPosition) {
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                adapter.notifyParentChanged(parentPosition);
+            }
+        });
     }
 }

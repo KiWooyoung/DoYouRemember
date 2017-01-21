@@ -44,6 +44,9 @@ public class HomeSendViewHolder extends RecyclerView.ViewHolder{
     @BindView(R.id.imageview_copy)
     ImageView imgCopy;
 
+    @BindView(R.id.imageview_edit)
+    ImageView imgEdit;
+
     @BindView(R.id.imageview_delete)
     ImageView imgDelete;
 
@@ -88,7 +91,14 @@ public class HomeSendViewHolder extends RecyclerView.ViewHolder{
         imgCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.OnClickSendCopy(homeSendDataList.get(position));
+                listener.onClickSendCopy(homeSendDataList.get(position));
+            }
+        });
+
+        imgEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onClickSendEdit();
             }
         });
 
@@ -97,7 +107,7 @@ public class HomeSendViewHolder extends RecyclerView.ViewHolder{
             public void onClick(View v) {
                 itemAdapterManger.removeShownLayouts(swipeHomeSend);
                 itemAdapterManger.closeAllItems();
-                listener.OnClickSendDelete(homeSendDataList, position);
+                listener.onClickSendDelete(homeSendDataList, position);
             }
         });
 

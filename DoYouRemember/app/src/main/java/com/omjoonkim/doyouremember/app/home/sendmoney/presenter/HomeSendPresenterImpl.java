@@ -14,7 +14,7 @@ public class HomeSendPresenterImpl implements HomeSendPresenter {
     }
 
     @Override
-    public void OnClickCopy(HomeSendData homeSendData) {
+    public void onClickCopy(HomeSendData homeSendData) {
         this.view.copyHomeSendAccount(homeSendData);
     }
 
@@ -24,7 +24,7 @@ public class HomeSendPresenterImpl implements HomeSendPresenter {
     }
 
     @Override
-    public void OnClickDelete(List<HomeSendData> homeSendDataList, int position) {
+    public void onClickDelete(List<HomeSendData> homeSendDataList, int position) {
         this.view.deleteHomeSendItem(homeSendDataList, position);
     }
 }

@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface HomeSendPresenter {
     void setView(HomeSendPresenter.View view);
-    void OnClickCopy(HomeSendData homeSendData);
+    void onClickCopy(HomeSendData homeSendData);
     void onClickEdit();
-    void OnClickDelete(List<HomeSendData> homeSendDataList, int position);
+    void onClickDelete(List<HomeSendData> homeSendDataList, int position);
 
     interface View {
         void copyHomeSendAccount(HomeSendData homeSendData);

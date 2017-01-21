@@ -4,9 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.omjoonkim.doyouremember.app.home.HomeFragment;
-import com.omjoonkim.doyouremember.app.home.receivemoney.ReceiveMoneyFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 

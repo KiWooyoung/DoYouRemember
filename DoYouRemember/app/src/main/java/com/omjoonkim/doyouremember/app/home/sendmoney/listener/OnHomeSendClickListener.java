@@ -6,6 +6,7 @@ import com.omjoonkim.doyouremember.model.HomeSendData;
 import java.util.List;
 
 public interface OnHomeSendClickListener {
-    void OnClickSendCopy(HomeSendData homeSendData);
-    void OnClickSendDelete(List<HomeSendData> homeSendDataList, int position);
+    void onClickSendCopy(HomeSendData homeSendData);
+    void onClickSendEdit();
+    void onClickSendDelete(List<HomeSendData> homeSendDataList, int position);
 }

@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 
 import com.bignerdranch.expandablerecyclerview.ExpandableRecyclerAdapter;
 import com.omjoonkim.doyouremember.R;
+import com.omjoonkim.doyouremember.app.home.receivemoney.listener.OnHomeReceiveClickListener;
+import com.omjoonkim.doyouremember.app.home.sendmoney.listener.OnHomeSendClickListener;
 import com.omjoonkim.doyouremember.model.HomeReceiveChildData;
 import com.omjoonkim.doyouremember.model.HomeReceiveParentData;
 
@@ -36,6 +38,7 @@ public class HomeReceiveAdapter extends ExpandableRecyclerAdapter
      * @param parentList List of all parents to be displayed in the RecyclerView that this
      *                   adapter is linked to
      */
+    private OnHomeReceiveClickListener listener;
     private Context mContext;
     private List<HomeReceiveParentData> homeReceiveParentDatas;
 
@@ -43,6 +46,10 @@ public class HomeReceiveAdapter extends ExpandableRecyclerAdapter
         super(parentList);
         this.mContext = context;
         this.homeReceiveParentDatas = parentList;
+    }
+
+    public void setClickListener(OnHomeReceiveClickListener listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -61,13 +68,13 @@ public class HomeReceiveAdapter extends ExpandableRecyclerAdapter
 
     @Override
     public void onBindParentViewHolder(@NonNull ReceiveMoneyParentViewHolder parentViewHolder, int parentPosition, @NonNull HomeReceiveParentData parent) {
-        parentViewHolder.update(parent);
+        parentViewHolder.updateData(parent);
     }
 
     @Override
     public void onBindChildViewHolder(@NonNull ReceiveMoneyChildViewHolder childViewHolder, int parentPosition, int childPosition, @NonNull HomeReceiveChildData child) {
-        childViewHolder.update(child);
-        Log.v(TAG, child.getDebtorName());
+        childViewHolder.updateData(child);
+        childViewHolder.occurEvent(child, homeReceiveParentDatas, parentPosition, listener);
     }
 
 }

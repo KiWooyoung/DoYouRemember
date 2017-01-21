@@ -13,7 +13,6 @@ public class HomeReceiveChildData {
 
     public void setReceiveChecked(boolean receiveChecked) {
         this.receiveChecked = receiveChecked;
-
     }
 
     public void setDebtorName(String debtorName) {

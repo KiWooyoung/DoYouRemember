@@ -27,7 +27,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class SendMoneyFragment extends Fragment implements HomeSendPresenter.View {
+public class HomeSendMoneyFragment extends Fragment implements HomeSendPresenter.View {
 
     @BindView(R.id.recycler_home_send)
     RecyclerView recyclerView;
@@ -41,8 +41,8 @@ public class SendMoneyFragment extends Fragment implements HomeSendPresenter.Vie
     private HomeSendAdapter adapter;
     private HomeSendPresenter homeSendPresenter;
 
-    public static SendMoneyFragment newInstance() {
-        return new SendMoneyFragment();
+    public static HomeSendMoneyFragment newInstance() {
+        return new HomeSendMoneyFragment();
     }
 
     @Override
@@ -72,13 +72,18 @@ public class SendMoneyFragment extends Fragment implements HomeSendPresenter.Vie
         recyclerView.addItemDecoration(new HomeSendItemDecoration(spacingBottomSize, spacingFirstSize));
         adapter.setClickListener(new OnHomeSendClickListener() {
             @Override
-            public void OnClickSendCopy(HomeSendData homeSendData) {
-                homeSendPresenter.OnClickCopy(homeSendData);
+            public void onClickSendCopy(HomeSendData homeSendData) {
+                homeSendPresenter.onClickCopy(homeSendData);
             }
 
             @Override
-            public void OnClickSendDelete(List<HomeSendData> homeSendDataList, int position) {
-                homeSendPresenter.OnClickDelete(homeSendDataList, position);
+            public void onClickSendEdit() {
+                homeSendPresenter.onClickEdit();
+            }
+
+            @Override
+            public void onClickSendDelete(List<HomeSendData> homeSendDataList, int position) {
+                homeSendPresenter.onClickDelete(homeSendDataList, position);
             }
         });
     }
