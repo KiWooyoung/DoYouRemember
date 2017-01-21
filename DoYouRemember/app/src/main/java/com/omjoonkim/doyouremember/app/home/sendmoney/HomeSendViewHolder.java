@@ -55,20 +55,22 @@ public class HomeSendViewHolder extends RecyclerView.ViewHolder{
         ButterKnife.bind(this, itemView);
     }
 
-    public void updateData(final HomeSendData homeSendData){
-
+    public void bind(final List<HomeSendData> homeSendDataList,
+                     final int position,
+                     final OnHomeSendClickListener listener,
+                     final SwipeItemRecyclerMangerImpl itemAdapterManger){
         swipeHomeSend.setShowMode(SwipeLayout.ShowMode.PullOut);
 
         swipeHomeSend.addDrag(SwipeLayout.DragEdge.Right,
                 swipeHomeSend.findViewById(R.id.swipe_home_send_menu));
 
-        tvSendTitle.setText(homeSendData.getTitle());
-        tvSendCreditor.setText(homeSendData.getCreditor());
-        tvSendAccount.setText(homeSendData.getAccount());
-        String priceSendRW = NumberFormat.getInstance(Locale.KOREA).format(homeSendData.getPrice());
+        tvSendTitle.setText(homeSendDataList.get(position).getTitle());
+        tvSendCreditor.setText(homeSendDataList.get(position).getCreditor());
+        tvSendAccount.setText(homeSendDataList.get(position).getAccount());
+        String priceSendRW = NumberFormat.getInstance(Locale.KOREA).format(homeSendDataList.get(position).getPrice());
         tvSendPrice.setText(priceSendRW+"원");
 
-        switch (homeSendData.getDeadline()){
+        switch (homeSendDataList.get(position).getDeadline()){
             case 0 :
                 frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_red);
                 break;
@@ -82,12 +84,7 @@ public class HomeSendViewHolder extends RecyclerView.ViewHolder{
                 frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_gray);
                 break;
         }
-    }
 
-    public void occurEvent(final List<HomeSendData> homeSendDataList,
-                           final int position,
-                           final OnHomeSendClickListener listener,
-                           final SwipeItemRecyclerMangerImpl itemAdapterManger){
         imgCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +109,5 @@ public class HomeSendViewHolder extends RecyclerView.ViewHolder{
         });
 
         itemAdapterManger.bindView(itemView, position);
-
     }
 }

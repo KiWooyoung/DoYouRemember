@@ -16,5 +16,8 @@
 	<color name="deadline_blue">#48cbcf</color>
 	<color name="deadline_gray">#c8c8c8</color>
 
+	<color name="receiveDoneLineColor">#80596ad7</color>
+	<color name="receiveDoneLineOpacity">#ffffffff</color>
+
 	<color name="white">#fff</color>
 </resources>

@@ -78,14 +78,12 @@ public class HomeReceiveAdapter extends ExpandableRecyclerAdapter
 
     @Override
     public void onBindParentViewHolder(@NonNull ReceiveMoneyParentViewHolder parentViewHolder, int parentPosition, @NonNull HomeReceiveParentData parent) {
-        parentViewHolder.updateData(parent);
-        parentViewHolder.occurEvent();
+        parentViewHolder.bind(parent);
     }
 
     @Override
     public void onBindChildViewHolder(@NonNull ReceiveMoneyChildViewHolder childViewHolder, int parentPosition, int childPosition, @NonNull HomeReceiveChildData child) {
-        childViewHolder.updateData(child);
-        childViewHolder.occurEvent(child, homeReceiveParentDatas, parentPosition, listener);
+        childViewHolder.bind(child, homeReceiveParentDatas, parentPosition, listener);
     }
 
 }

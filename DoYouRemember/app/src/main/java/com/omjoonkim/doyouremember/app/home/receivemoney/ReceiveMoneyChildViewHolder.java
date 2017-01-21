@@ -14,10 +14,13 @@ import com.omjoonkim.doyouremember.app.home.receivemoney.listener.OnHomeReceiveC
 import com.omjoonkim.doyouremember.model.HomeReceiveChildData;
 import com.omjoonkim.doyouremember.model.HomeReceiveParentData;
 
+import org.w3c.dom.Text;
+
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
+import butterknife.BindColor;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -28,32 +31,34 @@ public class ReceiveMoneyChildViewHolder extends ChildViewHolder {
     @BindView(R.id.checkbox_isReceiveDone)
     CheckBox cbReceiveDone;
 
-    @BindView(R.id.textview_debtor_name)
+    @BindView(R.id.textView_debtor_name)
     TextView tvDebtor;
 
-    @BindView(R.id.textview_receive_price_individual)
+    @BindView(R.id.textView_receive_price_individual)
     TextView tvReceivePriceIndiIndividual;
 
-    @BindView(R.id.imageview_receive_kakaolink)
-    ImageView imgKakaolink;
+    @BindView(R.id.textView_receiveDoneLine)
+    TextView tvReceiveDoneLine;
+
+    @BindView(R.id.imageView_receive_KaKaoLink)
+    ImageView imgKaKaoLink;
 
     public ReceiveMoneyChildViewHolder(@NonNull View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
     }
 
-    public void updateData(final HomeReceiveChildData childData){
+    public void bind(final HomeReceiveChildData childData,
+                           final List<HomeReceiveParentData> parentDataList,
+                           final int parentPosition,
+                           final OnHomeReceiveClickListener listener){
+
         tvDebtor.setText(childData.getDebtorName());
         cbReceiveDone.setChecked(childData.isReceiveChecked());
         String priceReceiveIndividualKRW = NumberFormat.getInstance(Locale.KOREA).format(childData.getPriceIndividual());
         tvReceivePriceIndiIndividual.setText(priceReceiveIndividualKRW+"원");
-    }
 
-    public void occurEvent(final HomeReceiveChildData childData,
-                           final List<HomeReceiveParentData> parentDataList,
-                           final int parentPosition,
-                           final OnHomeReceiveClickListener listener){
-        imgKakaolink.setOnClickListener(new View.OnClickListener() {
+        imgKaKaoLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 listener.onSendKakaoLink();
@@ -63,6 +68,11 @@ public class ReceiveMoneyChildViewHolder extends ChildViewHolder {
         cbReceiveDone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    tvReceiveDoneLine.setBackgroundResource(R.drawable.rounded_corner_done_line_on);
+                }else{
+                    tvReceiveDoneLine.setBackgroundResource(R.drawable.rounded_corner_done_line_off);
+                }
                 childData.setReceiveChecked(isChecked);
                 parentDataList.get(parentPosition).sumChecked();
                 listener.onCheckedDebtors(parentPosition);

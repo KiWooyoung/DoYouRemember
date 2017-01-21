@@ -50,8 +50,7 @@ public class HomeSendAdapter extends RecyclerSwipeAdapter<HomeSendViewHolder>{
 
     @Override
     public void onBindViewHolder(final HomeSendViewHolder holder, final int position) {
-        holder.updateData(mDataset.get(position));
-        holder.occurEvent(mDataset, position, listener, mItemManger);
+        holder.bind(mDataset, position, listener, mItemManger);
     }
 
     @Override

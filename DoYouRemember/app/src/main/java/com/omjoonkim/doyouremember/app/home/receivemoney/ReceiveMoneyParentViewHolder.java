@@ -52,7 +52,7 @@ public class ReceiveMoneyParentViewHolder extends ParentViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    public void updateData(HomeReceiveParentData parentData){
+    public void bind(HomeReceiveParentData parentData){
         swipeHomeReceive.setShowMode(SwipeLayout.ShowMode.PullOut);
 
         swipeHomeReceive.addDrag(SwipeLayout.DragEdge.Right,
@@ -64,9 +64,6 @@ public class ReceiveMoneyParentViewHolder extends ParentViewHolder {
         tvReceiveDebtorCount.setText(countReceiveDebtors);
         String priceReceiveTotalKRW = NumberFormat.getInstance(Locale.KOREA).format(parentData.getTotalPrice());
         tvReceivePriceTotal.setText(priceReceiveTotalKRW+"원");
-    }
-
-    public void occurEvent(){
 
         swipeHomeReceive.addSwipeListener(new SwipeLayout.SwipeListener() {
             @Override
