@@ -119,7 +119,7 @@
                     android:layout_width="12dp"
                     android:layout_height="7.4dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/expand_icon_grey" />
+                    android:src="@drawable/expand_icon_grey"/>
 
             </LinearLayout>
 

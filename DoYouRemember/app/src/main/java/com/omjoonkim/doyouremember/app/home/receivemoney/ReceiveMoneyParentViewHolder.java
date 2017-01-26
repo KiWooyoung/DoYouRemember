@@ -1,8 +1,10 @@
 package com.omjoonkim.doyouremember.app.home.receivemoney;
 
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.RotateAnimation;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -25,6 +27,9 @@ import butterknife.ButterKnife;
 public class ReceiveMoneyParentViewHolder extends ParentViewHolder {
 
     public static final String TAG = ReceiveMoneyParentViewHolder.class.getSimpleName();
+
+    private static final float INITIAL_POSITION = 0.0f;
+    private static final float ROTATED_POSITION = 180f;
 
     @BindView(R.id.textview_receive_title)
     TextView tvReceiveTitle;
@@ -81,7 +86,7 @@ public class ReceiveMoneyParentViewHolder extends ParentViewHolder {
             @Override
             public void onStartClose(SwipeLayout layout) {
                 Log.v(TAG, "========swipe onStartClose 클릭=========");
-                setExpanded(false);
+                //setExpanded(false);
             }
 
             @Override
@@ -93,6 +98,7 @@ public class ReceiveMoneyParentViewHolder extends ParentViewHolder {
             @Override
             public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
                 Log.v(TAG, "========swipe onUpdate 클릭=========");
+                imgReceiveParentArrow.clearAnimation();
             }
 
             @Override
@@ -106,12 +112,49 @@ public class ReceiveMoneyParentViewHolder extends ParentViewHolder {
             public void onClick(View v) {
                 Log.v(TAG, "========swipe surface 클릭=========");
                 if (isExpanded()){
+                    imgReceiveParentArrow.setImageResource(R.drawable.expand_icon_grey);
                     collapseView();
                 }else{
+                    imgReceiveParentArrow.setImageResource(R.drawable.expand_icon_blue);
                     expandView();
                 }
             }
         });
+    }
+
+    @Override
+    public void setExpanded(boolean expanded) {
+        super.setExpanded(expanded);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            if (expanded) {
+                imgReceiveParentArrow.setRotation(ROTATED_POSITION);
+            } else {
+                imgReceiveParentArrow.setRotation(INITIAL_POSITION);
+            }
+        }
+    }
+
+    @Override
+    public void onExpansionToggled(boolean expanded) {
+        super.onExpansionToggled(expanded);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            RotateAnimation rotateAnimation;
+
+            if (expanded) { // rotate clockwise
+                rotateAnimation = new RotateAnimation(ROTATED_POSITION,
+                        INITIAL_POSITION,
+                        RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                        RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+            } else { // rotate counterclockwise
+                rotateAnimation = new RotateAnimation(-1 * ROTATED_POSITION,
+                        INITIAL_POSITION,
+                        RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                        RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+            }
+            rotateAnimation.setDuration(200);
+            rotateAnimation.setFillAfter(true);
+            imgReceiveParentArrow.startAnimation(rotateAnimation);
+        }
     }
 }
 

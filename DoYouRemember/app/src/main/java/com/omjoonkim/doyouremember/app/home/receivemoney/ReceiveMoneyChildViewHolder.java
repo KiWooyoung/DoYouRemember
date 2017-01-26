@@ -53,11 +53,14 @@ public class ReceiveMoneyChildViewHolder extends ChildViewHolder {
                            final int parentPosition,
                            final OnHomeReceiveClickListener listener){
 
+        // 받을 사람 이름
         tvDebtor.setText(childData.getDebtorName());
-        cbReceiveDone.setChecked(childData.isReceiveChecked());
+
+        // 받을 돈(원)
         String priceReceiveIndividualKRW = NumberFormat.getInstance(Locale.KOREA).format(childData.getPriceIndividual());
         tvReceivePriceIndiIndividual.setText(priceReceiveIndividualKRW+"원");
 
+        // 카카오 링크 버튼
         imgKaKaoLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +68,8 @@ public class ReceiveMoneyChildViewHolder extends ChildViewHolder {
             }
         });
 
+        // 받았는지 여부 체크
+        cbReceiveDone.setChecked(childData.isReceiveChecked());
         cbReceiveDone.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

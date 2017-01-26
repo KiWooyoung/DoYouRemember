@@ -29,4 +29,9 @@
 		<item name="android:background">@drawable/subtab_status</item>
 	</style>
 
+	<style name="ReceiveDoneCheck" parent="Theme.AppCompat.Light">
+		<item name="colorControlNormal">@color/text_LightGray</item>
+		<item name="colorControlActivated">@color/colorPrimary</item>
+	</style>
+
 </resources>

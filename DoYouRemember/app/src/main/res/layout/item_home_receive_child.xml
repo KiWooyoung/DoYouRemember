@@ -21,7 +21,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="18dp"/>
+            android:layout_marginLeft="18dp"
+            android:theme="@style/ReceiveDoneCheck" />
         
         <TextView
             android:id="@+id/textView_receiveDoneLine"
