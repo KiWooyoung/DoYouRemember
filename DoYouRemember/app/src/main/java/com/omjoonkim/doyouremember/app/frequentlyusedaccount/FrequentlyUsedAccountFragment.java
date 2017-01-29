@@ -15,8 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daimajia.swipe.SwipeLayout;
+import com.daimajia.swipe.util.Attributes;
 import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.frequentlyusedaccount.adapter.FrequentlyUesdAccountAdapter;
+import com.omjoonkim.doyouremember.app.frequentlyusedaccount.dialog.DeleteAccountDialog;
 import com.omjoonkim.doyouremember.app.frequentlyusedaccount.registeraccount.RegisterFrequentlyUsedAccountActivity;
 
 import java.util.List;
@@ -29,52 +32,84 @@ import butterknife.OnClick;
  * Created by owner on 2017-01-13.
  */
 
-public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoonkim.doyouremember.app.frequentlyusedaccount.View {
-
+public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoonkim.doyouremember.app.frequentlyusedaccount.FrequentlyUsedAccountView {
+    SwipeLayout swipeLayout;
     @BindView(R.id.recycler_view_FUAccount)
     RecyclerView recyclerView;
     @BindView(R.id.image_view_background)
     ImageView imgBackground;
     @BindView(R.id.text_view_default_text)
     TextView txtDefaultText;
+
     @OnClick(R.id.fab_writing_frequently_used_account)
-    public void onClick(){
-        presenter.onAddAccount();
+    public void onClick() {
+        presenter.onAddFrequentlyUsedAccount();
     }
 
     LinearLayoutManager layoutManager = null;
     FrequentlyUesdAccountAdapter adapter = null;
-    PresenterImpl presenter = null;
+    FrequentlyUsedAccountPresenterImpl presenter = null;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_frequently_used_account, container, false);
         ButterKnife.bind(this, view);
-
+        swipeLayout = (SwipeLayout) view.findViewById(R.id.swipe);
         layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
 
-        presenter = new PresenterImpl(this);
+        presenter = new FrequentlyUsedAccountPresenterImpl(this);
         adapter = new FrequentlyUesdAccountAdapter(presenter);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
+        adapter.setMode(Attributes.Mode.Single);
+
         presenter.setModel();
 
         return view;
-    }
 
-    @Override
-    public void notifyItemRemoved(int position) {
+    }            //Todo 자주쓰는 계좌 작성페이지에서 필요한 정보(이름,은행,계좌번호)중에 한가지라도 안적으면 어떻게 되는지 상의하기 (토스트? 대화상자?)
+                //Todo 추가버튼 눌러서 아이템 생성하고 다시 돌아왓을때 화면 초기화 하는범 물어보기
+    @Override  //Todo 스와이프 닫을때 버벅거리는데 물어보기 , 터치 개념 물어보기
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-    }
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                adapter.closeAllItems();
+            }
 
-    @Override
-    public void notifyItemInserted(int position) {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+//                adapter.closeAllItems();
+            }
+        });
 
+
+//        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+//            @Override
+//            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+////                adapter.closeAllItems();
+//                return false;
+//            }
+//
+//            @Override
+//            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+////                adapter.closeAllExcept(swipeLayout);
+//            }
+//
+//            @Override
+//            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+////                adapter.closeAllItems();
+//            }
+//        });
     }
 
     @Override
@@ -91,11 +126,10 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
 
     @Override
     public void showBackgroundImg() {
-        if ( adapter.getItems().size() != 0 ) {
+        if (adapter.getItems().size() != 0) {
             imgBackground.setVisibility(View.INVISIBLE);
             txtDefaultText.setVisibility(View.INVISIBLE);
-        }
-        else {
+        } else {
             imgBackground.setVisibility(View.VISIBLE);
             txtDefaultText.setVisibility(View.VISIBLE);
         }
@@ -103,8 +137,28 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
     }
 
     @Override
-    public void addAccount() {
-        startActivity(new Intent(getActivity(),RegisterFrequentlyUsedAccountActivity.class));
+    public void addFrequentlyUsedAccount() {
+        startActivity(new Intent(getActivity(), RegisterFrequentlyUsedAccountActivity.class));
+    }
+
+    @Override
+    public void goWriteList(int position) {
+        Toast.makeText(getContext(), "화면으로 이동", Toast.LENGTH_SHORT).show();
+        //Todo 홈 작성화면으로 이동 + 포지션값 전달
+    }
+
+    @Override
+    public void goRevise(int position) {
+        //Todo 현재 Item 정보를 자주쓰는계좌로 옴겨서 수정화면 보여주기
+//        Intent intent = new Intent(getContext(), RegisterMyAccountActivity.class);
+//        intent.putExtra(adapter.get)
+    }
+
+    @Override
+    public void showDeleteDialog() {
+        //Todo 삭제 다이얼로그 생성
+        DeleteAccountDialog deleteAccountDialog = DeleteAccountDialog.newDialogInstance();
+        deleteAccountDialog.show(getActivity().getFragmentManager(), "delete dialog");
     }
 
     @Override
@@ -112,4 +166,18 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
         super.onDestroy();
         presenter.onDestroy();
     }
+
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        inflater.inflate(R.menu.add_frequently_used_account,menu);
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        if (item.getItemId() == R.id.add_account) {
+//            Toast.makeText(getContext(), "aaa", Toast.LENGTH_SHORT).show();
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }

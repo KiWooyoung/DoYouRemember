@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.daimajia.swipe.SwipeLayout;
+import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
 import com.omjoonkim.doyouremember.R;
-import com.omjoonkim.doyouremember.app.frequentlyusedaccount.Presenter;
+import com.omjoonkim.doyouremember.app.frequentlyusedaccount.FrequentlyUsedAccountPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +22,10 @@ import butterknife.ButterKnife;
  * Created by owner on 2017-01-17.
  */
 
-public class FrequentlyUesdAccountAdapter extends RecyclerView.Adapter<FrequentlyUesdAccountAdapter.ViewHolder> {
+public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<FrequentlyUesdAccountAdapter.ViewHolder> {
 
     private List<ItemView> items;
-    private Presenter presenter;
+    private FrequentlyUsedAccountPresenter frequentlyUsedAccountPresenter;
 
     public List<ItemView> getItems() {
         return items;
@@ -33,24 +35,48 @@ public class FrequentlyUesdAccountAdapter extends RecyclerView.Adapter<Frequentl
         this.items = items;
     }
 
-    public FrequentlyUesdAccountAdapter(Presenter presenter) {
+    public FrequentlyUesdAccountAdapter(FrequentlyUsedAccountPresenter frequentlyUsedAccountPresenter) {
         this.items = new ArrayList<>();
-        this.presenter = presenter;
+        this.frequentlyUsedAccountPresenter = frequentlyUsedAccountPresenter;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_frequently_used_account, parent, false);
 
-        ViewHolder viewHolder = new ViewHolder(itemView);
-        return viewHolder;
+        return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.txtAccountHolder.setText(items.get(position).getAccountHolder());
         holder.txtAccountInfo.setText(items.get(position).getAccountInfo());
         holder.imgProfileImage.setImageResource(items.get(position).getProfileImage());
+
+        //Todo 아래의 리스너들 버터나이프로못하나 궁금합니다.
+        holder.imgAccountCopy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                frequentlyUsedAccountPresenter.swipeWriteList(position);
+            }
+        });
+
+        holder.imgRevise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        holder.imgDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                frequentlyUsedAccountPresenter.swipeDelete();
+            }
+        });
+
+        mItemManger.bindView(holder.itemView, position);
+
     }
 
     @Override
@@ -58,7 +84,21 @@ public class FrequentlyUesdAccountAdapter extends RecyclerView.Adapter<Frequentl
         return items.size();
     }
 
+    @Override  /** 중요 */
+    public int getSwipeLayoutResourceId(int position) {
+        return R.id.swipe;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.swipe)
+        SwipeLayout swipeLayout;
+        @BindView(R.id.image_view_account_copy)
+        ImageView imgAccountCopy;
+        @BindView(R.id.image_view_revise)
+        ImageView imgRevise;
+        @BindView(R.id.image_view_delete)
+        ImageView imgDelete;
 
         @BindView(R.id.item_text_view_account_holder)
         TextView txtAccountHolder;
@@ -66,6 +106,7 @@ public class FrequentlyUesdAccountAdapter extends RecyclerView.Adapter<Frequentl
         TextView txtAccountInfo;
         @BindView(R.id.item_image_view_profile_image)
         ImageView imgProfileImage;
+
 
         public ViewHolder(View itemView) {
             super(itemView);

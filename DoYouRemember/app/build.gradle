@@ -35,7 +35,10 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
 
+    compile "com.daimajia.swipelayout:library:1.2.0@aar"
+
 
     compile 'info.hoang8f:android-segmented:1.0.6'
     testCompile 'junit:junit:4.12'
+
 }

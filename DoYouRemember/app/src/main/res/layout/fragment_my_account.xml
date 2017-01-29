@@ -1,9 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#efefef"
     android:orientation="vertical">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_writing_my_account"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="16dp"
+        android:src="@drawable/okay_icon"
+        app:backgroundTint="#596ad8" /> <!-- Todo 아이콘 바꾸기 ..나는 잘안됨 -->
 
+    <!--Todo 텍스트, 힌트 사이즈 틀리게 할수 있나?-->
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/text_view_main_account_box"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:hint="대표 계좌를 설정해주세요."
+        android:textSize="15sp"
+        android:textColor="#454545"
+        android:textColorHint="#9b9b9b"
+        android:background="@drawable/main_account_box"
+        />
+
+    <TextView
+        android:layout_width="65dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginLeft="25dp"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="#FFFFFF"
+        android:text="대표 계좌"
+        android:background="@drawable/main_account_post_it"
+        />
+
+    <TextView
+        android:layout_width="79dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginLeft="25dp"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="#FFFFFF"
+        android:text="내 계좌 목록"
+        android:background="@drawable/my_account_post_it"
+        />
+
+    <TextView
+        android:id="@+id/text_view_my_account_box"
+        android:layout_width="330dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="178dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:textColorHint="#9b9b9b"
+        android:textSize="15sp"
+        android:hint="내 계좌를 등록해주세요."
+        android:background="@drawable/my_account_box"
+        android:visibility="invisible"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_my_accounts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="178dp"
+        />
+
+</FrameLayout>

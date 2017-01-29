@@ -6,13 +6,11 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.widget.Toast;
 
 import com.omjoonkim.doyouremember.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
 		viewPager.setAdapter(new MainFragmentPagerAdapter(getSupportFragmentManager()));
 		tabLayout.setupWithViewPager(viewPager);
-	}
 
+	}
 }

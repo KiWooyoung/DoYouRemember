@@ -8,12 +8,16 @@ import java.util.List;
  * Created by owner on 2017-01-17.
  */
 
-public interface View {
-    void notifyItemRemoved(int position);
-    void notifyItemInserted(int position);
+public interface FrequentlyUsedAccountView {
+//    void notifyItemRemoved(int position);
+//    void notifyItemInserted(int position);
     void notifyItemChanged(List<FrequentlyUesdAccountAdapter.ItemView> data);
     void showToast();
     void showBackgroundImg();
 
-    void addAccount();
+    void addFrequentlyUsedAccount();
+
+    void goWriteList(int position);
+    void goRevise(int position);
+    void showDeleteDialog();
 }

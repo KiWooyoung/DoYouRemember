@@ -8,14 +8,14 @@ import java.util.List;
  * Created by owner on 2017-01-17.
  */
 
-public class PresenterImpl implements Presenter {
+public class FrequentlyUsedAccountPresenterImpl implements FrequentlyUsedAccountPresenter {
 
     FrequentlyUsedAccountFragment view;
-    Model model;
+    FrequentlyUsedAccountModel frequentlyUsedAccountModel;
 
-    public PresenterImpl(FrequentlyUsedAccountFragment view) {
+    public FrequentlyUsedAccountPresenterImpl(FrequentlyUsedAccountFragment view) {
         this.view = view;
-        model = new Model();
+        frequentlyUsedAccountModel = new FrequentlyUsedAccountModel();
     }
 
     @Override
@@ -24,8 +24,8 @@ public class PresenterImpl implements Presenter {
     }
 
     @Override
-    public void onAddAccount() {
-        view.addAccount();
+    public void onAddFrequentlyUsedAccount() {
+        view.addFrequentlyUsedAccount();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class PresenterImpl implements Presenter {
 
     @Override
     public void setModel() {
-        model.loadData(this);
+        frequentlyUsedAccountModel.loadData(this);
     }
 
     @Override
@@ -52,6 +52,21 @@ public class PresenterImpl implements Presenter {
     @Override
     public void onDestroy() {
         view = null;
+    }
+
+    @Override
+    public void swipeWriteList(int position) {
+        view.goWriteList(position);
+    }
+
+    @Override
+    public void swipeRevise() {
+
+    }
+
+    @Override
+    public void swipeDelete() {
+        view.showDeleteDialog();
     }
 
 

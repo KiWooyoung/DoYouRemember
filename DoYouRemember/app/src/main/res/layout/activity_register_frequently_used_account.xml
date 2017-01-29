@@ -12,143 +12,123 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        >
+
+        <TextView
+            android:id="@+id/text_view_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#ffffff"
+            android:text="자주쓰는 계좌 작성"
+            android:textSize="16sp"
+            />  <!--Todo 여기 toolbar title center 하는법 이거 박에 없나 -->
+
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="185dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/write_bookmark"
+        app:cardCornerRadius="5dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_centerHorizontal="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
 
-            <ImageView
-                android:id="@+id/image_view_back"
-                android:layout_centerVertical="true"
-                android:src="@drawable/back_icon"
-                android:layout_width="11dp"
-                android:layout_height="18dp" />
-
-            <TextView
-                android:id="@+id/text_view_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="85.8dp"
-                android:layout_toRightOf="@+id/image_view_back"
-                android:textColor="#ffffff"
-                android:text="자주쓰는 계좌 작성"
-                android:textSize="16sp"/>
-            
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="14dp"
-                android:layout_toRightOf="@+id/text_view_title"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="81.5dp"
-                android:src="@drawable/okay_icon"/>
-
-        </RelativeLayout>
-
-    </android.support.v7.widget.Toolbar>
-
-    <android.support.v7.widget.CardView
-        android:layout_width="330dp"
-        android:layout_height="118dp"
-        android:layout_below="@id/toolbar"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/write_bookmark"
-        app:cardCornerRadius="5dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
             <TextView
                 android:id="@+id/text_view_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="29dp"
-                android:layout_marginLeft="26.5dp"
-                android:layout_marginBottom="22dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="12dp"
                 android:gravity="center"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:textColor="#454545"
-                android:text="이름"/>
+                android:text="이름"
+                />
 
             <TextView
                 android:id="@+id/text_view_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="26.5dp"
-                android:layout_below="@+id/text_view_name"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="96dp"
                 android:gravity="center"
                 android:textSize="15sp"
                 android:textColor="#454545"
-                android:text="계좌"/>
-            
+                android:text="계좌"
+                />
+
 
             <EditText
                 android:id="@+id/edit_text_name"
-                android:layout_width="227dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="22dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="41dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:textCursorDrawable="@color/cursor"
                 android:gravity="center"
-                android:textCursorDrawable="@null"
                 android:hint="이름 입력"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textColor="#4a4a4a"
                 android:textColorHint="#aeaeaf"
-                android:background="@android:drawable/editbox_background"
-                android:layout_toRightOf="@id/text_view_name"
-                android:layout_alignBaseline="@+id/text_view_name"
-                android:layout_alignBottom="@+id/text_view_name"
+                android:background="@drawable/back"
                 />
 
             <TextView
                 android:id="@+id/text_view_bank"
-                android:layout_width="49dp"
-                android:layout_height="29dp"
-                android:layout_marginLeft="22dp"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="125dp"
                 android:hint="은행"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textColorHint="#aeaeaf"
                 android:textColor="#4a4a4a"
                 android:gravity="center"
-                android:background="@android:drawable/editbox_background"
-                android:layout_toRightOf="@+id/text_view_account"
-                android:layout_alignBaseline="@+id/text_view_account"
-                android:layout_alignBottom="@+id/text_view_account"
-                android:layout_below="@+id/edit_text_name"
+                android:background="@drawable/back"
                 />
 
             <ImageView
                 android:layout_width="7dp"
                 android:layout_height="7dp"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="155dp"
                 android:src="@drawable/bank_triangle"
-                android:layout_alignBaseline="@+id/text_view_bank"
-                android:layout_alignEnd="@+id/text_view_bank"
-                android:layout_below="@+id/text_view_name"/>
-            
+                />
+
             <EditText
                 android:id="@+id/edit_text_account_number"
-                android:layout_width="158dp"
-                android:layout_height="29dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="125dp"
+                android:textCursorDrawable="@color/cursor"
                 android:hint="계좌번호 입력"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textColorHint="#aeaeaf"
                 android:textColor="#4a4a4a"
                 android:gravity="center"
-                android:background="@android:drawable/editbox_background"
-                android:layout_toRightOf="@+id/text_view_bank"
-                android:layout_alignBaseline="@+id/text_view_account"
-                android:layout_alignBottom="@id/text_view_account"
-                android:layout_marginLeft="20dp"
+                android:background="@drawable/back"
                 />
 
         </RelativeLayout>
 
 
     </android.support.v7.widget.CardView>
+
 
 </RelativeLayout>
 
