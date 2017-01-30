@@ -1,16 +1,18 @@
 package com.omjoonkim.doyouremember.model;
 
-import com.bignerdranch.expandablerecyclerview.model.Parent;
+import com.thoughtbot.expandablecheckrecyclerview.models.MultiCheckExpandableGroup;
 
 import java.util.List;
 
-public class HomeReceiveParentData implements Parent<HomeReceiveChildData> {
+public class HomeReceiveParentData extends MultiCheckExpandableGroup {
+
     private String title;
     private int totalPrice;
     private int checkedCount;
     private List<HomeReceiveChildData> homeReceiveChildDataList;
 
     public HomeReceiveParentData(String title, List<HomeReceiveChildData> homeReceiveChildDataList) {
+        super(title, homeReceiveChildDataList);
         this.title = title;
         this.homeReceiveChildDataList = homeReceiveChildDataList;
         sumPrice();
@@ -31,16 +33,6 @@ public class HomeReceiveParentData implements Parent<HomeReceiveChildData> {
 
     public int getCheckedCount() {
         return checkedCount;
-    }
-
-    @Override
-    public List<HomeReceiveChildData> getChildList() {
-        return homeReceiveChildDataList;
-    }
-
-    @Override
-    public boolean isInitiallyExpanded() {
-        return false;
     }
 
     private void sumPrice() {

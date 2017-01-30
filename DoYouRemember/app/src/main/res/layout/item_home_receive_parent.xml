@@ -29,7 +29,7 @@
                 android:background="@color/white">
 
                 <ImageView
-                    android:id="@+id/imageview_receive_edit"
+                    android:id="@+id/imageView_receive_edit"
                     android:layout_width="@dimen/list_item_height"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -39,7 +39,7 @@
                     android:src="@drawable/revise_icon"/>
 
                 <ImageView
-                    android:id="@+id/imageview_receive_delete"
+                    android:id="@+id/imageView_receive_delete"
                     android:layout_width="@dimen/list_item_height"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -83,7 +83,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textview_receive_title"
+                        android:id="@+id/textView_receive_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
@@ -93,7 +93,7 @@
                         android:text="hello" />
 
                     <TextView
-                        android:id="@+id/textview_receive_debtor_count"
+                        android:id="@+id/textView_receive_debtor_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="11sp"
@@ -103,7 +103,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/textview_receive_price_total"
+                    android:id="@+id/textView_receive_price_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

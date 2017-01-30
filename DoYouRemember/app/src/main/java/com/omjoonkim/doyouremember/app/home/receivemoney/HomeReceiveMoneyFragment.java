@@ -10,11 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.bignerdranch.expandablerecyclerview.ExpandableRecyclerAdapter;
 import com.omjoonkim.doyouremember.R;
-import com.omjoonkim.doyouremember.app.home.receivemoney.listener.OnHomeReceiveClickListener;
 import com.omjoonkim.doyouremember.app.home.receivemoney.presenter.HomeReceivePresenter;
 import com.omjoonkim.doyouremember.app.home.receivemoney.presenter.HomeReceivePresenterImpl;
 import com.omjoonkim.doyouremember.model.HomeReceiveChildData;
@@ -71,30 +68,31 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
 
         final List<HomeReceiveParentData> parentDatas = Arrays.asList(parent1, parent2);
 
-        adapter = new HomeReceiveAdapter(getActivity().getApplicationContext(), parentDatas);
-
+        adapter = new HomeReceiveAdapter(parentDatas);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         recyclerView.setAdapter(adapter);
-        adapter.setClickListener(new OnHomeReceiveClickListener() {
-            @Override
-            public void onSendKakaoLink() {
-                homeReceivePresenter.onClickKakaoLink();
-            }
 
-            @Override
-            public void onCheckedDebtors(int parentPosition) {
-                homeReceivePresenter.onClickedChecked(parentPosition);
-            }
-        });
     }
 
     @Override
     public void updateDebtorCount(final int parentPosition) {
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                adapter.notifyParentChanged(parentPosition);
-            }
-        });
+//        new Handler().post(new Runnable() {
+//            @Override
+//            public void run() {
+//                adapter.notifyParentChanged(parentPosition);
+//            }
+//        });
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        adapter.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        adapter.onRestoreInstanceState(savedInstanceState);
     }
 }
