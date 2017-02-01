@@ -58,6 +58,14 @@ public class HomeReceiveMoneyChildViewHolder extends CheckableChildViewHolder {
         String priceReceiveIndividualKRW = NumberFormat.getInstance(Locale.KOREA).format(childData.getPriceIndividual());
         tvReceivePriceIndiIndividual.setText(priceReceiveIndividualKRW+"원");
 
+        if (checkable.isChecked()){
+            imgKaKaoLink.setEnabled(false);
+            tvReceiveDoneLine.setBackgroundResource(R.drawable.rounded_corner_done_line_on);
+        }else{
+            imgKaKaoLink.setEnabled(true);
+            tvReceiveDoneLine.setBackgroundResource(R.drawable.rounded_corner_done_line_off);
+        }
+
         // 카카오 링크 버튼
         imgKaKaoLink.setOnClickListener(new View.OnClickListener() {
             @Override

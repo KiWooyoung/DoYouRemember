@@ -20,4 +20,6 @@
 	<color name="receiveDoneLineOpacity">#ffffffff</color>
 
 	<color name="white">#fff</color>
+	<color name="kakao_yellow">#f8e81c</color>
+
 </resources>
