@@ -1,8 +1,6 @@
 package com.omjoonkim.doyouremember.realm.entitiy;
 
 
-import com.omjoonkim.doyouremember.realm.CommonRealmObjcet;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
@@ -11,8 +9,8 @@ import io.realm.annotations.PrimaryKey;
 
 public class PersonRealmObject extends RealmObject {
 
-	@PrimaryKey
-	long id;
+	@PrimaryKey //Todo Account,Person 모델에 PrimaryKey로 long id 가 꼭 필요할까요?
+	long id = -1;
 
 	@Index
 	String name;

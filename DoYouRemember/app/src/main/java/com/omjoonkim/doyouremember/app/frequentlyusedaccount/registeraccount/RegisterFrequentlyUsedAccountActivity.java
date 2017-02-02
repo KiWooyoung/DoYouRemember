@@ -87,9 +87,9 @@ public class RegisterFrequentlyUsedAccountActivity extends AppCompatActivity imp
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
-        } else if(item.getItemId() == R.id.add_account) {
-
-            finish(); //Todo 프레그먼트로 데이터 이동
+        } else if(item.getItemId() == R.id.add_account) { //Todo presenter에서 양식3개다 안넣고 눌렀을시 예외처리 하기
+            presenter.onRegister(editName.getText().toString(), editAccountNumber.getText().toString(), txtBank.getText().toString());
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -102,8 +102,10 @@ public class RegisterFrequentlyUsedAccountActivity extends AppCompatActivity imp
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(presenter != null)
+        if(presenter != null) {
             presenter.onDestroy();
+            presenter = null;
+        }
     }
 
 }

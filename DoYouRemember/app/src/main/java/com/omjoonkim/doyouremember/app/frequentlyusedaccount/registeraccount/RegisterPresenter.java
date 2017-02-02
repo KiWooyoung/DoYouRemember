@@ -6,7 +6,7 @@ package com.omjoonkim.doyouremember.app.frequentlyusedaccount.registeraccount;
 
 public interface RegisterPresenter {
 
-    void onRegister();
+    void onRegister(String name, String accountNumber, String bank);
     void onChooseBank();
     void onDestroy();
 }

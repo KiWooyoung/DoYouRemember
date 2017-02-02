@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
 import com.omjoonkim.doyouremember.R;
@@ -48,7 +47,7 @@ public class MyAccountAdapter extends RecyclerSwipeAdapter<MyAccountAdapter.View
         viewHolder.imgShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "haha", Toast.LENGTH_SHORT).show();
+
             }
         });
 

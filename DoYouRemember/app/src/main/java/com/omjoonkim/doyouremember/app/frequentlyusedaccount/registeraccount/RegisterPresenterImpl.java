@@ -14,9 +14,11 @@ public class RegisterPresenterImpl implements RegisterPresenter {
         model = new RegisterModel();
     }
 
+
     @Override
-    public void onRegister() {
-        model.onSendFrequentlyUsedAccount();
+    public void onRegister(String name, String accountNumber, String bank) {
+        //Todo 양식 다 넣어라고 조건 넣기
+        model.registerFrequentlyUsedAccount(name, accountNumber, bank);
     }
 
     @Override

@@ -1,8 +1,6 @@
 package com.omjoonkim.doyouremember.realm.entitiy;
 
 
-import com.omjoonkim.doyouremember.realm.CommonRealmObjcet;
-
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
@@ -11,7 +9,7 @@ import io.realm.annotations.PrimaryKey;
 public class AccountRealmObject extends RealmObject {
 
 	@PrimaryKey
-	long id;
+	long id = -1;
 
 	@Index
 	String accountNumber = null;

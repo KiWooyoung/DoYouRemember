@@ -18,6 +18,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    repositories {
+        maven {
+            url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+        }
+    }
 }
 
 dependencies {
@@ -40,5 +46,8 @@ dependencies {
 
     compile 'info.hoang8f:android-segmented:1.0.6'
     testCompile 'junit:junit:4.12'
+
+    compile 'com.facebook.stetho:stetho:1.4.1'
+    compile 'com.uphyca:stetho_realm:2.0.0'
 
 }

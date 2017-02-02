@@ -6,5 +6,4 @@ package com.omjoonkim.doyouremember.app.frequentlyusedaccount.registeraccount;
 
 public interface RegisterView {
     void showDialog();
-//    void goBack();
 }

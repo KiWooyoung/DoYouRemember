@@ -13,7 +13,7 @@ import io.realm.annotations.RealmModule;
 
 
 @RealmModule( classes = { PersonRealmObject.class, AccountRealmObject.class, NotificationRealmObject.class, SendMoneyRealmObject.class, ReceiveMoneyRealmObject.class } )
-
+//Todo 이거 하는 이유
 public class DoYouRememberMigration implements RealmMigration {
 
 	public static final int SCHEMA_VERSION = 1;
