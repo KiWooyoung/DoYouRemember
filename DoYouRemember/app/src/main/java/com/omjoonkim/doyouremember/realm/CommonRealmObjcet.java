@@ -21,11 +21,11 @@ public class CommonRealmObjcet extends RealmObject {
         return realm.copyToRealm(this);
     }
 
-    public static int getNextKey(Realm realm, Class clazz ) {
-        try {
-            return realm.where(clazz).max("id").intValue() + 1;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            return 0;
-        }
-    }
+//    public static int getNextKey(Realm realm, Class clazz ) {
+//        try {
+//            return realm.where(clazz).max("id").intValue() + 1;
+//        } catch (ArrayIndexOutOfBoundsException e) {
+//            return 0;
+//        }
+//    }
 }

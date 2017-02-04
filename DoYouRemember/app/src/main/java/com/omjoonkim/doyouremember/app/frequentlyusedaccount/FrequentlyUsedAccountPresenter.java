@@ -10,16 +10,15 @@ import java.util.List;
 
 public interface FrequentlyUsedAccountPresenter {
 
-    void deleteAccount();
+    void deleteAccount(int position, String info);
     void onAddFrequentlyUsedAccount();
     void modifyAccount();
-    void createList();
     void setModel();
-    void init(List<FrequentlyUesdAccountAdapter.ItemView> data);
-
-    void onDestroy();
+    void setView(List<FrequentlyUesdAccountAdapter.ItemView> data);
 
     void swipeWriteList(int position);
-    void swipeRevise();
-    void swipeDelete();
+    void swipeRevise(int position);
+    void swipeDelete(int position);
+
+    void onDestroy();
 }

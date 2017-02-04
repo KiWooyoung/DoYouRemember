@@ -9,9 +9,9 @@ import io.realm.annotations.PrimaryKey;
 public class AccountRealmObject extends RealmObject {
 
 	@PrimaryKey
-	long id = -1;
+	int id;
 
-	@Index
+	@Index //Todo index도 물어보기 이거 있으면 primarykey 필요한가?
 	String accountNumber = null;
 
 	@Index
@@ -26,7 +26,7 @@ public class AccountRealmObject extends RealmObject {
 		return id;
 	}
 
-	public AccountRealmObject setId( long id ) {
+	public AccountRealmObject setId( int id ) {
 		this.id = id;
 		return this;
 	}

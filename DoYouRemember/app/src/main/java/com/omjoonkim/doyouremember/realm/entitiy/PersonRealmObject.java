@@ -10,12 +10,13 @@ import io.realm.annotations.PrimaryKey;
 public class PersonRealmObject extends RealmObject {
 
 	@PrimaryKey //Todo Account,Person 모델에 PrimaryKey로 long id 가 꼭 필요할까요?
-	long id = -1;
+	int id;
 
 	@Index
 	String name;
 
-	RealmList<AccountRealmObject> accountList;
+
+	RealmList<AccountRealmObject> accountList = null;
 
 	@Index
 	boolean isMine;
@@ -25,7 +26,7 @@ public class PersonRealmObject extends RealmObject {
 		return id;
 	}
 
-	public PersonRealmObject setId( long id ) {
+	public PersonRealmObject setId( int id ) {
 
 		this.id = id;
 		return this;

@@ -9,15 +9,14 @@ import java.util.List;
  */
 
 public interface FrequentlyUsedAccountView {
-//    void notifyItemRemoved(int position);
+    void notifyItemRemoved(int position);
 //    void notifyItemInserted(int position);
     void notifyItemChanged(List<FrequentlyUesdAccountAdapter.ItemView> data);
-    void showToast();
     void showBackgroundImg();
 
     void addFrequentlyUsedAccount();
 
     void goWriteList(int position);
     void goRevise(int position);
-    void showDeleteDialog();
+    void showDeleteDialog(int position);
 }

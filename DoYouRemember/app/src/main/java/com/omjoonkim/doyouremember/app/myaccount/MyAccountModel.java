@@ -5,4 +5,5 @@ package com.omjoonkim.doyouremember.app.myaccount;
  */
 
 public class MyAccountModel {
+
 }

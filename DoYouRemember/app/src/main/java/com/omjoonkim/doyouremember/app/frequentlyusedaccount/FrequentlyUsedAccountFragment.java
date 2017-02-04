@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,6 @@ import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.util.Attributes;
 import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.frequentlyusedaccount.adapter.FrequentlyUesdAccountAdapter;
-import com.omjoonkim.doyouremember.app.frequentlyusedaccount.dialog.DeleteAccountDialog;
 import com.omjoonkim.doyouremember.app.frequentlyusedaccount.registeraccount.RegisterFrequentlyUsedAccountActivity;
 
 import java.util.List;
@@ -68,11 +68,20 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
 
         adapter.setMode(Attributes.Mode.Single);
 
-        presenter.setModel();
-
         return view;
 
-    }            //Todo 자주쓰는 계좌 작성페이지에서 필요한 정보(이름,은행,계좌번호)중에 한가지라도 안적으면 어떻게 되는지 상의하기 (토스트? 대화상자?)
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        presenter.setModel();
+//        adapter.notifyDataSetChanged();
+
+    }
+
+                //Todo 자주쓰는 계좌 작성페이지에서 필요한 정보(이름,은행,계좌번호)중에 한가지라도 안적으면 어떻게 되는지 상의하기 (토스트? 대화상자?)
                 //Todo 추가버튼 눌러서 아이템 생성하고 다시 돌아왓을때 화면 초기화 하는범 물어보기
     @Override  //Todo 스와이프 닫을때 버벅거리는데 물어보기 , 터치 개념 물어보기
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -113,15 +122,19 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
     }
 
     @Override
-    public void notifyItemChanged(List<FrequentlyUesdAccountAdapter.ItemView> data) {
-        adapter.setItems(data);
-        adapter.notifyDataSetChanged();
+    public void notifyItemRemoved(int position) {
+        adapter.removeItem(position);
+        adapter.notifyItemRemoved(position);
+        adapter.closeAllItems();
         showBackgroundImg();
     }
 
     @Override
-    public void showToast() {
-        Toast.makeText(getContext(), "TEST성공", Toast.LENGTH_SHORT).show();
+    public void notifyItemChanged(List<FrequentlyUesdAccountAdapter.ItemView> data) {
+        adapter.setItems(data);
+        adapter.notifyDataSetChanged();
+        adapter.closeAllItems();
+        showBackgroundImg();
     }
 
     @Override
@@ -133,7 +146,6 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
             imgBackground.setVisibility(View.VISIBLE);
             txtDefaultText.setVisibility(View.VISIBLE);
         }
-
     }
 
     @Override
@@ -150,21 +162,28 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
     @Override
     public void goRevise(int position) {
         //Todo 현재 Item 정보를 자주쓰는계좌로 옴겨서 수정화면 보여주기
-//        Intent intent = new Intent(getContext(), RegisterMyAccountActivity.class);
-//        intent.putExtra(adapter.get)
+        Intent intent = new Intent(getContext(), RegisterFrequentlyUsedAccountActivity.class);
+        intent.putExtra("position", position);
+        intent.putExtra("name", adapter.getItems().get(position).getAccountHolder());
+        intent.putExtra("accountInfo", adapter.getItems().get(position).getAccountInfo());
+        startActivity(intent);
     }
 
     @Override
-    public void showDeleteDialog() {
+    public void showDeleteDialog(int position) {
         //Todo 삭제 다이얼로그 생성
-        DeleteAccountDialog deleteAccountDialog = DeleteAccountDialog.newDialogInstance();
-        deleteAccountDialog.show(getActivity().getFragmentManager(), "delete dialog");
+//        DeleteAccountDialog deleteAccountDialog = DeleteAccountDialog.newDialogInstance();
+//        deleteAccountDialog.show(getActivity().getFragmentManager(), "delete dialog");
+        Log.i("MyTag",adapter.getItems().size() + "   우영");
+        presenter.deleteAccount(position, adapter.getItems().get(position).getAccountInfo());
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
         presenter.onDestroy();
+        if (adapter != null) //Todo 이거 질문 객체 다 끝날떄 null 해주면 좋나
+            adapter = null;
     }
 
 //    @Override

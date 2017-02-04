@@ -6,4 +6,5 @@ package com.omjoonkim.doyouremember.app.myaccount;
 
 public interface MyAccountView {
     void goRegisterMyAccount();
+    void showDefaultText();
 }

@@ -11,16 +11,17 @@ import java.util.List;
 public class FrequentlyUsedAccountPresenterImpl implements FrequentlyUsedAccountPresenter {
 
     FrequentlyUsedAccountFragment view;
-    FrequentlyUsedAccountModel frequentlyUsedAccountModel;
+    FrequentlyUsedAccountModel model;
 
     public FrequentlyUsedAccountPresenterImpl(FrequentlyUsedAccountFragment view) {
         this.view = view;
-        frequentlyUsedAccountModel = new FrequentlyUsedAccountModel();
+        model = new FrequentlyUsedAccountModel();
     }
 
     @Override
-    public void deleteAccount() {
-
+    public void deleteAccount(int position, String info) {
+        model.deleteData(info);
+        view.notifyItemRemoved(position);
     }
 
     @Override
@@ -34,24 +35,19 @@ public class FrequentlyUsedAccountPresenterImpl implements FrequentlyUsedAccount
     }
 
     @Override
-    public void createList() {
-
-    }
-
-    @Override
     public void setModel() {
-        frequentlyUsedAccountModel.loadData(this);
+        model.loadData(this);
     }
 
     @Override
-    public void init(List<FrequentlyUesdAccountAdapter.ItemView> data) {
+    public void setView(List<FrequentlyUesdAccountAdapter.ItemView> data) {
         view.notifyItemChanged(data);
-
     }
 
     @Override
     public void onDestroy() {
         view = null;
+        model = null;
     }
 
     @Override
@@ -60,13 +56,13 @@ public class FrequentlyUsedAccountPresenterImpl implements FrequentlyUsedAccount
     }
 
     @Override
-    public void swipeRevise() {
-
+    public void swipeRevise(int position) {
+        view.goRevise(position);
     }
 
     @Override
-    public void swipeDelete() {
-        view.showDeleteDialog();
+    public void swipeDelete(int position) {
+        view.showDeleteDialog(position);
     }
 
 

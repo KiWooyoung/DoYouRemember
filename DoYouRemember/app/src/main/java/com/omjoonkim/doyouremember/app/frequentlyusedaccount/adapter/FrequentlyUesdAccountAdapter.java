@@ -35,6 +35,10 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
         this.items = items;
     }
 
+    public void removeItem(int position) {
+        items.remove(position);
+    }
+
     public FrequentlyUesdAccountAdapter(FrequentlyUsedAccountPresenter frequentlyUsedAccountPresenter) {
         this.items = new ArrayList<>();
         this.frequentlyUsedAccountPresenter = frequentlyUsedAccountPresenter;
@@ -64,14 +68,14 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
         holder.imgRevise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                frequentlyUsedAccountPresenter.swipeRevise(position);
             }
         });
 
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                frequentlyUsedAccountPresenter.swipeDelete();
+                frequentlyUsedAccountPresenter.swipeDelete(position);
             }
         });
 

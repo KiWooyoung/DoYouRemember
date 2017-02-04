@@ -21,10 +21,23 @@ import butterknife.ButterKnife;
  * Created by wooyoungki on 2017. 1. 29..
  */
 
-public class MyAccountAdapter extends RecyclerSwipeAdapter<MyAccountAdapter.ViewHolder> {
+public class MyAccountAdapter extends RecyclerSwipeAdapter<RecyclerView.ViewHolder> {
     Context context;
+
+
     private List<ItemView> items;
     private MyAccountPresenter presenter;
+
+    private static final int TYPE_HEADER = 0;
+    private static final int TYPE_ITEM = 1;
+
+    public List<ItemView> getItems() {
+        return items;
+    }
+
+    public void setItems(List<ItemView> items) {
+        this.items = items;
+    }
 
     public MyAccountAdapter(List<ItemView> items, MyAccountPresenter presenter) {
         this.items = items;
@@ -32,45 +45,70 @@ public class MyAccountAdapter extends RecyclerSwipeAdapter<MyAccountAdapter.View
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_account, parent, false);
-
-        return new ViewHolder(itemView);
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View itemView = null;
+        if (viewType == TYPE_HEADER) {
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.header_my_account, parent, false);
+            return new HeaderViewHolder(itemView);
+        } else if (viewType == TYPE_ITEM) {
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_account, parent, false);
+            return new ItemViewHolder(itemView);
+        }
+        return null;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        viewHolder.imgBookmarkStar.setImageResource(items.get(position).getBookmarkStar());
-        viewHolder.txtMyAccountNumber.setText(items.get(position).getMyAccountNumber());
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
 
-        //Todo 아래의 리스너들 버터나이프로못하나 궁금합니다.
-        viewHolder.imgShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (viewHolder instanceof HeaderViewHolder) {
+            HeaderViewHolder headerViewHolder = (HeaderViewHolder) viewHolder;
+        } else if (viewHolder instanceof ItemViewHolder) {
+            ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
+            itemViewHolder.imgBookmarkStar.setImageResource(items.get(position - 1).getBookmarkStar());
+            itemViewHolder.txtMyAccountNumber.setText(items.get(position - 1).getMyAccountNumber());
 
-            }
-        });
+            //Todo 아래의 리스너들 버터나이프로못하나 궁금합니다.
+            itemViewHolder.imgShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    presenter.
+                }
+            });
 
-        viewHolder.imgReviseMyAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            itemViewHolder.imgReviseMyAccount.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-            }
-        });
+                }
+            });
 
-        viewHolder.imgDeleteMyAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            itemViewHolder.imgDeleteMyAccount.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-            }
-        });
+                }
+            });
 
-        mItemManger.bindView(viewHolder.itemView, position);
+            mItemManger.bindView(viewHolder.itemView, position);
+
+        }
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return items.size() + 1;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (isPositionHeader(position)) {
+            return TYPE_HEADER;
+        }
+        return TYPE_ITEM;
+    }
+
+    private boolean isPositionHeader(int position) {
+        return position == 0;
     }
 
     @Override
@@ -78,7 +116,7 @@ public class MyAccountAdapter extends RecyclerSwipeAdapter<MyAccountAdapter.View
         return R.id.swipe;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ItemViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.image_view_bookmark_star)
         ImageView imgBookmarkStar;
         @BindView(R.id.text_view_my_account_number)
@@ -92,9 +130,16 @@ public class MyAccountAdapter extends RecyclerSwipeAdapter<MyAccountAdapter.View
         ImageView imgDeleteMyAccount;
 
 
-        public ViewHolder(View itemView) {
+        public ItemViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind(this, itemView);
+        }
+    }
+
+    public class HeaderViewHolder extends RecyclerView.ViewHolder {
+
+        public HeaderViewHolder(View itemView) {
+            super(itemView);
         }
     }
 

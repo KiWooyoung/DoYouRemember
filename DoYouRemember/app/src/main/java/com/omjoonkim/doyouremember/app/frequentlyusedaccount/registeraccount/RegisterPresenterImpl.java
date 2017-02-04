@@ -28,9 +28,10 @@ public class RegisterPresenterImpl implements RegisterPresenter {
 
     @Override
     public void onDestroy() {
-        if(view != null)
+        if(view != null) //Todo 객체를 다 죽이는 본질적인 이유를 공부하기
             view = null;
         if(model != null)
             model = null;
+
     }
 }

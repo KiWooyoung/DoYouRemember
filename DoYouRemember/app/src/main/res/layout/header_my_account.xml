@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#efefef"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relative_layout_account_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        >
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:cardCornerRadius="5dp">
+
+            <TextView
+                android:id="@+id/text_view_main_account_box"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="22sp"
+                android:textColor="#454545"
+                android:textColorHint="#9b9b9b"
+                android:hint="@string/text_view_hint"/>
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="65dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginLeft="25dp"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="#FFFFFF"
+        android:text="대표 계좌"
+        android:background="@drawable/main_account_post_it"
+        />
+
+    <TextView
+        android:layout_width="79dp"
+        android:layout_height="22dp"
+        android:layout_below="@+id/relative_layout_account_box"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="25dp"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="#FFFFFF"
+        android:text="내 계좌 목록"
+        android:background="@drawable/my_account_post_it"
+        />
+
+
+</RelativeLayout>
