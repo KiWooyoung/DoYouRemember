@@ -1,8 +1,6 @@
 package com.omjoonkim.doyouremember.realm.entitiy;
 
 
-import com.omjoonkim.doyouremember.realm.CommonRealmObjcet;
-
 import io.realm.RealmObject;
 import io.realm.annotations.Index;
 import io.realm.annotations.PrimaryKey;
@@ -11,9 +9,9 @@ import io.realm.annotations.PrimaryKey;
 public class AccountRealmObject extends RealmObject {
 
 	@PrimaryKey
-	long id;
+	int id;
 
-	@Index
+	@Index //Todo index도 물어보기 이거 있으면 primarykey 필요한가?
 	String accountNumber = null;
 
 	@Index
@@ -28,7 +26,7 @@ public class AccountRealmObject extends RealmObject {
 		return id;
 	}
 
-	public AccountRealmObject setId( long id ) {
+	public AccountRealmObject setId( int id ) {
 		this.id = id;
 		return this;
 	}

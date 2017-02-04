@@ -6,6 +6,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.omjoonkim.doyouremember.app.frequentlyusedaccount.FrequentlyUsedAccountFragment;
+import com.omjoonkim.doyouremember.app.home.HomeFragment;
+import com.omjoonkim.doyouremember.app.myaccount.MyAccountFragment;
 
 public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
 
@@ -25,7 +28,15 @@ public class MainFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return fragments.get(position);
+        switch (position) {
+            case 0:
+                return new HomeFragment();
+            case 1:
+                return new FrequentlyUsedAccountFragment();
+            case 2:
+                return new MyAccountFragment();
+        }
+        return null;
     }
 
     @Override
