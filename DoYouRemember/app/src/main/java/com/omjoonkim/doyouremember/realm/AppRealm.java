@@ -30,7 +30,7 @@ public class AppRealm {
 				//.schemaVersion( DoYouRememberMigration.SCHEMA_VERSION )
 				//.deleteRealmIfMigrationNeeded()
 				//.migration( DoYouRememberMigration.getInstance() )
-				//.modules( DoYouRememberMigration.getInstance() )
+//				.modules( DoYouRememberMigration.getInstance() )
 				.build();
 		Realm.setDefaultConfiguration( DylRealm );
 	}
@@ -40,7 +40,7 @@ public class AppRealm {
 		return Realm.getInstance( DylRealm );
 	}
 
-	public static AppRealm get() {
+	public static AppRealm get() {  //Todo 이것만 Static 으로 한이유가 있는가?
 
 		if ( null == instance ) {
 			instance = new AppRealm();
