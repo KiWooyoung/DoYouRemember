@@ -88,7 +88,7 @@ public class HomeReceiveMoneyParentViewHolder extends GroupViewHolder {
                 countChecked += 1;
             }
         }
-        
+
         String countReceiveDebtors = countChecked + "명/" + numOfTotalChild + "명";
         tvReceiveDebtorCount.setText(countReceiveDebtors);
 
