@@ -78,8 +78,18 @@ public class HomeReceiveMoneyParentViewHolder extends GroupViewHolder {
                 swipeHomeReceive.findViewById(R.id.swipe_home_receive_menu));
 
         tvReceiveTitle.setText(parentData.getTitle());
-        parentData.sumChecked();
-        String countReceiveDebtors = parentData.getCheckedCount() + "명/" + "3명";
+
+
+        int numOfTotalChild = parentData.getItemCount();
+        int countChecked = 0;
+
+        for (int i=0; i<numOfTotalChild; i++){
+            if (parentData.isChildChecked(i)){
+                countChecked += 1;
+            }
+        }
+        
+        String countReceiveDebtors = countChecked + "명/" + numOfTotalChild + "명";
         tvReceiveDebtorCount.setText(countReceiveDebtors);
 
         String priceReceiveTotalKRW = NumberFormat.getInstance(Locale.KOREA).format(parentData.getTotalPrice());

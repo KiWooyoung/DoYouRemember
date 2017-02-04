@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import com.omjoonkim.doyouremember.app.home.receivemoney.presenter.HomeReceivePr
 import com.omjoonkim.doyouremember.app.home.receivemoney.presenter.HomeReceivePresenterImpl;
 import com.omjoonkim.doyouremember.model.HomeReceiveChildData;
 import com.omjoonkim.doyouremember.model.HomeReceiveParentData;
+import com.thoughtbot.expandablecheckrecyclerview.listeners.OnCheckChildClickListener;
+import com.thoughtbot.expandablecheckrecyclerview.models.CheckedExpandableGroup;
 
 import java.util.Arrays;
 import java.util.List;
@@ -69,6 +72,14 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
         final List<HomeReceiveParentData> parentDatas = Arrays.asList(parent1, parent2);
 
         adapter = new HomeReceiveAdapter(parentDatas);
+        adapter.setChildClickListener(new OnCheckChildClickListener() {
+            @Override
+            public void onCheckChildCLick(View v, boolean checked, CheckedExpandableGroup group, int childIndex) {
+                int index = adapter.getGroups().indexOf(group);
+                Log.v(TAG, "부모 포지션~~"+String.valueOf(index));
+                adapter.notifyItemChanged(index);
+            }
+        });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         recyclerView.setAdapter(adapter);
 
