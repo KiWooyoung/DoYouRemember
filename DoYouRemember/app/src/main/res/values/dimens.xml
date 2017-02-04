@@ -8,6 +8,20 @@
     <dimen name="tablayout_size">48dp</dimen>
 
     <dimen name="subtab_top_margin">14dp</dimen>
-    <dimen name="subtab_side_margin">24dp</dimen>
+    <dimen name="subtab_side_margin">26dp</dimen>
     <dimen name="subtab_height">33dp</dimen>
+
+    <!--home list-->
+    <dimen name="list_item_height">76dp</dimen>
+    <dimen name="list_side_margin">15dp</dimen>
+    <dimen name="list_top_padding">15dp</dimen>
+    <dimen name="list_bottom_padding">12dp</dimen>
+    <dimen name="list_left_padding">18dp</dimen>
+    <dimen name="list_right_padding">20dp</dimen>
+
+    <dimen name="send_list_bottom_margin">9dp</dimen>
+    <dimen name="send_list_first_margin">4dp</dimen>
+
+    <dimen name="frame_deadline_width">58dp</dimen>
+    <dimen name="frame_deadline_height">22dp</dimen>
 </resources>

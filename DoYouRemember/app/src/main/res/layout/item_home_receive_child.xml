@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:layout_marginRight="25dp"
+    android:layout_marginLeft="25dp"
+    android:layout_marginTop="5dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView_receiveDoneLine"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@drawable/rounded_corner_done_line_off"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="42dp"
+            android:layout_marginRight="45dp"/>
+
+        <CheckedTextView
+            android:id="@+id/checkedTextView_debtor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:drawableLeft="?android:attr/listChoiceIndicatorMultiple"
+            android:gravity="center"
+            android:textAllCaps="true"
+            tools:text="Artist Name"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/textView_receive_price_individual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_weight="1"
+            android:layout_centerVertical="true"
+            android:textColor="@color/text_DarkGray"
+            android:layout_toLeftOf="@+id/imageView_receive_KaKaoLink"
+            android:text="8000원"/>
+
+        <ImageView
+            android:id="@+id/imageView_receive_KaKaoLink"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="12dp"
+            android:elevation="0dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/selector_btn_kakaolink"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

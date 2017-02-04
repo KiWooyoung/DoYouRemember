@@ -27,6 +27,7 @@
         android:layout_height="@dimen/tablayout_size"
         android:background="@color/white"
         app:tabBackground="@drawable/tab_ripple_effect"
+        app:tabTextAppearance="@style/MainTabText"
         app:tabIndicatorColor="@color/colorAccent"
         app:tabIndicatorHeight="4dp"
         app:tabMode="fixed" />

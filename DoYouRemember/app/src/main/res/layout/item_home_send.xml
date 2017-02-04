@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_home_send_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/list_side_margin"
+    android:layout_marginRight="@dimen/list_side_margin"
+    app:clickToClose="true"
+    app:leftEdgeSwipeOffset="0dp"
+    app:rightEdgeSwipeOffset="0dp">
+
+    <LinearLayout
+        android:id="@+id/swipe_home_send_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:paddingTop="11dp">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/qwe"
+            android:layout_width="wrap_content"
+            android:layout_height="82dp"
+            app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/imageview_copy"
+                    android:layout_width="82dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="13dp"
+                    android:background="#7db0eb"
+                    android:gravity="center"
+                    android:src="@drawable/accountcopy_icon"/>
+
+                <ImageView
+                    android:id="@+id/imageview_edit"
+                    android:layout_width="82dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="13dp"
+                    android:background="#4990e2"
+                    android:gravity="center"
+                    android:src="@drawable/revise_icon"/>
+
+                <ImageView
+                    android:id="@+id/imageview_delete"
+                    android:layout_width="82dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="13dp"
+                    android:background="#596ad8"
+                    android:gravity="center"
+                    android:src="@drawable/delete_icon"/>
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="-11dp"-->
+            <!--android:layout_below="@+id/aaa">-->
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/sample_vh_cardview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-11dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/white"
+                android:layout_below="@+id/frame_send_deadline">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/list_top_padding"
+                    android:paddingLeft="@dimen/list_left_padding"
+                    android:paddingBottom="@dimen/list_bottom_padding"
+                    android:paddingRight="@dimen/list_right_padding"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textview_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="11sp"
+                        android:textColor="@color/text_DarkGray"
+                        android:text="hello" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textview_creditor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:textSize="19sp"
+                            android:textColor="@color/text_DarkGray"
+                            android:text="hello" />
+
+                        <TextView
+                            android:id="@+id/textview_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:textSize="19sp"
+                            android:textColor="@color/text_DarkGray"
+                            android:text="12,000원" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/textview_account"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="11sp"
+                        android:textColor="@color/text_LightGray"
+                        android:text="hello" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        <!--</RelativeLayout>-->
+        <!--https://www.reddit.com/r/androiddev/comments/2rdtw6/cardview_overlapping_other_views/-->
+
+            <FrameLayout
+                android:id="@+id/frame_send_deadline"
+                android:elevation="0dp"
+                android:layout_width="@dimen/frame_deadline_width"
+                android:layout_height="@dimen/frame_deadline_height"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rounded_corner_gray">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:textSize="11sp"
+                    android:textColor="@color/white"
+                    android:text="10시간 전"/>
+
+            </FrameLayout>
+    </RelativeLayout>
+
+</com.daimajia.swipe.SwipeLayout>
