@@ -5,6 +5,7 @@ import com.omjoonkim.doyouremember.realm.entitiy.AccountRealmObject;
 import com.omjoonkim.doyouremember.realm.entitiy.PersonRealmObject;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * Created by wooyoungki on 2017. 1. 21..
@@ -22,21 +23,23 @@ public class RegisterModel {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) { //Todo 자동 박싱 언박싱 공부 - 개념확실X , 2.기본키는 항상 필요햇다 맞다.
-                                               //Todo 아래 key추가하는거 왜저렇게 되는건지 알기.
+                //Todo 아래 key추가하는거 왜저렇게 되는건지 알기. -알음
                 Number num = realm.where(PersonRealmObject.class).max("id");
-                int ID;
+                long ID;
                 if (num == null) {
                     ID = 1;
                 } else {
                     ID = num.intValue() + 1;
                 }
-                                                            //Todo 여기서 person,account에 둘다 기본키 넣어야하나?
+                //Todo 여기서 person,account에 둘다 기본키 넣어야하나?
                 PersonRealmObject personRealmObject = realm.createObject(PersonRealmObject.class, ID);
                 personRealmObject.setName(name);
+//                personRealmObject.setMine(false);
 
                 AccountRealmObject accountRealmObject = realm.createObject(AccountRealmObject.class, ID);
                 accountRealmObject.setAccountNumber(accountNumber);
                 accountRealmObject.setBankType(bank);
+                accountRealmObject.setMine(false);
                 accountRealmObject.setFavorite(false);
 
                 personRealmObject.getAccountList().add(accountRealmObject);//Todo 여기서 비관리 account객체 만들어서 넣는 방법 시도해보자.
@@ -44,5 +47,54 @@ public class RegisterModel {
         });
 
         realm.close();
+    }
+
+    public void reviseFrequentlyUsedAccount(final String accountNumber, final String newName, final String newAccountNumber, final String newBankType) {
+
+        realm = AppRealm.get().DylRealm();
+
+        final RealmResults<PersonRealmObject> result = realm.where(PersonRealmObject.class).findAll();
+        final RealmResults<AccountRealmObject> result2 = realm.where(AccountRealmObject.class).findAll();
+
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+
+                PersonRealmObject personRealmObject = result.where().equalTo("accountList.accountNumber", accountNumber).findFirst();
+                AccountRealmObject accountRealmObject = result2.where().equalTo("accountNumber", accountNumber).findFirst();
+
+                personRealmObject.setName(newName);
+                accountRealmObject.setAccountNumber(newAccountNumber);
+                accountRealmObject.setBankType(newBankType);
+            }
+        });
+
+
+        realm.close();
+    }
+
+    public boolean checkOverlapAccount(String accountNumber) {
+
+        realm = AppRealm.get().DylRealm();
+
+        RealmResults<PersonRealmObject> result = realm.where(PersonRealmObject.class)
+                .equalTo("accountList.accountNumber", accountNumber).findAll();
+
+        //Todo realm.close(); 이거 어디서 쒀줘야할까
+        return (result.size() > 0);
+
+    }
+
+    public boolean checkReviseOverlapAccount(String accountNumber, String newAccountNumber) {
+
+        realm = AppRealm.get().DylRealm();
+
+        RealmResults<PersonRealmObject> result = realm.where(PersonRealmObject.class)
+                .equalTo("accountList.accountNumber", newAccountNumber).findAll();
+
+        if (accountNumber.equals(newAccountNumber))
+            return false;
+
+        return (result.size() > 0);
     }
 }

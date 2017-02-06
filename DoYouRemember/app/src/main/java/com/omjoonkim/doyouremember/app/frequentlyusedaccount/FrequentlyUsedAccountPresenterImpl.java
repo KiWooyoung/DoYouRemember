@@ -10,10 +10,10 @@ import java.util.List;
 
 public class FrequentlyUsedAccountPresenterImpl implements FrequentlyUsedAccountPresenter {
 
-    FrequentlyUsedAccountFragment view;
-    FrequentlyUsedAccountModel model;
+    private FrequentlyUsedAccountFragment view;
+    private FrequentlyUsedAccountModel model;
 
-    public FrequentlyUsedAccountPresenterImpl(FrequentlyUsedAccountFragment view) {
+    FrequentlyUsedAccountPresenterImpl(FrequentlyUsedAccountFragment view) {
         this.view = view;
         model = new FrequentlyUsedAccountModel();
     }

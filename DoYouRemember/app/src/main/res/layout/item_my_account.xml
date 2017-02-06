@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:swipe="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/swipe"
+    android:id="@+id/swipe_my_account"
     android:layout_width="match_parent"
     android:layout_height="68dp"
     android:layout_marginBottom="10dp"
@@ -25,11 +25,11 @@
             android:layout_weight="1">
 
             <ImageView
-                android:id="@+id/image_view_share_my_account"
+                android:id="@+id/image_view_copy_my_account"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/share_icon"/>
+                android:src="@drawable/accountcopy_icon"/>
 
         </RelativeLayout>
 
@@ -73,6 +73,7 @@
         android:layout_height="68dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        app:cardElevation="0dp"
         app:cardCornerRadius="5dp">
 
         <ImageView

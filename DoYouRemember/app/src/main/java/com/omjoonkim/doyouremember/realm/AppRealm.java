@@ -40,7 +40,7 @@ public class AppRealm {
 		return Realm.getInstance( DylRealm );
 	}
 
-	public static AppRealm get() {  //Todo 이것만 Static 으로 한이유가 있는가?
+	public static AppRealm get() {
 
 		if ( null == instance ) {
 			instance = new AppRealm();

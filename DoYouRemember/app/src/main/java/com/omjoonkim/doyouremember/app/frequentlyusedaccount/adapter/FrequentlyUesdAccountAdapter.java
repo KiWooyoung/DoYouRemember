@@ -1,11 +1,13 @@
 package com.omjoonkim.doyouremember.app.frequentlyusedaccount.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
@@ -23,7 +25,7 @@ import butterknife.ButterKnife;
  */
 
 public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<FrequentlyUesdAccountAdapter.ViewHolder> {
-
+    Context context;
     private List<ItemView> items;
     private FrequentlyUsedAccountPresenter frequentlyUsedAccountPresenter;
 
@@ -39,9 +41,10 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
         items.remove(position);
     }
 
-    public FrequentlyUesdAccountAdapter(FrequentlyUsedAccountPresenter frequentlyUsedAccountPresenter) {
+    public FrequentlyUesdAccountAdapter(FrequentlyUsedAccountPresenter frequentlyUsedAccountPresenter, Context context) {
         this.items = new ArrayList<>();
         this.frequentlyUsedAccountPresenter = frequentlyUsedAccountPresenter;
+        this.context = context;
     }
 
     @Override
@@ -57,6 +60,14 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
         holder.txtAccountInfo.setText(items.get(position).getAccountInfo());
         holder.imgProfileImage.setImageResource(items.get(position).getProfileImage());
 
+        holder.swipeLayout.getSurfaceView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, " onClick : " + position + items.get(position).getAccountInfo(), Toast.LENGTH_SHORT).show();
+                mItemManger.closeAllItems();
+            }
+        });
+
         //Todo 아래의 리스너들 버터나이프로못하나 궁금합니다.
         holder.imgAccountCopy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +80,7 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
             @Override
             public void onClick(View v) {
                 frequentlyUsedAccountPresenter.swipeRevise(position);
+                mItemManger.closeAllItems();
             }
         });
 

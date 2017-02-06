@@ -5,5 +5,10 @@ package com.omjoonkim.doyouremember.app.frequentlyusedaccount.registeraccount;
  */
 
 public interface RegisterView {
-    void showDialog();
+    void showBankTypeDialog();
+    void setRevise();
+
+    void goFinish();
+    void showAllTypeToast();
+    void showOverlapAccountToast();
 }

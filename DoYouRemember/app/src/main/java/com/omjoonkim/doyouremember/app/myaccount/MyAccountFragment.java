@@ -3,6 +3,7 @@ package com.omjoonkim.doyouremember.app.myaccount;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,7 +18,6 @@ import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.myaccount.adapter.MyAccountAdapter;
 import com.omjoonkim.doyouremember.app.myaccount.registermyaccount.RegisterMyAccountActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -33,13 +33,15 @@ public class MyAccountFragment extends Fragment implements MyAccountView{
     MyAccountPresenter presenter = null;
     MyAccountAdapter adapter = null;
     LinearLayoutManager layoutManager = null;
-    List<MyAccountAdapter.ItemView> testItem = new ArrayList<>();
+
     @BindView(R.id.recycler_view_my_accounts)
     RecyclerView recyclerView;
     @BindView(R.id.text_view_my_account_box)
     TextView txtMyAccountBox;
     @BindView(R.id.card_view_account_box)
     CardView cardViewAccountBox;
+    @BindView(R.id.fab_writing_my_account)
+    FloatingActionButton fab;
     @OnClick(R.id.fab_writing_my_account)
     void OnClick(){
         presenter.onAddMyAccount();
@@ -56,21 +58,30 @@ public class MyAccountFragment extends Fragment implements MyAccountView{
         recyclerView.setLayoutManager(layoutManager);
 
         presenter = new MyAccountPresenterImpl(this);
-        adapter = new MyAccountAdapter(testItem,presenter);
+        adapter = new MyAccountAdapter(presenter,getContext());
 
         recyclerView.setAdapter(adapter);
 
         adapter.setMode(Attributes.Mode.Single);
 
-//        testItem.add(new MyAccountAdapter.ItemView("우리",R.drawable.bookmark_blank_star));
-//        testItem.add(new MyAccountAdapter.ItemView("국민",R.drawable.bookmark_blank_star));
-//        testItem.add(new MyAccountAdapter.ItemView("신한",R.drawable.bookmark_blank_star));
-//        testItem.add(new MyAccountAdapter.ItemView("농협",R.drawable.bookmark_blank_star));
-//        testItem.add(new MyAccountAdapter.ItemView("기업",R.drawable.bookmark_blank_star));
-        showDefaultText();
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                adapter.mItemManger.closeAllItems();
+                adapter.closeAllItems();
+            }
+        });
+
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        presenter.setModel();
+    }
 
     @Override
     public void goRegisterMyAccount() {
@@ -82,9 +93,53 @@ public class MyAccountFragment extends Fragment implements MyAccountView{
         if (adapter.getItems().size() != 0) {
             cardViewAccountBox.setVisibility(View.INVISIBLE);
             txtMyAccountBox.setVisibility(View.INVISIBLE);
+            fab.setImageResource(R.drawable.add_button);
         } else {
             cardViewAccountBox.setVisibility(View.VISIBLE);
             txtMyAccountBox.setVisibility(View.VISIBLE);
+            fab.setImageResource(R.drawable.write_button);
         }
+    }
+
+    @Override
+    public void notifyItemsChanged(List<MyAccountAdapter.ItemView> items) {
+        adapter.setItems(items);
+        adapter.notifyDataSetChanged();
+        adapter.mItemManger.closeAllItems();
+        adapter.closeAllItems();
+        showDefaultText();
+    }
+
+    @Override
+    public void notifyChangeFavoriteMyAccount(int position) {
+        adapter.notifyItemChanged(position);
+    }
+
+    @Override
+    public void goRevise(int position) {
+        Intent intent = new Intent(getContext(), RegisterMyAccountActivity.class);
+        intent.putExtra("position", position);
+        intent.putExtra("bankType", adapter.getItems().get(position).getMyAccountNumber().substring(0,2));
+        intent.putExtra("accountNumber", adapter.getItems().get(position).getMyAccountNumber().substring(3));
+        startActivity(intent);
+        adapter.mItemManger.closeAllItems();
+        adapter.closeAllItems();
+    }
+
+    @Override
+    public void showDeleteDialog(int position) {
+        //Todo 3.delete 다이얼로그 생성하기
+        presenter.deleteMyAccount(position, adapter.getItems().get(position).getMyAccountNumber().substring(3));
+    }
+
+    @Override
+    public void notifyItemRemoved(int position) {
+//        adapter.mItemManger.removeShownLayouts(swipeLayout);
+        adapter.getItems().remove(position);
+        adapter.notifyItemRemoved(position + 1);
+        adapter.notifyItemRangeChanged(position + 1,adapter.getItems().size());
+        adapter.mItemManger.closeAllItems();
+        adapter.closeAllItems();
+        showDefaultText();
     }
 }
