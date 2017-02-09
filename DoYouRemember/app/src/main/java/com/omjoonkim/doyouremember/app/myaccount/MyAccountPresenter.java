@@ -18,7 +18,7 @@ public interface MyAccountPresenter {
 
     String setMainAccountBox();
 
-    void swipeCopy();
+    void swipeCopy(int position);
     void swipeRevise(int position);
     void swipeDelete(int position);
 

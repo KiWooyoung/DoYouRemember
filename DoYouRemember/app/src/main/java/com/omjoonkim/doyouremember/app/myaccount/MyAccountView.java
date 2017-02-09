@@ -18,4 +18,6 @@ public interface MyAccountView {
     void showDeleteDialog(int position);
 
     void notifyItemRemoved(int position);
+
+    void copyMyAccount(int position);
 }

@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
@@ -76,7 +75,7 @@ public class MyAccountAdapter extends RecyclerSwipeAdapter<RecyclerView.ViewHold
                 @Override
                 public void onClick(View v) {
                     mItemManger.closeAllItems();
-                    Toast.makeText(context, position+"", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, position+"", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -84,7 +83,8 @@ public class MyAccountAdapter extends RecyclerSwipeAdapter<RecyclerView.ViewHold
             itemViewHolder.imgCopy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    presenter.
+                    presenter.swipeCopy(position - 1);
+                    mItemManger.closeAllItems();
                 }
             });
 

@@ -45,8 +45,8 @@ public class MyAccountPresenterImpl implements MyAccountPresenter {
     }
 
     @Override
-    public void swipeCopy() {
-
+    public void swipeCopy(int position) {
+        view.copyMyAccount(position);
     }
 
     @Override
@@ -63,6 +63,7 @@ public class MyAccountPresenterImpl implements MyAccountPresenter {
     public void deleteMyAccount(int position, String accountNumber) {
         model.deleteData(accountNumber);
         view.notifyItemRemoved(position);
+
     }
 
 

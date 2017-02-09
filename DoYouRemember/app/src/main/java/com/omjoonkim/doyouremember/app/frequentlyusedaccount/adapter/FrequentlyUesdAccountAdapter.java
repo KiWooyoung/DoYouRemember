@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
@@ -63,7 +62,7 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
         holder.swipeLayout.getSurfaceView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, " onClick : " + position + items.get(position).getAccountInfo(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, " onClick : " + position + items.get(position).getAccountInfo(), Toast.LENGTH_SHORT).show();
                 mItemManger.closeAllItems();
             }
         });
@@ -73,6 +72,7 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
             @Override
             public void onClick(View v) {
                 frequentlyUsedAccountPresenter.swipeWriteList(position);
+                mItemManger.closeAllItems();
             }
         });
 

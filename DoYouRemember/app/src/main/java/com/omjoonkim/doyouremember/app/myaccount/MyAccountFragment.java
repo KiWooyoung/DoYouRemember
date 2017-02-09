@@ -1,7 +1,11 @@
 package com.omjoonkim.doyouremember.app.myaccount;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -11,10 +15,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.daimajia.swipe.util.Attributes;
 import com.omjoonkim.doyouremember.R;
+import com.omjoonkim.doyouremember.app.frequentlyusedaccount.dialog.DeleteMessageDialog;
 import com.omjoonkim.doyouremember.app.myaccount.adapter.MyAccountAdapter;
 import com.omjoonkim.doyouremember.app.myaccount.registermyaccount.RegisterMyAccountActivity;
 
@@ -28,11 +34,12 @@ import butterknife.OnClick;
  * Created by owner on 2017-01-13.
  */
 
-public class MyAccountFragment extends Fragment implements MyAccountView{
+public class MyAccountFragment extends Fragment implements MyAccountView, DeleteMessageDialog.DeleteMessageListener{
 
-    MyAccountPresenter presenter = null;
-    MyAccountAdapter adapter = null;
-    LinearLayoutManager layoutManager = null;
+    private int position = 0;
+    private MyAccountPresenter presenter = null;
+    private MyAccountAdapter adapter = null;
+    private LinearLayoutManager layoutManager = null;
 
     @BindView(R.id.recycler_view_my_accounts)
     RecyclerView recyclerView;
@@ -42,6 +49,10 @@ public class MyAccountFragment extends Fragment implements MyAccountView{
     CardView cardViewAccountBox;
     @BindView(R.id.fab_writing_my_account)
     FloatingActionButton fab;
+    @BindView(R.id.image_view_copy_complete)
+    ImageView imgCopyComplete;
+    @BindView(R.id.image_view_delete_complete)
+    ImageView imgDeleteComplete;
     @OnClick(R.id.fab_writing_my_account)
     void OnClick(){
         presenter.onAddMyAccount();
@@ -128,18 +139,55 @@ public class MyAccountFragment extends Fragment implements MyAccountView{
 
     @Override
     public void showDeleteDialog(int position) {
-        //Todo 3.delete 다이얼로그 생성하기
-        presenter.deleteMyAccount(position, adapter.getItems().get(position).getMyAccountNumber().substring(3));
+
+        DeleteMessageDialog deleteAccountDialog = DeleteMessageDialog.newDialogInstance();
+        deleteAccountDialog.setTargetFragment(MyAccountFragment.this, 100);
+        deleteAccountDialog.show(getFragmentManager(), "delete dialog");
+        this.position = position;
     }
 
     @Override
     public void notifyItemRemoved(int position) {
 //        adapter.mItemManger.removeShownLayouts(swipeLayout);
         adapter.getItems().remove(position);
+        adapter.notifyItemChanged(0);// Todo 이거 하면 삭제할떄 빈 xml이 깜빡인다.
         adapter.notifyItemRemoved(position + 1);
         adapter.notifyItemRangeChanged(position + 1,adapter.getItems().size());
+//        adapter.notifyDataSetChanged(); //Todo 이거 하면 삭제할때 다른게 움직인다.
         adapter.mItemManger.closeAllItems();
         adapter.closeAllItems();
         showDefaultText();
+    }
+
+    @Override
+    public void copyMyAccount(int position) {
+        ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("Copied Text", adapter.getItems().get(position).getMyAccountNumber().substring(3));
+        clipboard.setPrimaryClip(clip);
+        imgCopyComplete.setVisibility(View.VISIBLE);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                imgCopyComplete.setVisibility(View.INVISIBLE);
+            }
+        },1000);
+    }
+
+    @Override
+    public void setOnClickDeleteMessage() {
+        presenter.deleteMyAccount(this.position, adapter.getItems().get(this.position).getMyAccountNumber().substring(3));
+        imgDeleteComplete.setVisibility(View.VISIBLE);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                imgDeleteComplete.setVisibility(View.INVISIBLE);
+            }
+        },1300);
+    }
+
+    @Override
+    public void setOnClickCancelMessage() {
+        adapter.mItemManger.closeAllItems();
+        adapter.closeAllItems();
     }
 }

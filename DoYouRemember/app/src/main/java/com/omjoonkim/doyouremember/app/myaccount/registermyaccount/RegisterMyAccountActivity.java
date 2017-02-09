@@ -111,7 +111,7 @@ public class RegisterMyAccountActivity extends AppCompatActivity implements Regi
     @Override
     public void showDialog() {
         SelectBankDialog selectBankDialog = SelectBankDialog.newDialogInstance();
-        selectBankDialog.show(getFragmentManager(), "showDialog");
+        selectBankDialog.show(getSupportFragmentManager(), "showDialog");
     }
 
     @Override

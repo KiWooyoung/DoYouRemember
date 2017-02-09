@@ -96,7 +96,7 @@ public class RegisterFrequentlyUsedAccountActivity extends AppCompatActivity imp
     public void showBankTypeDialog() {
 
         SelectBankDialog selectBankDialog = SelectBankDialog.newDialogInstance();
-        selectBankDialog.show(getFragmentManager(), "Test");
+        selectBankDialog.show(getSupportFragmentManager(), "Test");
     }
 
     @Override
