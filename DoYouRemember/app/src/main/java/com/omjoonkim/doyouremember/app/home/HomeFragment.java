@@ -1,17 +1,17 @@
 package com.omjoonkim.doyouremember.app.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.home.receivemoney.HomeReceiveMoneyFragment;
 import com.omjoonkim.doyouremember.app.home.sendmoney.HomeSendMoneyFragment;
+import com.omjoonkim.doyouremember.app.writing.WritingSendActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -85,6 +85,6 @@ public class HomeFragment extends Fragment implements HomePresenter.View{
 
     @Override
     public void loadHomeWritingActivity() {
-
+        startActivity(new Intent(this.getContext(), WritingSendActivity.class));
     }
 }

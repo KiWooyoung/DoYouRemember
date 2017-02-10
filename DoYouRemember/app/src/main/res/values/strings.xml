@@ -4,4 +4,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_view_hint"><font size="15">대표 계좌를 설정해주세요.</font></string>
+
+    <string name="text_writing_title_hint">제목을 입력해주세요.</string>
+    <string name="text_writing_name_hint">이름을 입력해주세요.</string>
+    <string name="text_writing_account_hint">계좌번호를 입력해주세요.</string>
+    <string name="text_writing_price_hint">금액 입력 (최대 천만원 미만)</string>
+
 </resources>

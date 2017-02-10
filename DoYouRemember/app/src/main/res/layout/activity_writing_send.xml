@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.omjoonkim.doyouremember.app.writing.WritingSendActivity">
+
+    <include layout="@layout/appbar_writing_tab"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp">
+
+        <include layout="@layout/content_writing_send"/>
+
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

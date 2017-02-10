@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.omjoonkim.doyouremember.app.writing.WritingSendActivity"
+    tools:showIn="@layout/activity_writing_send">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView_writing_send_title"
+        android:layout_height="102dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="5dp"
+        style="@style/Home_Writing_CardView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:id="@+id/textView_writing_send_title"
+                android:layout_marginTop="15dp"
+                android:text="제목"
+                style="@style/Home_Writing_TextView"/>
+
+            <EditText
+                android:id="@+id/editText_writing_send_title"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/textView_writing_send_title"
+                android:hint="@string/text_writing_title_hint"
+                style="@style/Home_Writing_EditText" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView_writing_send_deadline"
+        android:layout_height="154dp"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="5dp"
+        android:layout_below="@+id/cardView_writing_send_title"
+        style="@style/Home_Writing_CardView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:id="@+id/textView_writing_send_deadline"
+                android:layout_marginTop="15dp"
+                android:text="입금 기한"
+                style="@style/Home_Writing_TextView"/>
+
+            <View
+                android:id="@+id/fakeView"
+                android:layout_width="10dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/textView_writing_send_deadline"/>
+
+            <TextView
+                android:id="@+id/textView_writing_send_deadline_date"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/textView_writing_send_deadline"
+                android:hint="2017/02/14"
+                android:textSize="16sp"
+                android:textColorHint="#aeaeaf"
+                android:textColor="#4a4a4a"
+                android:gravity="center"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/back"
+                android:layout_toStartOf="@+id/fakeView" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/red_triangle_copy_2"
+                android:layout_below="@id/textView_writing_send_deadline"
+                android:layout_toLeftOf="@id/fakeView" />
+
+            <TextView
+                android:id="@+id/textView_writing_send_deadline_time"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/textView_writing_send_deadline"
+                android:layout_alignParentRight="true"
+                android:hint="오후 12:00"
+                android:textSize="16sp"
+                android:textColorHint="#aeaeaf"
+                android:textColor="#4a4a4a"
+                android:gravity="center"
+                android:background="@drawable/back"
+                android:layout_toEndOf="@+id/fakeView" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="13dp"
+                android:src="@drawable/red_triangle_copy_2"
+                android:layout_below="@id/textView_writing_send_deadline"
+                android:layout_toLeftOf="@id/fakeView" />
+
+            <TextView
+                android:id="@+id/textView_writing_send_alram"
+                android:layout_marginTop="25dp"
+                android:layout_below="@id/textView_writing_send_deadline_date"
+                android:text="알람"
+                style="@style/Home_Writing_TextView"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView_writing_send_creditor"
+        android:layout_height="298dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="28dp"
+        app:cardCornerRadius="5dp"
+        android:layout_below="@+id/cardView_writing_send_deadline"
+        style="@style/Home_Writing_CardView">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:id="@+id/textView_receive_people"
+                android:layout_marginTop="15dp"
+                android:textSize="15sp"
+                android:layout_alignParentLeft="true"
+                android:text="받을사람"
+                style="@style/Home_Writing_TextView"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/bookmark_blue_star" />
+
+            <TextView
+                android:id="@+id/textView_writing_send_creditor"
+                android:layout_marginTop="12dp"
+                android:layout_below="@+id/textView_receive_people"
+                android:text="이름"
+                style="@style/Home_Writing_TextView"/>
+
+            <EditText
+                android:id="@+id/editText_writing_send_creditor"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:hint="@string/text_writing_name_hint"
+                android:layout_below="@+id/textView_writing_send_creditor"
+                style="@style/Home_Writing_EditText" />
+
+            <TextView
+                android:id="@+id/textView_writing_send_account"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/editText_writing_send_creditor"
+                android:text="계좌"
+                style="@style/Home_Writing_TextView"/>
+
+            <TextView
+                android:id="@+id/textView_writing_send_bank"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:hint="은행"
+                android:textSize="16sp"
+                android:textColorHint="#aeaeaf"
+                android:textColor="#4a4a4a"
+                android:gravity="center"
+                android:background="@drawable/back"
+                android:layout_below="@id/textView_writing_send_account"/>
+
+            <ImageView
+                android:layout_width="7dp"
+                android:layout_height="7dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="35dp"
+                android:src="@drawable/bank_triangle"
+                android:layout_below="@id/textView_writing_send_account"/>
+
+            <EditText
+                android:id="@+id/editText_writing_send_account"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:hint="@string/text_writing_account_hint"
+                android:layout_toRightOf="@id/textView_writing_send_bank"
+                android:layout_below="@id/textView_writing_send_account"
+                style="@style/Home_Writing_EditText" />
+
+            <TextView
+                android:id="@+id/textView_writing_send_price"
+                android:layout_marginTop="15dp"
+                android:layout_below="@+id/textView_writing_send_bank"
+                android:text="금액"
+                style="@style/Home_Writing_TextView"/>
+
+            <TextView
+                android:id="@+id/textView_won"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginLeft="9dp"
+                android:textSize="15sp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/textView_writing_send_price"
+                android:text="원"
+                style="@style/Home_Writing_TextView"/>
+
+            <EditText
+                android:id="@+id/editText_writing_send_price"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:hint="@string/text_writing_price_hint"
+                android:layout_toLeftOf="@id/textView_won"
+                android:layout_below="@id/textView_writing_send_price"
+                style="@style/Home_Writing_EditText" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

@@ -6,6 +6,7 @@
 	<color name="colorAccent">#5966db</color>
 	<color name="background_gray">#efefef</color>
 	<color name="cursor">#f9684d</color>
+	<color name="focus_red">#fcb3a6</color>
 
 	<!--text-->
 	<color name="text_DarkGray">#4a4a4a</color>

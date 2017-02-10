@@ -26,7 +26,6 @@ import butterknife.BindDimen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
 public class HomeSendMoneyFragment extends Fragment implements HomeSendPresenter.View {
 
     @BindView(R.id.recycler_home_send)
