@@ -12,6 +12,7 @@
 		<!-- Customize your theme here. -->
 		<item name="windowActionBar">false</item>
 		<item name="windowNoTitle">true</item>
+		<item name="homeAsUpIndicator">@drawable/back_icon</item>
 	</style>
 
 	<style name="MainTabText" parent="TextAppearance.Design.Tab">
@@ -32,6 +33,25 @@
 	<style name="ReceiveDoneCheck" parent="Theme.AppCompat.Light">
 		<item name="colorControlNormal">@color/text_LightGray</item>
 		<item name="colorControlActivated">@color/colorPrimary</item>
+	</style>
+
+
+	<style name="MyTheme" parent="MyTheme.Base">
+
+	</style>
+
+	<style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+
+		<item name="windowNoTitle">true</item>
+
+		<item name="windowActionBar">false</item>
+
+		<item name="colorPrimary">#2196F3</item>
+
+		<item name="colorPrimaryDark">#1976D2</item>
+
+		<item name="colorAccent">#FF4081</item>
+
 	</style>
 
 </resources>

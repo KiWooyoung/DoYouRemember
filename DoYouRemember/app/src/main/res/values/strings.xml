@@ -4,4 +4,5 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_view_hint"><font size="15">대표 계좌를 설정해주세요.</font></string>
+    <string name="search_view_hint"><font size="16">검색어를 입력하세요</font></string>
 </resources>

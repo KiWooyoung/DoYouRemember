@@ -9,20 +9,25 @@ import io.realm.annotations.PrimaryKey;
 public class AccountRealmObject extends RealmObject {
 
     @PrimaryKey
+    private
     long id;
 
-    @Index //Todo index도 물어보기 이거 있으면 primarykey 필요한가?
+    @Index
+    private //Todo index도 물어보기 이거 있으면 primarykey 필요한가?
     String accountNumber = null;
 
     @Index
+    private
     String bankType = null;
 
 //    PersonRealmObject person; //Todo 이게 아직 까지 필요있나해서 일단 주석처리하곘습니다.-우영
 
     @Index
-	boolean isMine;
+    private
+    boolean isMine;
 
     @Index
+    private
     boolean favorite = false;
 
     public long getId() {
