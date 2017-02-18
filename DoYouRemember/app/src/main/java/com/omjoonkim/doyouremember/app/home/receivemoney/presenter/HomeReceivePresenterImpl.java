@@ -14,7 +14,7 @@ public class HomeReceivePresenterImpl implements HomeReceivePresenter {
 
     @Override
     public void onClickKakaoLink() {
-
+        this.view.sendKaKaoLink();
     }
 
     @Override

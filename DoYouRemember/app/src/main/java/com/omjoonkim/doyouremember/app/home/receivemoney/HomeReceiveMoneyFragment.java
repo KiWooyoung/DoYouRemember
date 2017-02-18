@@ -12,7 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kakao.kakaolink.KakaoLink;
+import com.kakao.kakaolink.KakaoTalkLinkMessageBuilder;
+import com.kakao.util.KakaoParameterException;
 import com.omjoonkim.doyouremember.R;
+import com.omjoonkim.doyouremember.app.home.receivemoney.listener.OnHomeReceiveClickListener;
 import com.omjoonkim.doyouremember.app.home.receivemoney.presenter.HomeReceivePresenter;
 import com.omjoonkim.doyouremember.app.home.receivemoney.presenter.HomeReceivePresenterImpl;
 import com.omjoonkim.doyouremember.model.HomeReceiveChildData;
@@ -35,6 +39,9 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
 
     private HomeReceiveAdapter adapter;
     private HomeReceivePresenter homeReceivePresenter;
+    private KakaoLink kakaoLink;
+    private KakaoTalkLinkMessageBuilder kakaoTalkLinkMessageBuilder;
+    private final String imgSrcLink = " http://www.personal.psu.edu/users/r/j/rjq5009/mushroom.png";
 
     public static HomeReceiveMoneyFragment newInstance() {
         return new HomeReceiveMoneyFragment();
@@ -71,6 +78,13 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
 
         final List<HomeReceiveParentData> parentDatas = Arrays.asList(parent1, parent2);
 
+        try {
+            kakaoLink = KakaoLink.getKakaoLink(getContext());
+            kakaoTalkLinkMessageBuilder = kakaoLink.createKakaoTalkLinkMessageBuilder();
+        } catch (KakaoParameterException e) {
+            Log.e("error", e.getMessage());
+        }
+
         adapter = new HomeReceiveAdapter(parentDatas);
         adapter.setChildClickListener(new OnCheckChildClickListener() {
             @Override
@@ -78,6 +92,17 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
                 int index = adapter.getGroups().indexOf(group);
                 Log.v(TAG, "부모 포지션~~"+String.valueOf(index));
                 adapter.notifyItemChanged(index);
+            }
+        });
+        adapter.setClickListener(new OnHomeReceiveClickListener() {
+            @Override
+            public void onSendKakaoLink() {
+                homeReceivePresenter.onClickKakaoLink();
+            }
+
+            @Override
+            public void onCheckedDebtors(int parentPosition) {
+
             }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
@@ -93,6 +118,19 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
 //                adapter.notifyParentChanged(parentPosition);
 //            }
 //        });
+    }
+
+    @Override
+    public void sendKaKaoLink() {
+        try {
+            kakaoTalkLinkMessageBuilder.addImage(imgSrcLink, 400, 200);
+            kakaoTalkLinkMessageBuilder.addText("까먹지 망고");
+            kakaoTalkLinkMessageBuilder.addWebButton("까먹지망고로 이동");
+            kakaoLink.sendMessage(kakaoTalkLinkMessageBuilder, getContext());
+            kakaoTalkLinkMessageBuilder = kakaoLink.createKakaoTalkLinkMessageBuilder();
+        } catch (KakaoParameterException e) {
+            e.getMessage();
+        }
     }
 
     @Override

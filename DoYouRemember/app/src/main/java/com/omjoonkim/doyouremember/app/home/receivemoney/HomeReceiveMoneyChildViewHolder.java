@@ -51,7 +51,7 @@ public class HomeReceiveMoneyChildViewHolder extends CheckableChildViewHolder {
         return ctvDebtorName;
     }
 
-    public void bind(HomeReceiveChildData childData){
+    public void bind(final HomeReceiveChildData childData, final OnHomeReceiveClickListener listener){
 
         ctvDebtorName.setText(childData.getDebtorName());
 
@@ -70,7 +70,7 @@ public class HomeReceiveMoneyChildViewHolder extends CheckableChildViewHolder {
         imgKaKaoLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("imgKaKaoLink","========kakaolink===========");
+                listener.onSendKakaoLink();
             }
         });
     }

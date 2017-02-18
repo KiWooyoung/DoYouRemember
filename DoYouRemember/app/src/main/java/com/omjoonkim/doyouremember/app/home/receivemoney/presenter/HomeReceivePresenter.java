@@ -11,5 +11,6 @@ public interface HomeReceivePresenter {
 
     interface View {
         void updateDebtorCount(int parentPosition);
+        void sendKaKaoLink();
     }
 }

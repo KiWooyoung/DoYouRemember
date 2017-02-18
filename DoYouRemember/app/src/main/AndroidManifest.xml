@@ -18,8 +18,8 @@
 
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
-
 				<category android:name="android.intent.category.LAUNCHER"/>
+				<data android:scheme="@string/kakao_scheme" android:host="@string/kakaolink_host" />
 			</intent-filter>
 
 		</activity>
@@ -40,6 +40,8 @@
 			android:label=""
 			android:theme="@style/AppTheme.NoActionBar">
 		</activity>
+
+		<meta-data android:name="com.kakao.sdk.AppKey" android:value="@string/kakao_app_key"/>
 	</application>
 
 </manifest>
