@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -81,6 +82,8 @@ public class RegisterFrequentlyUsedAccountActivity extends AppCompatActivity imp
     public void setRevise() {
 
         position = intent.getIntExtra("position", 0);
+        long id = intent.getIntExtra("id",0);
+        Log.e("id = ",id+"");
         name = intent.getStringExtra("name");
         if (name != null) {
             bankType = intent.getStringExtra("accountInfo").substring(0, 2);
@@ -137,6 +140,7 @@ public class RegisterFrequentlyUsedAccountActivity extends AppCompatActivity imp
 
     @Override
     public void goFinish() {
+        setResult(RESULT_OK,getIntent());
         finish();
     }
 

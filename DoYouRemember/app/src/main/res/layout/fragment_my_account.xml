@@ -14,7 +14,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
         android:src="@drawable/write_button"
-        app:backgroundTint="#596ad8" />
+        app:backgroundTint="#ffbe42" />
 
     <!--<TextView-->
     <!--android:layout_width="79dp"-->

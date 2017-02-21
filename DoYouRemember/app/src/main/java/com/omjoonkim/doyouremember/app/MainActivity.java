@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         });
         tabLayout.setupWithViewPager(viewPager);
 
-        Typeface typeFace1 = Typeface.createFromAsset(getAssets(), "야놀자 야체 OTF Bold.otf");
+        Typeface typeFace1 = Typeface.createFromAsset(getAssets(), "야놀자 야체 OTF Regular.otf");
         txtToolbarTitle.setTypeface(typeFace1);
     }
 
@@ -283,6 +283,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        View plateView = searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
+        plateView.setBackgroundColor(Color.WHITE);
 ////        If you do not use the support library, use this code instead.
 //
         ImageView searchButton = (ImageView) searchView.findViewById (android.support.v7.appcompat.R.id.action_mode_close_button);

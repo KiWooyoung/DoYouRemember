@@ -23,7 +23,7 @@ class FrequentlyUsedAccountModel {
 
     private Realm realm = null;
 
-    void loadData(FrequentlyUsedAccountPresenterImpl presenter) {
+    void loadData(FrequentlyUsedAccountPresenterImpl presenter ) {
 
         List<FrequentlyUesdAccountAdapter.ItemView> items = new ArrayList<>();
         realm = AppRealm.get().DylRealm();
@@ -33,12 +33,11 @@ class FrequentlyUsedAccountModel {
                 .findAll();
         result = result.sort("id", Sort.ASCENDING);
 
-        for (int i = 0; i < result.size(); i++) {
-            items.add(new FrequentlyUesdAccountAdapter.ItemView(result.get(i).getName()
-                    , result.get(i).getAccountList().get(0).getBankType() + " " + result.get(i).getAccountList().get(0).getAccountNumber()
+        for (PersonRealmObject personRealmObject : result)
+            items.add(new FrequentlyUesdAccountAdapter.ItemView(personRealmObject.getId(),personRealmObject.getName()
+                    , personRealmObject.getAccountList().get(0).getBankType() + " " + personRealmObject.getAccountList().get(0).getAccountNumber()
                     , R.mipmap.ic_launcher));
             //Todo 랜덤이미지 넣기(사진받으면)
-        }
 
         presenter.setView(items);
 

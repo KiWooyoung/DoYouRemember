@@ -3,24 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/add_account"
-        android:title="add"
-        android:icon="@drawable/okay_icon"
-        app:showAsAction="always"/>
+    android:id="@+id/add_account"
+    android:title="add"
+    android:icon="@drawable/okay_icon"
+    app:showAsAction="always"/>
 
-    <item android:id="@+id/action_settings" android:title="ㅁㅁ"
-
-        android:orderInCategory="100" app:showAsAction="never" />
-
-    <item
-
-        android:id="@+id/action_search"
-
-        android:icon="@android:drawable/ic_menu_search"
-
-        app:showAsAction="always"
-
-        app:actionViewClass="android.support.v7.widget.SearchView"
-
-        android:title="Search"/>
 </menu>

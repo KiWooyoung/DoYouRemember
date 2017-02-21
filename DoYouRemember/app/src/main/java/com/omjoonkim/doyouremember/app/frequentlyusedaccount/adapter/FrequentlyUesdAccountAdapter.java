@@ -72,7 +72,6 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
             @Override
             public void onClick(View v) {
                 frequentlyUsedAccountPresenter.swipeWriteList(position);
-                mItemManger.closeAllItems();
             }
         });
 
@@ -80,7 +79,6 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
             @Override
             public void onClick(View v) {
                 frequentlyUsedAccountPresenter.swipeRevise(position);
-                mItemManger.closeAllItems();
             }
         });
 
@@ -100,7 +98,8 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
         return items.size();
     }
 
-    @Override  /** 중요 */
+    @Override
+    /** 중요 */
     public int getSwipeLayoutResourceId(int position) {
         return R.id.swipe;
     }
@@ -131,16 +130,22 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
         }
     }
 
-     public static class ItemView {
+    public static class ItemView {
 
         private String accountHolder;
         private String accountInfo;
         private int profileImage;
+        private long id;
 
-        public ItemView(String accountHolder, String accountInfo, int profileImage) {
+        public ItemView(long id, String accountHolder, String accountInfo, int profileImage) {
+            this.id = id;
             this.accountHolder = accountHolder;
             this.accountInfo = accountInfo;
             this.profileImage = profileImage;
+        }
+
+        public long getId() {
+            return id;
         }
 
         public String getAccountHolder() {

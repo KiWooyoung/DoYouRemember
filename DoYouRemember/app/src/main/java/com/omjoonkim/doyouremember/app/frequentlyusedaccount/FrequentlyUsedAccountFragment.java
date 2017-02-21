@@ -1,10 +1,12 @@
 package com.omjoonkim.doyouremember.app.frequentlyusedaccount;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -47,6 +49,9 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
     @BindView(R.id.image_view_delete_complete)
     ImageView imgDeleteComplete;
 
+    @BindView(R.id.fab_writing_frequently_used_account)
+    FloatingActionButton fab;
+
     @OnClick(R.id.fab_writing_frequently_used_account)
     public void onClick() {
         presenter.onAddFrequentlyUsedAccount();
@@ -73,7 +78,7 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 //        "김범준".compareTo("기우영");
         adapter.setMode(Attributes.Mode.Single);
-
+        presenter.setModel();
         return view;
 
     }
@@ -82,7 +87,6 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
     public void onResume() {
         super.onResume();
 
-        presenter.setModel();
         adapter.notifyDataSetChanged();
 
     }
@@ -90,7 +94,6 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
     @Override
     public void onPause() {
         super.onPause();
-        adapter.mItemManger.closeAllItems();
         adapter.closeAllItems();
     }
 
@@ -167,7 +170,7 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
 
     @Override
     public void addFrequentlyUsedAccount() {
-        startActivity(new Intent(getActivity(), RegisterFrequentlyUsedAccountActivity.class));
+        startActivityForResult(new Intent(getActivity(), RegisterFrequentlyUsedAccountActivity.class),0);
     }
 
     @Override
@@ -180,9 +183,10 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
     public void goRevise(int position) {
         Intent intent = new Intent(getContext(), RegisterFrequentlyUsedAccountActivity.class);
         intent.putExtra("position", position);
+        intent.putExtra("id",adapter.getItems().get(position).getId());
         intent.putExtra("name", adapter.getItems().get(position).getAccountHolder());
         intent.putExtra("accountInfo", adapter.getItems().get(position).getAccountInfo());
-        startActivity(intent);
+        startActivityForResult(intent,1);
         adapter.mItemManger.closeAllItems();
         adapter.closeAllItems();
     }
@@ -222,6 +226,20 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
     public void setOnClickCancelMessage() {
         adapter.mItemManger.closeAllItems();
         adapter.closeAllItems();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 0 && resultCode == Activity.RESULT_OK)
+            presenter.setModel();
+        if(requestCode == 1 && resultCode == Activity.RESULT_OK)
+           new Thread(new Runnable() {
+               @Override
+               public void run() {
+                   presenter.setModel();
+               }
+           }).start();
     }
 
     //    @Override

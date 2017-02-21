@@ -30,7 +30,7 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_writing_frequently_used_account"
         android:src="@drawable/add_button"
-        app:backgroundTint="#596ad8"
+        app:backgroundTint="#ffbe42"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginRight="16dp"
