@@ -4,6 +4,7 @@ package com.omjoonkim.doyouremember.app.home.sendmoney;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,13 +19,18 @@ import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.home.sendmoney.listener.OnHomeSendClickListener;
 import com.omjoonkim.doyouremember.app.home.sendmoney.presenter.HomeSendPresenter;
 import com.omjoonkim.doyouremember.app.home.sendmoney.presenter.HomeSendPresenterImpl;
+import com.omjoonkim.doyouremember.app.writing.sendmoney.WritingSendActivity;
 import com.omjoonkim.doyouremember.model.HomeSendData;
+import com.omjoonkim.doyouremember.realm.entitiy.SendMoneyRealmObject;
 
 import java.util.List;
 
 import butterknife.BindDimen;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class HomeSendMoneyFragment extends Fragment implements HomeSendPresenter.View {
 
@@ -39,6 +45,12 @@ public class HomeSendMoneyFragment extends Fragment implements HomeSendPresenter
 
     private HomeSendAdapter adapter;
     private HomeSendPresenter homeSendPresenter;
+    private Realm realm;
+
+    @OnClick(R.id.fab_send_writing)
+    void onFabClick(View view){
+        homeSendPresenter.onClickFab();
+    }
 
     public static HomeSendMoneyFragment newInstance() {
         return new HomeSendMoneyFragment();
@@ -49,6 +61,7 @@ public class HomeSendMoneyFragment extends Fragment implements HomeSendPresenter
         super.onCreate(savedInstanceState);
         homeSendPresenter = new HomeSendPresenterImpl();
         homeSendPresenter.setView(this);
+        realm = Realm.getDefaultInstance();
     }
 
     @Override
@@ -69,10 +82,17 @@ public class HomeSendMoneyFragment extends Fragment implements HomeSendPresenter
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new HomeSendItemDecoration(spacingBottomSize, spacingFirstSize));
+        RealmResults<SendMoneyRealmObject> sendMoneyRealmResults = realm.where(SendMoneyRealmObject.class).findAll();
+        adapter.setData(sendMoneyRealmResults);
         adapter.setClickListener(new OnHomeSendClickListener() {
             @Override
-            public void onClickSendCopy(HomeSendData homeSendData) {
-                homeSendPresenter.onClickCopy(homeSendData);
+            public void onChangeItemCount() {
+                homeSendPresenter.onChangeItemCount();
+            }
+
+            @Override
+            public void onClickSendCopy(String account) {
+                homeSendPresenter.onClickCopy(account);
             }
 
             @Override
@@ -88,11 +108,11 @@ public class HomeSendMoneyFragment extends Fragment implements HomeSendPresenter
     }
 
     @Override
-    public void copyHomeSendAccount(HomeSendData homeSendData) {
+    public void copyHomeSendAccount(String account) {
         ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("Copied Text", homeSendData.getTitle());
+        ClipData clip = ClipData.newPlainText("Copied Text", account);
         clipboard.setPrimaryClip(clip);
-        Toast.makeText(getActivity().getApplicationContext(), "Copy", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity().getApplicationContext(),"계좌가 복사되었습니다.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -105,6 +125,27 @@ public class HomeSendMoneyFragment extends Fragment implements HomeSendPresenter
 
     @Override
     public void editHomeSendItem() {
-
+        //adapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void loadHomeSendWritingActivity() {
+        startActivity(new Intent(this.getContext(), WritingSendActivity.class));
+    }
+
+    @Override
+    public void setRecyclerBackgroundImg() {
+        if (adapter.getItemCount() != 0) {
+
+        } else {
+
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        realm.close(); // Remember to close Realm when done.
+    }
+
 }

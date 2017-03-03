@@ -1,6 +1,5 @@
 package com.omjoonkim.doyouremember.app.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,7 +10,6 @@ import android.view.ViewGroup;
 import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.home.receivemoney.HomeReceiveMoneyFragment;
 import com.omjoonkim.doyouremember.app.home.sendmoney.HomeSendMoneyFragment;
-import com.omjoonkim.doyouremember.app.writing.WritingSendActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -35,11 +33,6 @@ public class HomeFragment extends Fragment implements HomePresenter.View{
                 homePresenter.onClickReceive();
                 break;
         }
-    }
-
-    @OnClick(R.id.fab_writing)
-    void onFabClick(View view){
-        homePresenter.onClickFab();
     }
 
     @Override
@@ -83,8 +76,4 @@ public class HomeFragment extends Fragment implements HomePresenter.View{
         getChildFragmentManager().beginTransaction().replace(R.id.fragment_master, receiveMoneyFragment).commit();
     }
 
-    @Override
-    public void loadHomeWritingActivity() {
-        startActivity(new Intent(this.getContext(), WritingSendActivity.class));
-    }
 }

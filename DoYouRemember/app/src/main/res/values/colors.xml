@@ -24,4 +24,7 @@
 	<color name="white">#fff</color>
 	<color name="kakao_yellow">#f8e81c</color>
 
+	<!--toogle-->
+	<color name="toggle_DarkGray">#42221f1f</color>
+	<color name="toggle_LightGray">#f1f1f1</color>
 </resources>

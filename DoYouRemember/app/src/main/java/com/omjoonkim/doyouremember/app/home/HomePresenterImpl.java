@@ -17,7 +17,4 @@ public class HomePresenterImpl implements HomePresenter{
     public void onClickReceive() {
         view.loadReceiveMoneyFragment();
     }
-
-    @Override
-    public void onClickFab() { view.loadHomeWritingActivity(); }
 }

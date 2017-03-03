@@ -1,79 +1,63 @@
 package com.omjoonkim.doyouremember.realm.entitiy;
 
-
-import com.omjoonkim.doyouremember.realm.CommonRealmObjcet;
-
-import io.realm.RealmList;
 import io.realm.RealmObject;
-
+import io.realm.annotations.PrimaryKey;
 
 public class SendMoneyRealmObject extends RealmObject {
 
+	@PrimaryKey
+	private long id;
+	private String title;
+	private String creditor;
+	private String bankType;
+	private String account;
+	private int price;
 
+	public void setId(long id) {
+		this.id = id;
+	}
 
-	String title;
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-	long timeStamp = 0;
+	public void setCreditor(String creditor) {
+		this.creditor = creditor;
+	}
 
-	AccountRealmObject creditorAccount;
+	public void setBankType(String bankType) {
+		this.bankType = bankType;
+	}
 
-	int price;
+	public void setAccount(String account) {
+		this.account = account;
+	}
 
-	RealmList<NotificationRealmObject> notifications = new RealmList<>();
+	public void setPrice(int price) {
+		this.price = price;
+	}
 
+	public long getId() {
+		return id;
+	}
 
 	public String getTitle() {
-
 		return title;
 	}
 
-	public SendMoneyRealmObject setTitle( String title ) {
-
-		this.title = title;
-		return this;
+	public String getCreditor() {
+		return creditor;
 	}
 
-	public long getTimeStamp() {
-
-		return timeStamp;
+	public String getBankType() {
+		return bankType;
 	}
 
-	public SendMoneyRealmObject setTimeStamp( long timeStamp ) {
-
-		this.timeStamp = timeStamp;
-		return this;
-	}
-
-	public AccountRealmObject getCreditorAccount() {
-
-		return creditorAccount;
-	}
-
-	public SendMoneyRealmObject setCreditorAccount( AccountRealmObject creditorAccount ) {
-
-		this.creditorAccount = creditorAccount;
-		return this;
+	public String getAccount() {
+		return account;
 	}
 
 	public int getPrice() {
-
 		return price;
-	}
-
-	public SendMoneyRealmObject setPrice( int price ) {
-
-		this.price = price;
-		return this;
-	}
-
-	public RealmList<NotificationRealmObject> getNotifications() {
-
-		return notifications;
-	}
-
-	public SendMoneyRealmObject setNotifications( RealmList<NotificationRealmObject> notifications ) {
-
-		this.notifications = notifications;
-		return this;
 	}
 }

@@ -22,6 +22,9 @@
     <dimen name="send_list_bottom_margin">9dp</dimen>
     <dimen name="send_list_first_margin">4dp</dimen>
 
+    <dimen name="frequent_list_bottom_margin">9dp</dimen>
+    <dimen name="frequent_list_first_margin">23dp</dimen>
+
     <dimen name="frame_deadline_width">58dp</dimen>
     <dimen name="frame_deadline_height">22dp</dimen>
 </resources>

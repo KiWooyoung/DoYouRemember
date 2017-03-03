@@ -28,8 +28,8 @@ public class AppRealm {
 
 		DylRealm = new RealmConfiguration.Builder()
 				//.schemaVersion( DoYouRememberMigration.SCHEMA_VERSION )
-				//.deleteRealmIfMigrationNeeded()
-				//.migration( DoYouRememberMigration.getInstance() )
+				.deleteRealmIfMigrationNeeded()
+				.migration( DoYouRememberMigration.getInstance() )
 //				.modules( DoYouRememberMigration.getInstance() )
 				.build();
 		Realm.setDefaultConfiguration( DylRealm );

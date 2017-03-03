@@ -28,9 +28,6 @@ public class HomeReceiveMoneyParentViewHolder extends GroupViewHolder {
 
     public static final String TAG = HomeReceiveMoneyParentViewHolder.class.getSimpleName();
 
-    private static final float INITIAL_POSITION = 0.0f;
-    private static final float ROTATED_POSITION = 180f;
-
     @BindView(R.id.textView_receive_title)
     TextView tvReceiveTitle;
 
@@ -62,8 +59,7 @@ public class HomeReceiveMoneyParentViewHolder extends GroupViewHolder {
 
     @Override
     public void expand() {
-        Animation startRotateAnimation = AnimationUtils.loadAnimation(mContext, R.anim.arrow_rotate_anim);
-        imgReceiveParentArrow.startAnimation(startRotateAnimation);
+
     }
 
     @Override

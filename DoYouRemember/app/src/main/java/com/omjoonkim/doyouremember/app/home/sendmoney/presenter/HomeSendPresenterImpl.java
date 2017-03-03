@@ -14,8 +14,18 @@ public class HomeSendPresenterImpl implements HomeSendPresenter {
     }
 
     @Override
-    public void onClickCopy(HomeSendData homeSendData) {
-        this.view.copyHomeSendAccount(homeSendData);
+    public void onChangeItemCount() {
+        this.view.setRecyclerBackgroundImg();
+    }
+
+    @Override
+    public void onClickFab() {
+        this.view.loadHomeSendWritingActivity();
+    }
+
+    @Override
+    public void onClickCopy(String account) {
+        this.view.copyHomeSendAccount(account);
     }
 
     @Override

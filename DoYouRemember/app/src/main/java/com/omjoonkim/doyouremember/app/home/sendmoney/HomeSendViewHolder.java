@@ -13,6 +13,7 @@ import com.daimajia.swipe.implments.SwipeItemRecyclerMangerImpl;
 import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.home.sendmoney.listener.OnHomeSendClickListener;
 import com.omjoonkim.doyouremember.model.HomeSendData;
+import com.omjoonkim.doyouremember.realm.entitiy.SendMoneyRealmObject;
 
 import java.text.NumberFormat;
 import java.util.List;
@@ -23,16 +24,19 @@ import butterknife.ButterKnife;
 
 public class HomeSendViewHolder extends RecyclerView.ViewHolder{
 
-    @BindView(R.id.textview_title)
+    @BindView(R.id.textView_title)
     TextView tvSendTitle;
 
-    @BindView(R.id.textview_creditor)
+    @BindView(R.id.textView_creditor)
     TextView tvSendCreditor;
 
-    @BindView(R.id.textview_account)
+    @BindView(R.id.textView_account)
     TextView tvSendAccount;
 
-    @BindView(R.id.textview_price)
+    @BindView(R.id.textView_bankType)
+    TextView tvSendBankType;
+
+    @BindView(R.id.textView_price)
     TextView tvSendPrice;
 
     @BindView(R.id.frame_send_deadline)
@@ -41,13 +45,13 @@ public class HomeSendViewHolder extends RecyclerView.ViewHolder{
     @BindView(R.id.swipe_home_send_item)
     SwipeLayout swipeHomeSend;
 
-    @BindView(R.id.imageview_copy)
+    @BindView(R.id.imageView_copy)
     ImageView imgCopy;
 
-    @BindView(R.id.imageview_edit)
+    @BindView(R.id.imageView_edit)
     ImageView imgEdit;
 
-    @BindView(R.id.imageview_delete)
+    @BindView(R.id.imageView_delete)
     ImageView imgDelete;
 
     public HomeSendViewHolder(View itemView) {
@@ -55,40 +59,41 @@ public class HomeSendViewHolder extends RecyclerView.ViewHolder{
         ButterKnife.bind(this, itemView);
     }
 
-    public void bind(final List<HomeSendData> homeSendDataList,
+    public void bind(final List<SendMoneyRealmObject> sendMoneyRealmObjectList,
                      final int position,
                      final OnHomeSendClickListener listener,
                      final SwipeItemRecyclerMangerImpl itemAdapterManger){
-        swipeHomeSend.setShowMode(SwipeLayout.ShowMode.PullOut);
 
+        swipeHomeSend.setShowMode(SwipeLayout.ShowMode.PullOut);
         swipeHomeSend.addDrag(SwipeLayout.DragEdge.Right,
                 swipeHomeSend.findViewById(R.id.swipe_home_send_menu));
 
-        tvSendTitle.setText(homeSendDataList.get(position).getTitle());
-        tvSendCreditor.setText(homeSendDataList.get(position).getCreditor());
-        tvSendAccount.setText(homeSendDataList.get(position).getAccount());
-        String priceSendRW = NumberFormat.getInstance(Locale.KOREA).format(homeSendDataList.get(position).getPrice());
+        tvSendTitle.setText(sendMoneyRealmObjectList.get(position).getTitle());
+        tvSendCreditor.setText(sendMoneyRealmObjectList.get(position).getCreditor());
+        tvSendBankType.setText(sendMoneyRealmObjectList.get(position).getBankType());
+        tvSendAccount.setText(sendMoneyRealmObjectList.get(position).getAccount());
+        String priceSendRW = NumberFormat.getInstance(Locale.KOREA).format(sendMoneyRealmObjectList.get(position).getPrice());
         tvSendPrice.setText(priceSendRW+"원");
 
-        switch (homeSendDataList.get(position).getDeadline()){
-            case 0 :
-                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_red);
-                break;
-            case 1 :
-                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_yellow);
-                break;
-            case 2 :
-                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_blue);
-                break;
-            case 3 :
-                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_gray);
-                break;
-        }
+//        switch (sendMoneyRealmObjectList.get(position).getDeadline()){
+//            case 0 :
+//                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_red);
+//                break;
+//            case 1 :
+//                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_yellow);
+//                break;
+//            case 2 :
+//                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_blue);
+//                break;
+//            case 3 :
+//                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_gray);
+//                break;
+//        }
 
         imgCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClickSendCopy(homeSendDataList.get(position));
+                //listener.onClickSendCopy(sendMoneyRealmObjectList.get(position).getAccount());
             }
         });
 
@@ -104,7 +109,7 @@ public class HomeSendViewHolder extends RecyclerView.ViewHolder{
             public void onClick(View v) {
                 itemAdapterManger.removeShownLayouts(swipeHomeSend);
                 itemAdapterManger.closeAllItems();
-                listener.onClickSendDelete(homeSendDataList, position);
+                //listener.onClickSendDelete(sendMoneyRealmObjectList, position);
             }
         });
 

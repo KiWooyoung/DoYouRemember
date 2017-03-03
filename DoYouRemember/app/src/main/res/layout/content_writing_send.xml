@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.omjoonkim.doyouremember.app.writing.WritingSendActivity"
+    tools:context="com.omjoonkim.doyouremember.app.writing.sendmoney.WritingSendActivity"
     tools:showIn="@layout/activity_writing_send">
 
     <android.support.v7.widget.CardView
@@ -117,11 +117,24 @@
                 android:layout_toLeftOf="@id/fakeView" />
 
             <TextView
-                android:id="@+id/textView_writing_send_alram"
+                android:id="@+id/textView_writing_send_alarm"
                 android:layout_marginTop="25dp"
                 android:layout_below="@id/textView_writing_send_deadline_date"
                 android:text="알람"
                 style="@style/Home_Writing_TextView"/>
+
+            <com.nightonke.jellytogglebutton.JellyToggleButton
+                android:id="@+id/toggle_alarm_activate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="22dp"
+                android:layout_below="@id/textView_writing_send_deadline_date"
+                app:jtbLeftBackgroundColor="@color/toggle_DarkGray"
+                app:jtbLeftThumbColor="@color/toggle_LightGray"
+                app:jtbRightBackgroundColor="@color/focus_red"
+                app:jtbRightThumbColor="@color/cursor"
+                app:jtbJelly="itself" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>
@@ -150,6 +163,7 @@
                 style="@style/Home_Writing_TextView"/>
 
             <ImageView
+                android:id="@+id/imageView_frequent_user_select"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -204,6 +218,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="5dp"
+                android:inputType="number"
                 android:hint="@string/text_writing_account_hint"
                 android:layout_toRightOf="@id/textView_writing_send_bank"
                 android:layout_below="@id/textView_writing_send_account"
@@ -232,6 +247,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
                 android:hint="@string/text_writing_price_hint"
+                android:inputType="number"
                 android:layout_toLeftOf="@id/textView_won"
                 android:layout_below="@id/textView_writing_send_price"
                 style="@style/Home_Writing_EditText" />

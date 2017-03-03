@@ -18,10 +18,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by owner on 2017-01-17.
- */
-
 public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<FrequentlyUesdAccountAdapter.ViewHolder> {
 
     private List<ItemView> items;
@@ -115,7 +111,6 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-
         }
     }
 

@@ -69,7 +69,6 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
         adapter.setMode(Attributes.Mode.Single);
 
         return view;
-
     }
 
     @Override
