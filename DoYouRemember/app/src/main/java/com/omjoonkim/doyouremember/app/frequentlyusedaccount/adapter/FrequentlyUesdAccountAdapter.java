@@ -1,5 +1,6 @@
 package com.omjoonkim.doyouremember.app.frequentlyusedaccount.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<FrequentlyUesdAccountAdapter.ViewHolder> {
-
+    Context context;
     private List<ItemView> items;
     private FrequentlyUsedAccountPresenter frequentlyUsedAccountPresenter;
 
@@ -35,9 +36,10 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
         items.remove(position);
     }
 
-    public FrequentlyUesdAccountAdapter(FrequentlyUsedAccountPresenter frequentlyUsedAccountPresenter) {
+    public FrequentlyUesdAccountAdapter(FrequentlyUsedAccountPresenter frequentlyUsedAccountPresenter, Context context) {
         this.items = new ArrayList<>();
         this.frequentlyUsedAccountPresenter = frequentlyUsedAccountPresenter;
+        this.context = context;
     }
 
     @Override
@@ -52,6 +54,14 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
         holder.txtAccountHolder.setText(items.get(position).getAccountHolder());
         holder.txtAccountInfo.setText(items.get(position).getAccountInfo());
         holder.imgProfileImage.setImageResource(items.get(position).getProfileImage());
+
+        holder.swipeLayout.getSurfaceView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(context, " onClick : " + position + items.get(position).getAccountInfo(), Toast.LENGTH_SHORT).show();
+                mItemManger.closeAllItems();
+            }
+        });
 
         //Todo 아래의 리스너들 버터나이프로못하나 궁금합니다.
         holder.imgAccountCopy.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +94,8 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
         return items.size();
     }
 
-    @Override  /** 중요 */
+    @Override
+    /** 중요 */
     public int getSwipeLayoutResourceId(int position) {
         return R.id.swipe;
     }
@@ -114,16 +125,22 @@ public class FrequentlyUesdAccountAdapter extends RecyclerSwipeAdapter<Frequentl
         }
     }
 
-     public static class ItemView {
+    public static class ItemView {
 
         private String accountHolder;
         private String accountInfo;
         private int profileImage;
+        private long id;
 
-        public ItemView(String accountHolder, String accountInfo, int profileImage) {
+        public ItemView(long id, String accountHolder, String accountInfo, int profileImage) {
+            this.id = id;
             this.accountHolder = accountHolder;
             this.accountInfo = accountInfo;
             this.profileImage = profileImage;
+        }
+
+        public long getId() {
+            return id;
         }
 
         public String getAccountHolder() {

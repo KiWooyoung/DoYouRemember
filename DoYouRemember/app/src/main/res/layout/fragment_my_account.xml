@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#efefef"
     android:orientation="vertical">
 
@@ -13,20 +13,20 @@
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
-        android:src="@drawable/okay_icon"
-        app:backgroundTint="#596ad8" /> <!-- Todo 아이콘 바꾸기 ..나는 잘안됨 -->
+        android:src="@drawable/write_button"
+        app:backgroundTint="#ffbe42" />
 
     <!--<TextView-->
-        <!--android:layout_width="79dp"-->
-        <!--android:layout_height="22dp"-->
-        <!--android:layout_marginTop="178dp"-->
-        <!--android:layout_marginLeft="25dp"-->
-        <!--android:gravity="center"-->
-        <!--android:textSize="12sp"-->
-        <!--android:textColor="#FFFFFF"-->
-        <!--android:text="내 계좌 목록"-->
-        <!--android:background="@drawable/my_account_post_it"-->
-        <!--/>-->
+    <!--android:layout_width="79dp"-->
+    <!--android:layout_height="22dp"-->
+    <!--android:layout_marginTop="178dp"-->
+    <!--android:layout_marginLeft="25dp"-->
+    <!--android:gravity="center"-->
+    <!--android:textSize="12sp"-->
+    <!--android:textColor="#FFFFFF"-->
+    <!--android:text="내 계좌 목록"-->
+    <!--android:background="@drawable/my_account_post_it"-->
+    <!--/>-->
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view_account_box"
@@ -35,8 +35,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginTop="178dp"
-        app:cardCornerRadius="5dp"
         android:visibility="invisible"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="0dp"
         >
 
         <TextView
@@ -45,32 +46,37 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
+            android:hint="내 계좌를 등록해주세요."
             android:textColorHint="#9b9b9b"
             android:textSize="15sp"
-            android:hint="내 계좌를 등록해주세요."
             android:visibility="invisible"
             />
 
     </android.support.v7.widget.CardView>
-    
-    <!--<TextView-->
-        <!--android:layout_width="330dp"-->
-        <!--android:layout_height="68dp"-->
-        <!--android:layout_marginTop="178dp"-->
-        <!--android:layout_marginLeft="15dp"-->
-        <!--android:layout_marginRight="15dp"-->
-        <!--android:gravity="center"-->
-        <!--android:textColorHint="#9b9b9b"-->
-        <!--android:textSize="15sp"-->
-        <!--android:hint="내 계좌를 등록해주세요."-->
-        <!--android:background="@drawable/my_account_box"-->
-        <!--android:visibility="invisible"-->
-        <!--/>-->
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_my_accounts"
         android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/image_view_copy_complete"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/copy_complete"
+        android:visibility="invisible"
         />
+
+    <ImageView
+        android:id="@+id/image_view_delete_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/delete_complete"
+        android:visibility="invisible"
+        />
+
 
 </FrameLayout>

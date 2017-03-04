@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
 import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.myaccount.MyAccountPresenter;
@@ -39,9 +40,9 @@ public class MyAccountAdapter extends RecyclerSwipeAdapter<RecyclerView.ViewHold
         this.items = items;
     }
 
-    public MyAccountAdapter(List<ItemView> items, MyAccountPresenter presenter) {
-        this.items = items;
+    public MyAccountAdapter(MyAccountPresenter presenter, Context context) {
         this.presenter = presenter;
+        this.context = context;
     }
 
     @Override
@@ -58,34 +59,53 @@ public class MyAccountAdapter extends RecyclerSwipeAdapter<RecyclerView.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, final int position) {
 
         if (viewHolder instanceof HeaderViewHolder) {
             HeaderViewHolder headerViewHolder = (HeaderViewHolder) viewHolder;
+
+            headerViewHolder.txtMainMyAccount.setText(presenter.setMainAccountBox());
+
         } else if (viewHolder instanceof ItemViewHolder) {
-            ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
+            final ItemViewHolder itemViewHolder = (ItemViewHolder) viewHolder;
             itemViewHolder.imgBookmarkStar.setImageResource(items.get(position - 1).getBookmarkStar());
             itemViewHolder.txtMyAccountNumber.setText(items.get(position - 1).getMyAccountNumber());
 
-            //Todo 아래의 리스너들 버터나이프로못하나 궁금합니다.
-            itemViewHolder.imgShare.setOnClickListener(new View.OnClickListener() {
+            itemViewHolder.swipeLayout.getSurfaceView().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    presenter.
+                    mItemManger.closeAllItems();
+//                    Toast.makeText(context, position+"", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            //Todo 아래의 리스너들 버터나이프로못하나 궁금합니다. + view단(액티비티,프레그먼트)로 빼는방법 알기
+            itemViewHolder.imgCopy.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.swipeCopy(position - 1);
+                    mItemManger.closeAllItems();
                 }
             });
 
             itemViewHolder.imgReviseMyAccount.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    presenter.swipeRevise(position - 1);
                 }
             });
 
             itemViewHolder.imgDeleteMyAccount.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    presenter.swipeDelete(position - 1);
+                }
+            });
 
+            itemViewHolder.imgBookmarkStar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    presenter.onClickFavoriteMyAccount(position, itemViewHolder.txtMyAccountNumber.getText().toString().substring(3));
                 }
             });
 
@@ -113,7 +133,7 @@ public class MyAccountAdapter extends RecyclerSwipeAdapter<RecyclerView.ViewHold
 
     @Override
     public int getSwipeLayoutResourceId(int position) {
-        return R.id.swipe;
+        return R.id.swipe_my_account;
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {
@@ -122,8 +142,10 @@ public class MyAccountAdapter extends RecyclerSwipeAdapter<RecyclerView.ViewHold
         @BindView(R.id.text_view_my_account_number)
         TextView txtMyAccountNumber;
 
-        @BindView(R.id.image_view_share_my_account)
-        ImageView imgShare;
+        @BindView(R.id.swipe_my_account)
+        SwipeLayout swipeLayout;
+        @BindView(R.id.image_view_copy_my_account)
+        ImageView imgCopy;
         @BindView(R.id.image_view_revise_my_account)
         ImageView imgReviseMyAccount;
         @BindView(R.id.image_view_delete_my_account)
@@ -136,10 +158,15 @@ public class MyAccountAdapter extends RecyclerSwipeAdapter<RecyclerView.ViewHold
         }
     }
 
+    //Todo headerView 액티비티로 뺄수 있나 찾아보기.
     public class HeaderViewHolder extends RecyclerView.ViewHolder {
+        //Todo view단에서 관리하는 방법 찾기.
+        @BindView(R.id.text_view_main_account_box)
+        TextView txtMainMyAccount;
 
         public HeaderViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
     }
 

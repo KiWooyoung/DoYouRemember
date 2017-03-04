@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/add_account"
-        android:title="add"
-        android:icon="@drawable/okay_icon"
-        app:showAsAction="always"/>
+    android:id="@+id/add_account"
+    android:title="add"
+    android:icon="@drawable/okay_icon"
+    app:showAsAction="always"/>
+
 </menu>

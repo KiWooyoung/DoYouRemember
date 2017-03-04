@@ -1,5 +1,8 @@
 package com.omjoonkim.doyouremember.app.frequentlyusedaccount;
 
+import android.os.Handler;
+import android.os.Looper;
+
 import com.omjoonkim.doyouremember.app.frequentlyusedaccount.adapter.FrequentlyUesdAccountAdapter;
 
 import java.util.List;
@@ -10,10 +13,10 @@ import java.util.List;
 
 public class FrequentlyUsedAccountPresenterImpl implements FrequentlyUsedAccountPresenter {
 
-    FrequentlyUsedAccountFragment view;
-    FrequentlyUsedAccountModel model;
+    private FrequentlyUsedAccountFragment view;
+    private FrequentlyUsedAccountModel model;
 
-    public FrequentlyUsedAccountPresenterImpl(FrequentlyUsedAccountFragment view) {
+    FrequentlyUsedAccountPresenterImpl(FrequentlyUsedAccountFragment view) {
         this.view = view;
         model = new FrequentlyUsedAccountModel();
     }
@@ -40,8 +43,13 @@ public class FrequentlyUsedAccountPresenterImpl implements FrequentlyUsedAccount
     }
 
     @Override
-    public void setView(List<FrequentlyUesdAccountAdapter.ItemView> data) {
-        view.notifyItemChanged(data);
+    public void setView(final List<FrequentlyUesdAccountAdapter.ItemView> data) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                view.notifyItemChanged(data);
+            }
+        });
     }
 
     @Override
@@ -64,6 +72,4 @@ public class FrequentlyUsedAccountPresenterImpl implements FrequentlyUsedAccount
     public void swipeDelete(int position) {
         view.showDeleteDialog(position);
     }
-
-
 }

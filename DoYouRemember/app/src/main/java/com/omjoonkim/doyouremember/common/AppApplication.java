@@ -10,17 +10,21 @@ import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
 public class AppApplication extends Application {
 
-	@Override
-	public void onCreate() {
+    @Override
+    public void onCreate() {
 
-		super.onCreate();
-		AppRealm.get().init( this );
+        super.onCreate();
+        AppRealm.get().init(this);
 
-		Stetho.initialize(
-				Stetho.newInitializerBuilder(this)
-						.enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-						.enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
-						.build());
+        Stetho.initialize(
+                Stetho.newInitializerBuilder(this)
+                        .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                        .enableWebKitInspector(RealmInspectorModulesProvider.builder(this).build())
+                        .build());
 
-	}
+//        Typekit.getInstance()
+//                .addNormal(Typekit.createFromAsset(this, "fonts/NanumBarunGothic-Regular.otf"))
+//                .addBold(Typekit.createFromAsset(this, "fonts/NanumBarunGothic-Bold.otf"));
+
+    }
 }

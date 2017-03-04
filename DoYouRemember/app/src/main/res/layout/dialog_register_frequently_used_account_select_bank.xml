@@ -22,7 +22,7 @@
                     android:layout_width="240dp"
                     android:layout_height="45dp"
                     android:layout_centerInParent="true"
-                    android:background="#48cbcf"
+                    android:background="#ff9436"
                     android:gravity="center"
                     android:text="은행 선택"
                     android:textColor="#FFFFFF"

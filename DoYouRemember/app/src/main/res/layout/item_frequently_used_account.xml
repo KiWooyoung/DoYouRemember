@@ -5,9 +5,9 @@
     android:id="@+id/swipe"
     android:layout_width="match_parent"
     android:layout_height="68dp"
-    android:layout_marginRight="15dp"
-    android:layout_marginLeft="15dp"
     android:layout_marginBottom="10dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
     swipe:leftEdgeSwipeOffset="0dp"
     swipe:rightEdgeSwipeOffset="0dp">
 
@@ -18,49 +18,49 @@
         android:layout_width="204dp"
         android:layout_height="68dp"
         android:weightSum="3">
-        
+
         <RelativeLayout
-            android:background="#ff9077"
             android:layout_width="0dp"
             android:layout_height="68dp"
-            android:layout_weight="1">
-            
+            android:layout_weight="1"
+            android:background="#ffc63c">
+
             <ImageView
                 android:id="@+id/image_view_account_copy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/list_write_swipe_icon"/>
-            
+                android:src="@drawable/list_write_swipe_icon" />
+
         </RelativeLayout>
 
         <RelativeLayout
-            android:background="#f9684d"
             android:layout_width="0dp"
             android:layout_height="68dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="#ffad38">
 
             <ImageView
                 android:id="@+id/image_view_revise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/revise_icon"/>
+                android:src="@drawable/revise_icon" />
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:background="@drawable/swipe_red_delete"
             android:layout_width="0dp"
             android:layout_height="68dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@drawable/swipe_red_delete">
 
             <ImageView
                 android:id="@+id/image_view_delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:src="@drawable/delete_icon"/>
+                android:src="@drawable/delete_icon" />
 
         </RelativeLayout>
 
@@ -69,51 +69,51 @@
     <!-- Top View,  Row itemView of RecyclerView -->
 
     <android.support.v7.widget.CardView
-    android:layout_width="330dp"
-    android:layout_height="68dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="5dp"
-    android:orientation="vertical">
-
-    <RelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="330dp"
-        android:layout_height="68dp">
+        android:layout_height="68dp"
+        android:orientation="vertical"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="0dp">
 
-        <ImageView
-            android:id="@+id/item_image_view_profile_image"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginLeft="18dp"
-            android:layout_marginTop="13dp"
-            android:layout_marginBottom="13dp"
-            android:src="@mipmap/ic_launcher"
-            />
+        <RelativeLayout
+            android:layout_width="330dp"
+            android:layout_height="68dp">
 
-        <TextView
-            android:id="@+id/item_text_view_account_holder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/item_image_view_profile_image"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="9dp"
-            android:text="asdasdfasdf"
-            android:textColor="#454545"
-            android:textSize="19sp"/>
+            <ImageView
+                android:id="@+id/item_image_view_profile_image"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginBottom="13dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="13dp"
+                android:src="@mipmap/ic_launcher" />
 
-        <TextView
-            android:id="@+id/item_text_view_account_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/item_image_view_profile_image"
-            android:layout_alignLeft="@+id/item_text_view_account_holder"
-            android:layout_below="@+id/item_text_view_account_holder"
-            android:text="우리"
-            android:textSize="11sp"
-            android:textColor="#4a4a4a"/>
+            <TextView
+                android:id="@+id/item_text_view_account_holder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="12dp"
+                android:layout_toRightOf="@+id/item_image_view_profile_image"
+                android:text="asdasdfasdf"
+                android:textColor="#454545"
+                android:textSize="19sp" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/item_text_view_account_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/item_text_view_account_holder"
+                android:layout_below="@+id/item_text_view_account_holder"
+                android:layout_toRightOf="@+id/item_image_view_profile_image"
+                android:text="우리"
+                android:textColor="#4a4a4a"
+                android:textSize="11sp" />
 
-</android.support.v7.widget.CardView>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 </com.daimajia.swipe.SwipeLayout>

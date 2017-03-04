@@ -6,4 +6,8 @@ package com.omjoonkim.doyouremember.app.myaccount.registermyaccount;
 
 public interface RegisterMyAccountView {
     void showDialog();
+    void setRevise();
+    void goFinish();
+    void showAllTypeToast();
+    void showOverlapAccountToast();
 }

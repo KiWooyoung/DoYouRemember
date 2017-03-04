@@ -126,7 +126,7 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
     @OnClick(R.id.textView_writing_send_bank)
     void onClickBank(){
         SelectBankDialog selectBankDialog = SelectBankDialog.newDialogInstance();
-        selectBankDialog.show(getFragmentManager(), "Test122");
+        selectBankDialog.show(getSupportFragmentManager(), "Test122");
     }
 
     @OnClick(R.id.imageView_frequent_user_select)

@@ -1,6 +1,5 @@
 package com.omjoonkim.doyouremember.app.frequentlyusedaccount.dialog;
 
-import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -29,7 +28,7 @@ import static com.omjoonkim.doyouremember.R.id.text_view_woori;
  * Created by wooyoungki on 2017. 1. 27..
  */
 
-public class SelectBankDialog extends DialogFragment {
+public class SelectBankDialog extends android.support.v4.app.DialogFragment {
 
     private String bank = null;
     private SelectBankListener listener = null;
@@ -96,8 +95,7 @@ public class SelectBankDialog extends DialogFragment {
     }
 
     public static SelectBankDialog newDialogInstance() {
-        SelectBankDialog frag = new SelectBankDialog();
-        return frag;
+        return new SelectBankDialog();
     }
 
     @Nullable

@@ -1,5 +1,6 @@
 package com.omjoonkim.doyouremember.realm.entitiy;
 
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 

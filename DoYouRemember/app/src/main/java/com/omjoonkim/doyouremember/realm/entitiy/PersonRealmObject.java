@@ -9,17 +9,22 @@ import io.realm.annotations.PrimaryKey;
 
 public class PersonRealmObject extends RealmObject {
 
-	@PrimaryKey //Todo Account,Person 모델에 PrimaryKey로 long id 가 꼭 필요할까요?
-	int id;
+	@PrimaryKey
+	private //Todo Account,Person 모델에 PrimaryKey로 long id 가 꼭 필요할까요?
+	long id;
 
 	@Index
+	private
 	String name;
 
+	private
+	String profileImage;
 
-	RealmList<AccountRealmObject> accountList = null;
 
-	@Index
-	boolean isMine;
+	private RealmList<AccountRealmObject> accountList = null;
+
+//	@Index
+//	boolean isMine; //Todo person -> account 로 변경
 
 	public long getId() {
 
@@ -54,14 +59,22 @@ public class PersonRealmObject extends RealmObject {
 		return this;
 	}
 
-	public boolean isMine() {
-
-		return isMine;
+	public String getProfileImage() {
+		return profileImage;
 	}
 
-	public PersonRealmObject setMine( boolean mine ) {
-
-		isMine = mine;
-		return this;
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
 	}
+
+//	public boolean isMine() {
+//
+//		return isMine;
+//	}
+//
+//	public PersonRealmObject setMine( boolean mine ) {
+//
+//		isMine = mine;
+//		return this;
+//	}
 }

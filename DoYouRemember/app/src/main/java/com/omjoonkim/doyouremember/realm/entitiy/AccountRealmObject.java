@@ -8,75 +8,94 @@ import io.realm.annotations.PrimaryKey;
 
 public class AccountRealmObject extends RealmObject {
 
-	@PrimaryKey
-	int id;
+    @PrimaryKey
+    private
+    long id;
 
-	@Index //Todo index도 물어보기 이거 있으면 primarykey 필요한가?
-	String accountNumber = null;
+    @Index
+    private //Todo index도 물어보기 이거 있으면 primarykey 필요한가?
+    String accountNumber = null;
 
-	@Index
-	String bankType = null;
+    @Index
+    private
+    String bankType = null;
 
-	PersonRealmObject person;
+//    PersonRealmObject person; //Todo 이게 아직 까지 필요있나해서 일단 주석처리하곘습니다.-우영
 
-	@Index
-	boolean favorite = false;
+    @Index
+    private
+    boolean isMine;
 
-	public long getId() {
-		return id;
-	}
+    @Index
+    private
+    boolean favorite = false;
 
-	public AccountRealmObject setId( int id ) {
-		this.id = id;
-		return this;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public String getAccountNumber() {
+    public AccountRealmObject setId(int id) {
+        this.id = id;
+        return this;  //Todo 반환형을 객체 자신으로 하는 이유는? 궁금하네
+    }
 
-		return accountNumber;
-	}
+    public String getAccountNumber() {
 
-	public AccountRealmObject setAccountNumber( String accountNumber ) {
+        return accountNumber;
+    }
 
-		this.accountNumber = accountNumber;
-		return this;
-	}
+    public AccountRealmObject setAccountNumber(String accountNumber) {
 
-	public AccountRealmObject setBankType( String bankType ) {
+        this.accountNumber = accountNumber;
+        return this;
+    }
 
-		this.bankType = bankType;
-		return this;
-	}
+    public AccountRealmObject setBankType(String bankType) {
 
-	public boolean isFavorite() {
+        this.bankType = bankType;
+        return this;
+    }
 
-		return favorite;
-	}
+    public boolean isFavorite() {
 
-	public AccountRealmObject setFavorite( boolean favorite ) {
+        return favorite;
+    }
 
-		this.favorite = favorite;
-		return this;
-	}
+    public AccountRealmObject setFavorite(boolean favorite) {
 
-	public String getBankType() {
+        this.favorite = favorite;
+        return this;
+    }
 
-		return bankType;
-	}
+    public String getBankType() {
 
-	public BankType getBankTypeEnum() {
+        return bankType;
+    }
 
-		return BankType.valueOf( bankType );
-	}
+    public boolean isMine() {
 
-	enum BankType {
-		SINHAN( "sinhan" );
+        return isMine;
+    }
 
-		String bank;
+    public AccountRealmObject setMine( boolean mine ) {
 
-		BankType( String bank ) {
+        isMine = mine;
+        return this;
+    }
 
-			this.bank = bank;
-		}
-	}
+    public BankType getBankTypeEnum() {
+
+        return BankType.valueOf(bankType);
+    }
+
+    enum BankType {
+        SINHAN("sinhan");
+
+        String bank;
+
+        BankType(String bank) {
+
+            this.bank = bank;
+        }
+    }
 }

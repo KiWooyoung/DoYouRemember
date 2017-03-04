@@ -9,8 +9,8 @@ import java.util.List;
  */
 
 public interface FrequentlyUsedAccountView {
-    void notifyItemRemoved(int position);
 //    void notifyItemInserted(int position);
+    void notifyItemRemoved(int position);
     void notifyItemChanged(List<FrequentlyUesdAccountAdapter.ItemView> data);
     void showBackgroundImg();
 
