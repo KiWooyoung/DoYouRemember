@@ -4,6 +4,8 @@ import com.omjoonkim.doyouremember.realm.AppRealm;
 import com.omjoonkim.doyouremember.realm.entitiy.AccountRealmObject;
 import com.omjoonkim.doyouremember.realm.entitiy.PersonRealmObject;
 
+import java.util.Random;
+
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -16,6 +18,13 @@ public class RegisterModel {
     private Realm realm;
 
     void registerFrequentlyUsedAccount(final String name, final String accountNumber, final String bank) {
+
+        Random random = new Random();
+        int value = random.nextInt(9);
+        String fruitNumber = "fruit" + Integer.toString(value);
+//        int array [] = {
+//                Uri.parse("andorid.resource://" + getPackageName() + R.drawable.fruit1);
+//        }
 
        /* if (realm == null)*/ //Todo 1.안드로이드에서 널체크를 하는 본질적인 이유? 2.이런 메소드 호출할때마다 인스턴스를 생성했야 하나, 아니면 생성했다 다시 죽이면 GC되서 상관없는건가 ANd 여기서 WeakReference 나 일반 Reference 차이가 생기는건가
         realm = AppRealm.get().DylRealm();
@@ -34,6 +43,7 @@ public class RegisterModel {
                 //Todo 여기서 person,account에 둘다 기본키 넣어야하나?
                 PersonRealmObject personRealmObject = realm.createObject(PersonRealmObject.class, ID);
                 personRealmObject.setName(name);
+//                personRealmObject.set)
 //                personRealmObject.setMine(false);
 
                 AccountRealmObject accountRealmObject = realm.createObject(AccountRealmObject.class, ID);

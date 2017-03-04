@@ -17,6 +17,9 @@ public class PersonRealmObject extends RealmObject {
 	private
 	String name;
 
+	private
+	String profileImage;
+
 
 	private RealmList<AccountRealmObject> accountList = null;
 
@@ -54,6 +57,14 @@ public class PersonRealmObject extends RealmObject {
 
 		this.accountList = accountList;
 		return this;
+	}
+
+	public String getProfileImage() {
+		return profileImage;
+	}
+
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
 	}
 
 //	public boolean isMine() {

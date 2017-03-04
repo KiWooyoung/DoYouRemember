@@ -22,7 +22,7 @@
             android:layout_width="0dp"
             android:layout_height="68dp"
             android:layout_weight="1"
-            android:background="#ff9077">
+            android:background="#ffc63c">
 
             <ImageView
                 android:id="@+id/image_view_account_copy"
@@ -37,7 +37,7 @@
             android:layout_width="0dp"
             android:layout_height="68dp"
             android:layout_weight="1"
-            android:background="#f9684d">
+            android:background="#ffad38">
 
             <ImageView
                 android:id="@+id/image_view_revise"

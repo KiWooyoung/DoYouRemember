@@ -295,6 +295,18 @@ public class MainActivity extends AppCompatActivity {
             searchButton.setImageResource(R.drawable.back_icon);
         }
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
 
         return true;
 

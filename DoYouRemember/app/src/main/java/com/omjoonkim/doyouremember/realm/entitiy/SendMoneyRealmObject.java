@@ -1,8 +1,6 @@
 package com.omjoonkim.doyouremember.realm.entitiy;
 
 
-import com.omjoonkim.doyouremember.realm.CommonRealmObjcet;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
 

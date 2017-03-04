@@ -22,6 +22,7 @@ import io.realm.Sort;
 class FrequentlyUsedAccountModel {
 
     private Realm realm = null;
+    String temp;
 
     void loadData(FrequentlyUsedAccountPresenterImpl presenter ) {
 
@@ -33,11 +34,13 @@ class FrequentlyUsedAccountModel {
                 .findAll();
         result = result.sort("id", Sort.ASCENDING);
 
-        for (PersonRealmObject personRealmObject : result)
-            items.add(new FrequentlyUesdAccountAdapter.ItemView(personRealmObject.getId(),personRealmObject.getName()
+        for (PersonRealmObject personRealmObject : result) {
+            temp = personRealmObject.getProfileImage();
+            items.add(new FrequentlyUesdAccountAdapter.ItemView(personRealmObject.getId(), personRealmObject.getName()
                     , personRealmObject.getAccountList().get(0).getBankType() + " " + personRealmObject.getAccountList().get(0).getAccountNumber()
                     , R.mipmap.ic_launcher));
             //Todo 랜덤이미지 넣기(사진받으면)
+        }
 
         presenter.setView(items);
 

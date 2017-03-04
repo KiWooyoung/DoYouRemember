@@ -19,7 +19,7 @@
         android:weightSum="3">
 
         <RelativeLayout
-            android:background="#97eae6"
+            android:background="#ffc63c"
             android:layout_width="0dp"
             android:layout_height="68dp"
             android:layout_weight="1">
@@ -34,7 +34,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:background="#77e3de"
+            android:background="#ffad38"
             android:layout_width="0dp"
             android:layout_height="68dp"
             android:layout_weight="1">
@@ -49,7 +49,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:background="@drawable/swipe_green_delete"
+            android:background="@drawable/swipe_red_delete"
             android:layout_width="0dp"
             android:layout_height="68dp"
             android:layout_weight="1">
