@@ -3,6 +3,8 @@ package com.omjoonkim.doyouremember.realm.entitiy;
 
 import com.omjoonkim.doyouremember.realm.CommonRealmObjcet;
 
+import java.util.Date;
+
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -15,7 +17,7 @@ public class ReceiveMoneyRealmObject extends RealmObject {
 
 	String title;
 
-	long deadLine;
+	Date deadLine;
 
 	RealmList<NotificationRealmObject> notifications;
 
@@ -42,12 +44,12 @@ public class ReceiveMoneyRealmObject extends RealmObject {
 		return this;
 	}
 
-	public long getDeadLine() {
+	public Date getDeadLine() {
 
 		return deadLine;
 	}
 
-	public ReceiveMoneyRealmObject setDeadLine( long deadLine ) {
+	public ReceiveMoneyRealmObject setDeadLine( Date deadLine ) {
 
 		this.deadLine = deadLine;
 		return this;

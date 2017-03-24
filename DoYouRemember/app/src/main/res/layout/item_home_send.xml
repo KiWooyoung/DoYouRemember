@@ -169,12 +169,12 @@
                 android:background="@drawable/rounded_corner_gray">
 
                 <TextView
+                    android:id="@+id/textView_deadLine"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:textSize="11sp"
-                    android:textColor="@color/white"
-                    android:text="10시간 전"/>
+                    android:textColor="@color/white"/>
 
             </FrameLayout>
     </RelativeLayout>

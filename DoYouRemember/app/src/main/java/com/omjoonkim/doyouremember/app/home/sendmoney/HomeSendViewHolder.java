@@ -54,12 +54,15 @@ public class HomeSendViewHolder extends RecyclerView.ViewHolder{
     @BindView(R.id.imageView_delete)
     ImageView imgDelete;
 
+    @BindView( R.id.textView_deadLine )
+    TextView textView_deadLine;
+
     public HomeSendViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
     }
 
-    public void bind(final List<SendMoneyRealmObject> sendMoneyRealmObjectList,
+    public void bind(final SendMoneyRealmObject item,
                      final int position,
                      final OnHomeSendClickListener listener,
                      final SwipeItemRecyclerMangerImpl itemAdapterManger){
@@ -68,48 +71,50 @@ public class HomeSendViewHolder extends RecyclerView.ViewHolder{
         swipeHomeSend.addDrag(SwipeLayout.DragEdge.Right,
                 swipeHomeSend.findViewById(R.id.swipe_home_send_menu));
 
-        tvSendTitle.setText(sendMoneyRealmObjectList.get(position).getTitle());
-        tvSendCreditor.setText(sendMoneyRealmObjectList.get(position).getCreditor());
-        tvSendBankType.setText(sendMoneyRealmObjectList.get(position).getBankType());
-        tvSendAccount.setText(sendMoneyRealmObjectList.get(position).getAccount());
-        String priceSendRW = NumberFormat.getInstance(Locale.KOREA).format(sendMoneyRealmObjectList.get(position).getPrice());
+        tvSendTitle.setText(item.getTitle());
+        tvSendCreditor.setText(item.getCreditor());
+        tvSendBankType.setText(item.getBankType());
+        tvSendAccount.setText(item.getAccount());
+        String priceSendRW = NumberFormat.getInstance(Locale.KOREA).format(item.getPrice());
         tvSendPrice.setText(priceSendRW+"원");
 
-//        switch (sendMoneyRealmObjectList.get(position).getDeadline()){
-//            case 0 :
-//                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_red);
-//                break;
-//            case 1 :
-//                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_yellow);
-//                break;
-//            case 2 :
-//                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_blue);
-//                break;
-//            case 3 :
-//                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_gray);
-//                break;
-//        }
+        textView_deadLine.setText( item.getTheLastTime() );
+
+        switch (item.getDeadLineColor()){
+            case 0 :
+                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_red);
+                break;
+            case 1 :
+                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_yellow);
+                break;
+            case 2 :
+                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_blue);
+                break;
+            case 3 :
+                frameSendDeadline.setBackgroundResource(R.drawable.rounded_corner_gray);
+                break;
+        }
 
         imgCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //listener.onClickSendCopy(sendMoneyRealmObjectList.get(position).getAccount());
+                listener.onClickSendCopy(item.getAccount());
             }
         });
 
         imgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClickSendEdit();
+                listener.onClickSendEdit(item.getId());
             }
         });
 
         imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                listener.onClickSendDelete( item.getId() );
                 itemAdapterManger.removeShownLayouts(swipeHomeSend);
                 itemAdapterManger.closeAllItems();
-                //listener.onClickSendDelete(sendMoneyRealmObjectList, position);
             }
         });
 

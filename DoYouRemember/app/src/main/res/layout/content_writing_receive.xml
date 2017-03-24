@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	app:layout_behavior="@string/appbar_scrolling_view_behavior"
+	tools:context="com.omjoonkim.doyouremember.app.writing.sendmoney.WritingSendActivity"
+	tools:showIn="@layout/activity_writing_send">
+
+	<android.support.v7.widget.CardView
+		android:id="@+id/cardView_writing_send_title"
+		style="@style/Home_Writing_CardView"
+		android:layout_height="102dp"
+		android:layout_marginTop="20dp"
+		app:cardCornerRadius="5dp">
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:paddingLeft="20dp"
+			android:paddingRight="20dp">
+
+			<TextView
+				android:id="@+id/textView_writing_send_title"
+				style="@style/Home_Writing_TextView"
+				android:layout_marginTop="15dp"
+				android:text="제목"/>
+
+			<EditText
+				android:id="@+id/editText_writing_send_title"
+				style="@style/Home_Writing_EditText"
+				android:layout_width="match_parent"
+				android:layout_below="@id/textView_writing_send_title"
+				android:layout_marginTop="10dp"
+				android:hint="@string/text_writing_title_hint"/>
+
+		</RelativeLayout>
+	</android.support.v7.widget.CardView>
+
+	<android.support.v7.widget.CardView
+		android:id="@+id/cardView_writing_send_deadline"
+		style="@style/Home_Writing_CardView"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/cardView_writing_send_title"
+		android:layout_marginTop="20dp"
+		app:cardCornerRadius="5dp">
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingLeft="20dp"
+			android:paddingRight="20dp">
+
+			<TextView
+				android:id="@+id/textView_writing_send_deadline"
+				style="@style/Home_Writing_TextView"
+				android:layout_marginTop="15dp"
+				android:text="입금 기한"/>
+
+			<View
+				android:id="@+id/fakeView"
+				android:layout_width="10dp"
+				android:layout_height="40dp"
+				android:layout_below="@id/textView_writing_send_deadline"
+				android:layout_centerInParent="true"
+				android:layout_marginTop="5dp"/>
+
+			<TextView
+				android:id="@+id/textView_writing_send_deadline_date"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:layout_alignParentLeft="true"
+				android:layout_below="@id/textView_writing_send_deadline"
+				android:layout_marginTop="5dp"
+				android:layout_toStartOf="@+id/fakeView"
+				android:background="@drawable/back"
+				android:gravity="center"
+				android:textColor="#4a4a4a"
+				android:textColorHint="#aeaeaf"
+				android:textSize="16sp"/>
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/textView_writing_send_deadline"
+				android:layout_marginRight="13dp"
+				android:layout_marginTop="20dp"
+				android:layout_toLeftOf="@id/fakeView"
+				android:src="@drawable/red_triangle_copy_2"/>
+
+			<TextView
+				android:id="@+id/textView_writing_send_deadline_time"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:layout_alignParentRight="true"
+				android:layout_below="@id/textView_writing_send_deadline"
+				android:layout_marginTop="5dp"
+				android:layout_toEndOf="@+id/fakeView"
+				android:background="@drawable/back"
+				android:gravity="center"
+				android:textColor="#4a4a4a"
+				android:textColorHint="#aeaeaf"
+				android:textSize="16sp"/>
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_below="@id/textView_writing_send_deadline"
+				android:layout_marginRight="13dp"
+				android:layout_marginTop="20dp"
+				android:layout_toLeftOf="@id/fakeView"
+				android:src="@drawable/red_triangle_copy_2"/>
+
+			<TextView
+				android:id="@+id/textView_writing_send_alarm"
+				style="@style/Home_Writing_TextView"
+				android:layout_below="@id/textView_writing_send_deadline_date"
+				android:layout_marginTop="25dp"
+				android:text="알람"/>
+
+			<com.nightonke.jellytogglebutton.JellyToggleButton
+				android:id="@+id/toggle_alarm_activate"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="true"
+				android:layout_below="@id/textView_writing_send_deadline_date"
+				android:layout_marginBottom="16dp"
+				android:layout_marginTop="22dp"
+				app:jtbJelly="itself"
+				app:jtbLeftBackgroundColor="@color/toggle_DarkGray"
+				app:jtbLeftThumbColor="@color/toggle_LightGray"
+				app:jtbRightBackgroundColor="@color/focus_red"
+				app:jtbRightThumbColor="@color/cursor"/>
+
+			<View
+				android:id="@+id/fakeView2"
+				android:layout_width="10dp"
+				android:layout_height="40dp"
+				android:layout_below="@id/textView_writing_send_alarm"
+				android:layout_centerInParent="true"
+				android:layout_marginTop="5dp"
+				android:visibility="gone"/>
+
+			<TextView
+				android:id="@+id/textView_writing_send_alarm_date"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:layout_alignParentLeft="true"
+				android:layout_below="@id/textView_writing_send_alarm"
+				android:layout_marginTop="12dp"
+				android:layout_toStartOf="@+id/fakeView"
+				android:background="@drawable/back"
+				android:gravity="center"
+				android:textColor="#4a4a4a"
+				android:textColorHint="#aeaeaf"
+				android:textSize="16sp"
+				android:visibility="gone"/>
+
+			<ImageView
+				android:id="@+id/imageView_sendAlarmDate"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_below="@id/textView_writing_send_alarm"
+				android:layout_marginRight="13dp"
+				android:layout_marginTop="27dp"
+				android:layout_toLeftOf="@id/fakeView"
+				android:src="@drawable/red_triangle_copy_2"
+				android:visibility="gone"/>
+
+			<TextView
+				android:id="@+id/textView_writing_send_alarm_time"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:layout_alignParentRight="true"
+				android:layout_below="@id/textView_writing_send_alarm"
+				android:layout_marginBottom="16dp"
+				android:layout_marginTop="12dp"
+				android:layout_toEndOf="@+id/fakeView"
+				android:background="@drawable/back"
+				android:gravity="center"
+				android:textColor="#4a4a4a"
+				android:textColorHint="#aeaeaf"
+				android:textSize="16sp"
+				android:visibility="gone"/>
+
+			<ImageView
+				android:id="@+id/imageView_sendAlarmTime"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"w
+				android:layout_alignParentRight="true"
+				android:layout_below="@id/textView_writing_send_alarm"
+				android:layout_marginRight="13dp"
+				android:layout_marginTop="27dp"
+				android:layout_toLeftOf="@id/fakeView2"
+				android:src="@drawable/red_triangle_copy_2"
+				android:visibility="gone"/>
+
+		</RelativeLayout>
+	</android.support.v7.widget.CardView>
+
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/recyclerView"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_below="@+id/cardView_writing_send_deadline"
+		android:layout_marginTop="20dp"/>
+
+</RelativeLayout>

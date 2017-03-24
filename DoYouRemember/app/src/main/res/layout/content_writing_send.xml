@@ -41,7 +41,7 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardView_writing_send_deadline"
-        android:layout_height="154dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:cardCornerRadius="5dp"
         android:layout_below="@+id/cardView_writing_send_title"
@@ -49,7 +49,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:paddingRight="20dp">
 
@@ -73,7 +73,6 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="5dp"
                 android:layout_below="@id/textView_writing_send_deadline"
-                android:hint="2017/02/14"
                 android:textSize="16sp"
                 android:textColorHint="#aeaeaf"
                 android:textColor="#4a4a4a"
@@ -98,7 +97,6 @@
                 android:layout_marginTop="5dp"
                 android:layout_below="@id/textView_writing_send_deadline"
                 android:layout_alignParentRight="true"
-                android:hint="오후 12:00"
                 android:textSize="16sp"
                 android:textColorHint="#aeaeaf"
                 android:textColor="#4a4a4a"
@@ -129,12 +127,76 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="22dp"
+                android:layout_marginBottom="16dp"
                 android:layout_below="@id/textView_writing_send_deadline_date"
                 app:jtbLeftBackgroundColor="@color/toggle_DarkGray"
                 app:jtbLeftThumbColor="@color/toggle_LightGray"
                 app:jtbRightBackgroundColor="@color/focus_red"
                 app:jtbRightThumbColor="@color/cursor"
                 app:jtbJelly="itself" />
+
+            <View
+                android:visibility="gone"
+                android:id="@+id/fakeView2"
+                android:layout_width="10dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_centerInParent="true"
+                android:layout_below="@id/textView_writing_send_alarm"/>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/textView_writing_send_alarm_date"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:layout_below="@id/textView_writing_send_alarm"
+                android:textSize="16sp"
+                android:textColorHint="#aeaeaf"
+                android:textColor="#4a4a4a"
+                android:gravity="center"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/back"
+                android:layout_toStartOf="@+id/fakeView" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/imageView_sendAlarmDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="13dp"
+                android:layout_marginTop="27dp"
+                android:src="@drawable/red_triangle_copy_2"
+                android:layout_below="@id/textView_writing_send_alarm"
+                android:layout_toLeftOf="@id/fakeView" />
+
+            <TextView
+                android:visibility="gone"
+                android:layout_marginBottom="16dp"
+                android:id="@+id/textView_writing_send_alarm_time"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:layout_below="@id/textView_writing_send_alarm"
+                android:layout_alignParentRight="true"
+                android:textSize="16sp"
+                android:textColorHint="#aeaeaf"
+                android:textColor="#4a4a4a"
+                android:gravity="center"
+                android:background="@drawable/back"
+                android:layout_toEndOf="@+id/fakeView" />
+
+            <ImageView
+                android:id="@+id/imageView_sendAlarmTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="27dp"
+                android:layout_marginRight="13dp"
+                android:visibility="gone"
+                android:src="@drawable/red_triangle_copy_2"
+                android:layout_below="@id/textView_writing_send_alarm"
+                android:layout_toLeftOf="@id/fakeView2" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

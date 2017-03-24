@@ -1,8 +1,5 @@
 package com.omjoonkim.doyouremember.app.home.sendmoney.presenter;
 
-import com.omjoonkim.doyouremember.model.HomeSendData;
-
-import java.util.List;
 
 public class HomeSendPresenterImpl implements HomeSendPresenter {
 
@@ -29,12 +26,12 @@ public class HomeSendPresenterImpl implements HomeSendPresenter {
     }
 
     @Override
-    public void onClickEdit() {
-        this.view.editHomeSendItem();
+    public void onClickEdit( long id ) {
+        this.view.editHomeSendItem(id);
     }
 
     @Override
-    public void onClickDelete(List<HomeSendData> homeSendDataList, int position) {
-        this.view.deleteHomeSendItem(homeSendDataList, position);
+    public void onClickDelete(long id) {
+        this.view.deleteHomeSendItem(id);
     }
 }

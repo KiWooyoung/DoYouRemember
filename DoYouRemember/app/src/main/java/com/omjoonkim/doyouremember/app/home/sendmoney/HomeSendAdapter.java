@@ -44,7 +44,7 @@ public class HomeSendAdapter extends RecyclerSwipeAdapter<HomeSendViewHolder>{
     @Override
     public void onBindViewHolder(final HomeSendViewHolder holder, final int position) {
         if (sendMoneyRealmObjectList != null) {
-            holder.bind(sendMoneyRealmObjectList, position, listener, mItemManger);
+            holder.bind(sendMoneyRealmObjectList.get( position ), position, listener, mItemManger);
         }
     }
 
@@ -55,6 +55,13 @@ public class HomeSendAdapter extends RecyclerSwipeAdapter<HomeSendViewHolder>{
         }
         return sendMoneyRealmObjectList.size();
     }
+
+    public void notifyDataSetChangedAndSwipeClear(){
+        notifyDataSetChanged();
+        mItemManger.closeAllItems();
+    }
+
+
 
     @Override
     public int getSwipeLayoutResourceId(int position) {

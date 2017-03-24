@@ -8,6 +8,6 @@ import java.util.List;
 public interface OnHomeSendClickListener {
     void onChangeItemCount();
     void onClickSendCopy(String account);
-    void onClickSendEdit();
-    void onClickSendDelete(List<HomeSendData> homeSendDataList, int position);
+    void onClickSendEdit( long id );
+    void onClickSendDelete(long id);
 }

@@ -3,6 +3,8 @@ package com.omjoonkim.doyouremember.realm.entitiy;
 
 import com.omjoonkim.doyouremember.realm.CommonRealmObjcet;
 
+import java.util.Date;
+
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -12,7 +14,7 @@ public class NotificationRealmObject extends RealmObject {
 	@PrimaryKey
 	long id;
 
-	long deadline;
+	Date dateTime;
 
 	long optionTime;
 
@@ -27,14 +29,14 @@ public class NotificationRealmObject extends RealmObject {
 		return this;
 	}
 
-	public long getDeadline() {
+	public Date getDeadline() {
 
-		return deadline;
+		return dateTime;
 	}
 
-	public NotificationRealmObject setDeadline( long deadline ) {
+	public NotificationRealmObject setDeadline( Date deadline ) {
 
-		this.deadline = deadline;
+		this.dateTime = deadline;
 		return this;
 	}
 
