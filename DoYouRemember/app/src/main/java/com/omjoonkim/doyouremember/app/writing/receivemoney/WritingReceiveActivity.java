@@ -236,7 +236,7 @@ public class WritingReceiveActivity extends AppCompatActivity {
 		} );
 
 		recyclerView.setLayoutManager( new LinearLayoutManager( this ) );
-		recyclerView.setAdapter(  );
+//		recyclerView.setAdapter(  );
 	}
 
 	private void showAlarmView( boolean b ) {

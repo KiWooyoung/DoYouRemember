@@ -375,7 +375,7 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 					nextID = num.intValue() + 1;
 				}
 				if(sendMoneyRealmObject == null) {
-					SendMoneyRealmObject sendMoneyRealmObject = new SendMoneyRealmObject();
+					sendMoneyRealmObject = new SendMoneyRealmObject();
 					sendMoneyRealmObject.setId( nextID );
 				}
 				sendMoneyRealmObject.setTitle( etWritingTitle.getText().toString() );
