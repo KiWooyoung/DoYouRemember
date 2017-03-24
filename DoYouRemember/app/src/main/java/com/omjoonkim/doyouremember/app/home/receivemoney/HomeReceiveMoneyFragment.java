@@ -25,6 +25,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 
 public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePresenter.View {
 
@@ -93,6 +95,18 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
 //                adapter.notifyParentChanged(parentPosition);
 //            }
 //        });
+    }
+
+    @OnClick(R.id.fab_send_writing)
+    public void onClickSendWriting(){
+        
+    }
+
+    @Override
+    public void onResume() {
+
+        super.onResume();
+
     }
 
     @Override

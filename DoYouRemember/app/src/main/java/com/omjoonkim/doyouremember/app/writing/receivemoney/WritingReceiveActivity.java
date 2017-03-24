@@ -1,4 +1,4 @@
-package com.omjoonkim.doyouremember.app.writing.sendmoney;
+package com.omjoonkim.doyouremember.app.writing.receivemoney;
 
 
 import android.app.DatePickerDialog;
@@ -6,11 +6,14 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,7 +23,6 @@ import com.nightonke.jellytogglebutton.JellyToggleButton;
 import com.nightonke.jellytogglebutton.State;
 import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.frequentlyusedaccount.dialog.SelectBankDialog;
-
 import com.omjoonkim.doyouremember.app.writing.selectfrequentlyusedaccount.SelectFrequentlyUsedActivity;
 import com.omjoonkim.doyouremember.realm.entitiy.SendMoneyRealmObject;
 
@@ -33,9 +35,9 @@ import butterknife.OnFocusChange;
 import io.realm.Realm;
 
 
-public class WritingSendActivity extends AppCompatActivity implements SelectBankDialog.SelectBankListener {
+public class WritingReceiveActivity extends AppCompatActivity {
 
-	public static final String TAG = WritingSendActivity.class.getSimpleName();
+	public static final String TAG = WritingReceiveActivity.class.getSimpleName();
 
 	static final int GET_FREQUENT_USER = 1;
 
@@ -59,18 +61,6 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 	TextView tvAlarmTime;
 
 
-	@BindView( R.id.editText_writing_send_creditor )
-	EditText etWritingCreditor;
-
-	@BindView( R.id.textView_writing_send_bank )
-	TextView tvSendBank;
-
-	@BindView( R.id.editText_writing_send_account )
-	EditText etEtWritingAccount;
-
-	@BindView( R.id.editText_writing_send_price )
-	EditText etEtWritingPrice;
-
 	@BindView( R.id.toggle_alarm_activate )
 	JellyToggleButton jellyToggleButton;
 
@@ -82,6 +72,9 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 
 	@BindView( R.id.imageView_sendAlarmTime )
 	View imageView_sendAlarmTime;
+
+	@BindView( R.id.recyclerView )
+	RecyclerView recyclerView;
 
 	private Realm realm;
 
@@ -111,39 +104,6 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 		}
 	}
 
-	@OnFocusChange( R.id.editText_writing_send_creditor )
-	void onFocusChangeCreditor( boolean hasFocus ) {
-
-		if ( hasFocus ) {
-			etWritingCreditor.setBackgroundResource( R.drawable.back_change );
-		}
-		else {
-			etWritingCreditor.setBackgroundResource( R.drawable.back );
-		}
-	}
-
-	@OnFocusChange( R.id.editText_writing_send_account )
-	void onFocusChangeAccount( boolean hasFocus ) {
-
-		if ( hasFocus ) {
-			etEtWritingAccount.setBackgroundResource( R.drawable.back_change );
-		}
-		else {
-			etEtWritingAccount.setBackgroundResource( R.drawable.back );
-		}
-	}
-
-	@OnFocusChange( R.id.editText_writing_send_price )
-	void onFocusChangePrice( boolean hasFocus ) {
-
-		if ( hasFocus ) {
-			etEtWritingPrice.setBackgroundResource( R.drawable.back_change );
-		}
-		else {
-			etEtWritingPrice.setBackgroundResource( R.drawable.back );
-		}
-	}
-
 	@OnClick( R.id.textView_writing_send_alarm_date )
 	void onClickAlarmDate() {
 
@@ -152,8 +112,8 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 			@Override
 			public void onDateSet( DatePicker view, int year, int month, int dayOfMonth ) {
 
-				WritingSendActivity.this.alarmYear = year;
-				WritingSendActivity.this.alarmMonth = month;
+				WritingReceiveActivity.this.alarmYear = year;
+				WritingReceiveActivity.this.alarmMonth = month;
 				alarmDay = dayOfMonth;
 				tvAlarmDate.setText( year + "/" + ( month + 1 ) + "/" + dayOfMonth );
 				alarmCalendar.set( year, month, dayOfMonth );
@@ -170,7 +130,7 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 			public void onTimeSet( TimePicker view, int hourOfDay, int minute ) {
 
 				alarmHour = hourOfDay;
-				WritingSendActivity.this.alarmMinute = minute;
+				WritingReceiveActivity.this.alarmMinute = minute;
 				tvAlarmTime.setText( getTimeFormat( hourOfDay > 12 ? Calendar.PM : Calendar.AM, hourOfDay - 12 > 0 ? hourOfDay - 12 : hourOfDay, minute ) );
 				alarmCalendar.set( Calendar.HOUR_OF_DAY, hourOfDay );
 				alarmCalendar.set( Calendar.MINUTE, minute );
@@ -186,8 +146,8 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 			@Override
 			public void onDateSet( DatePicker view, int year, int month, int dayOfMonth ) {
 
-				WritingSendActivity.this.year = year;
-				WritingSendActivity.this.month = month;
+				WritingReceiveActivity.this.year = year;
+				WritingReceiveActivity.this.month = month;
 				day = dayOfMonth;
 				tvSendDate.setText( year + "/" + ( month + 1 ) + "/" + dayOfMonth );
 				calendar.set( year, month, dayOfMonth );
@@ -204,40 +164,13 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 			public void onTimeSet( TimePicker view, int hourOfDay, int minute ) {
 
 				hour = hourOfDay;
-				WritingSendActivity.this.minute = minute;
+				WritingReceiveActivity.this.minute = minute;
 				tvSendTime.setText( getTimeFormat( hourOfDay > 12 ? Calendar.PM : Calendar.AM, hourOfDay - 12 > 0 ? hourOfDay - 12 : hourOfDay, minute ) );
 				calendar.set( Calendar.HOUR_OF_DAY, hourOfDay );
 				calendar.set( Calendar.MINUTE, minute );
 			}
 		}, hour, minute, false ).show();
 	}
-
-	@OnClick( R.id.textView_writing_send_bank )
-	void onClickBank() {
-
-		SelectBankDialog selectBankDialog = SelectBankDialog.newDialogInstance();
-		selectBankDialog.show( getSupportFragmentManager(), "Test122" );
-	}
-
-	@OnClick( R.id.imageView_frequent_user_select )
-	void onSelectFrequentUser() {
-
-		Intent intent = new Intent( WritingSendActivity.this, SelectFrequentlyUsedActivity.class );
-		startActivityForResult( intent, GET_FREQUENT_USER );
-	}
-
-	@Override
-	protected void onActivityResult( int requestCode, int resultCode, Intent data ) {
-
-		if ( requestCode == GET_FREQUENT_USER ) {
-			if ( resultCode == RESULT_OK ) {
-				etWritingCreditor.setText( data.getStringExtra( "ACCOUNT_NAME" ) );
-				tvSendBank.setText( data.getStringExtra( "ACCOUNT_BANK" ) );
-				etEtWritingAccount.setText( data.getStringExtra( "ACCOUNT_NUMBER" ) );
-			}
-		}
-	}
-
 
 	@Override
 	protected void onCreate( Bundle savedInstanceState ) {
@@ -268,10 +201,7 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 			alarmCalendar.setTime( sendMoneyRealmObject.getAlarmTime() );
 			calendar.setTime( sendMoneyRealmObject.getDateTime() );
 			etWritingTitle.setText( sendMoneyRealmObject.getTitle() );
-			etEtWritingAccount.setText( sendMoneyRealmObject.getAccount() );
-			etEtWritingPrice.setText( sendMoneyRealmObject.getPrice()+"" );
-			etWritingCreditor.setText( sendMoneyRealmObject.getCreditor() );
-			tvSendBank.setText( sendMoneyRealmObject.getBankType() );
+
 		}
 
 		alarmYear = alarmCalendar.get( Calendar.YEAR );
@@ -304,6 +234,9 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 					showAlarmView( false );
 			}
 		} );
+
+		recyclerView.setLayoutManager( new LinearLayoutManager( this ) );
+		recyclerView.setAdapter(  );
 	}
 
 	private void showAlarmView( boolean b ) {
@@ -337,7 +270,7 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 
 		switch ( item.getItemId() ) {
 			case R.id.send_write_finish:
-				writeSendForm( realm );
+				writeReceiveForm(  );
 				finish();
 				return true;
 			default:
@@ -359,43 +292,32 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 		return timeFormat;
 	}
 
-	private void writeSendForm( Realm realm ) {
+	private void writeReceiveForm( ) {
 
-		realm.executeTransaction( new Realm.Transaction() {
-
-			@Override
-			public void execute( Realm realm ) {
-
-				Number num = realm.where( SendMoneyRealmObject.class ).max( "id" );
-				int nextID;
-				if ( num == null ) {
-					nextID = 1;
-				}
-				else {
-					nextID = num.intValue() + 1;
-				}
-				if(sendMoneyRealmObject == null) {
-					SendMoneyRealmObject sendMoneyRealmObject = new SendMoneyRealmObject();
-					sendMoneyRealmObject.setId( nextID );
-				}
-				sendMoneyRealmObject.setTitle( etWritingTitle.getText().toString() );
-				sendMoneyRealmObject.setCreditor( etWritingCreditor.getText().toString() );
-				sendMoneyRealmObject.setBankType( tvSendBank.getText().toString() );
-				sendMoneyRealmObject.setAccount( etEtWritingAccount.getText().toString() );
-				sendMoneyRealmObject.setDateTime( calendar.getTime() );
-				sendMoneyRealmObject.setAlarmTime( alarmCalendar.getTime() );
-				long intPrice = Integer.valueOf( etEtWritingPrice.getText().toString() );
-				sendMoneyRealmObject.setPrice( intPrice );
-				realm.copyToRealm( sendMoneyRealmObject );
-
-			}
-		} );
-	}
-
-	@Override
-	public void onSelectBank( String bank ) {
-
-		tvSendBank.setText( bank );
+//		realm.executeTransaction( new Realm.Transaction() {
+//
+//			@Override
+//			public void execute( Realm realm ) {
+//
+//				Number num = realm.where( SendMoneyRealmObject.class ).max( "id" );
+//				int nextID;
+//				if ( num == null ) {
+//					nextID = 1;
+//				}
+//				else {
+//					nextID = num.intValue() + 1;
+//				}
+//				if(sendMoneyRealmObject == null) {
+//					SendMoneyRealmObject sendMoneyRealmObject = new SendMoneyRealmObject();
+//					sendMoneyRealmObject.setId( nextID );
+//				}
+//				sendMoneyRealmObject.setTitle( etWritingTitle.getText().toString() );
+//				sendMoneyRealmObject.setDateTime( calendar.getTime() );
+//				sendMoneyRealmObject.setAlarmTime( alarmCalendar.getTime() );
+//				realm.copyToRealm( sendMoneyRealmObject );
+//
+//			}
+//		} );
 	}
 
 	@Override
@@ -404,4 +326,27 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 		super.onDestroy();
 		realm.close();
 	}
+
+	public static class RecyclerViewApdater extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+
+		
+
+		@Override
+		public RecyclerView.ViewHolder onCreateViewHolder( ViewGroup parent, int viewType ) {
+
+			return null;
+		}
+
+		@Override
+		public void onBindViewHolder( RecyclerView.ViewHolder holder, int position ) {
+
+		}
+
+		@Override
+		public int getItemCount() {
+
+			return 0;
+		}
+	}
+
 }

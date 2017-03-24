@@ -61,6 +61,12 @@ public class HomeFragment extends Fragment implements HomePresenter.View{
     }
 
     @Override
+    public void onResume() {
+
+        super.onResume();
+    }
+
+    @Override
     public void loadSendMoneyFragment() {
         if(sendMoneyFragment == null){
             sendMoneyFragment =  HomeSendMoneyFragment.newInstance();
