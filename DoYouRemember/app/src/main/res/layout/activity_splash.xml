@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_splash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     tools:context="com.omjoonkim.doyouremember.app.SplashActivity">
 
     <ImageView
+        android:id="@+id/splash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/splash"
-        android:src="@drawable/logo_example"/>
+        android:layout_centerInParent="true"
+        android:src="@drawable/splash_mango_shadow"/>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/splash_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="39dp"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_DarkGray"
+        android:text="까먹지망고"/>
+
+</RelativeLayout>
