@@ -14,7 +14,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static com.omjoonkim.doyouremember.R.id.image_view_cancel;
-import static com.omjoonkim.doyouremember.R.id.relative_layout_cancel;
 import static com.omjoonkim.doyouremember.R.id.text_view_busan;
 import static com.omjoonkim.doyouremember.R.id.text_view_city;
 import static com.omjoonkim.doyouremember.R.id.text_view_hana;
@@ -24,9 +23,6 @@ import static com.omjoonkim.doyouremember.R.id.text_view_nonghyub;
 import static com.omjoonkim.doyouremember.R.id.text_view_sinhan;
 import static com.omjoonkim.doyouremember.R.id.text_view_woori;
 
-/**
- * Created by wooyoungki on 2017. 1. 27..
- */
 
 public class SelectBankDialog extends android.support.v4.app.DialogFragment {
 
@@ -41,13 +37,10 @@ public class SelectBankDialog extends android.support.v4.app.DialogFragment {
     @BindView(R.id.text_view_nonghyub) TextView txtNonghyub;
     @BindView(R.id.text_view_ibk) TextView txtIbk;
     @BindView(R.id.text_view_busan) TextView txtBusan;
-    @OnClick({relative_layout_cancel, image_view_cancel, text_view_kb, text_view_woori,
+    @OnClick({image_view_cancel, text_view_kb, text_view_woori,
     text_view_sinhan, text_view_hana, text_view_city, text_view_nonghyub, text_view_ibk, text_view_busan})
     public void onClick(View v) {
         switch (v.getId()) {
-            case relative_layout_cancel :
-                dismiss();
-                break;
             case image_view_cancel :
                 dismiss();
                 break;

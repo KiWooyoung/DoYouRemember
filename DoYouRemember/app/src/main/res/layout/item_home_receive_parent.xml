@@ -19,7 +19,8 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/list_item_height"
+            android:layout_height="@dimen/list_receive_height"
+            app:cardElevation="0dp"
             app:cardCornerRadius="5dp">
 
             <LinearLayout
@@ -30,22 +31,18 @@
 
                 <ImageView
                     android:id="@+id/imageView_receive_edit"
-                    android:layout_width="@dimen/list_item_height"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    style="@style/Swipe_item"
+                    android:layout_width="@dimen/list_receive_height"
                     android:padding="13dp"
-                    android:background="#4990e2"
-                    android:gravity="center"
+                    android:background="@color/swipe_orange_level2"
                     android:src="@drawable/revise_icon"/>
 
                 <ImageView
                     android:id="@+id/imageView_receive_delete"
-                    android:layout_width="@dimen/list_item_height"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    style="@style/Swipe_item"
+                    android:layout_width="@dimen/list_receive_height"
                     android:padding="13dp"
-                    android:background="#596ad8"
-                    android:gravity="center"
+                    android:background="@color/swipe_orange_level1"
                     android:src="@drawable/delete_icon"/>
 
             </LinearLayout>
@@ -60,7 +57,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/list_item_height"
+            android:layout_height="@dimen/list_receive_height"
             android:layout_marginTop="-11dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="0dp"

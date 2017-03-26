@@ -26,13 +26,11 @@ import com.omjoonkim.doyouremember.app.myaccount.registermyaccount.RegisterMyAcc
 
 import java.util.List;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * Created by owner on 2017-01-13.
- */
 
 public class MyAccountFragment extends Fragment implements MyAccountView, DeleteMessageDialog.DeleteMessageListener{
 
@@ -53,6 +51,10 @@ public class MyAccountFragment extends Fragment implements MyAccountView, Delete
     ImageView imgCopyComplete;
     @BindView(R.id.image_view_delete_complete)
     ImageView imgDeleteComplete;
+
+    @BindString(R.string.text_my_account_delete_message)
+    String deleteMessage;
+
     @OnClick(R.id.fab_writing_my_account)
     void OnClick(){
         presenter.onAddMyAccount();
@@ -140,7 +142,7 @@ public class MyAccountFragment extends Fragment implements MyAccountView, Delete
     @Override
     public void showDeleteDialog(int position) {
 
-        DeleteMessageDialog deleteAccountDialog = DeleteMessageDialog.newDialogInstance();
+        DeleteMessageDialog deleteAccountDialog = DeleteMessageDialog.newDialogInstance(deleteMessage);
         deleteAccountDialog.setTargetFragment(MyAccountFragment.this, 100);
         deleteAccountDialog.show(getFragmentManager(), "delete dialog");
         this.position = position;

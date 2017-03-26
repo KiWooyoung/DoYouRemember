@@ -18,6 +18,7 @@
 	<color name="deadline_blue">#48cbcf</color>
 	<color name="deadline_gray">#c8c8c8</color>
 
+	<!--receiveDone-->
 	<color name="receiveDoneLineColor">#80596ad7</color>
 	<color name="receiveDoneLineOpacity">#ffffffff</color>
 
@@ -27,4 +28,10 @@
 	<!--toogle-->
 	<color name="toggle_DarkGray">#42221f1f</color>
 	<color name="toggle_LightGray">#f1f1f1</color>
+
+	<!--swipeColor-->
+	<color name="swipe_orange_level1">#ff9436</color>
+	<color name="swipe_orange_level2">#ffad38</color>
+	<color name="swipe_orange_level3">#ffc63c</color>
+
 </resources>

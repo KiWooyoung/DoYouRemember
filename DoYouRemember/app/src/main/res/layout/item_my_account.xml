@@ -1,71 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.daimajia.swipe.SwipeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:swipe="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipe_my_account"
     android:layout_width="match_parent"
-    android:layout_height="68dp"
+    android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
-    android:layout_marginLeft="15dp"
-    android:layout_marginRight="15dp"
+    android:layout_marginLeft="@dimen/list_side_margin"
+    android:layout_marginRight="@dimen/list_side_margin"
+    swipe:clickToClose="true"
     swipe:leftEdgeSwipeOffset="0dp"
     swipe:rightEdgeSwipeOffset="0dp">
 
-    <!--Bottom View For Right to Left-->
-
     <LinearLayout
         android:id="@+id/bottom_wrapper"
-        android:layout_width="204dp"
-        android:layout_height="68dp"
-        android:weightSum="3">
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:background="#ffc63c"
-            android:layout_width="0dp"
-            android:layout_height="68dp"
-            android:layout_weight="1">
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/item_small_size"
+            swipe:cardElevation="0dp"
+            swipe:cardCornerRadius="5dp">
 
-            <ImageView
-                android:id="@+id/image_view_copy_my_account"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/accountcopy_icon"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/image_view_copy_my_account"
+                    style="@style/Swipe_item"
+                    android:layout_width="@dimen/item_small_size"
+                    android:padding="8dp"
+                    android:background="@color/swipe_orange_level3"
+                    android:src="@drawable/accountcopy_icon"/>
 
-        <RelativeLayout
-            android:background="#ffad38"
-            android:layout_width="0dp"
-            android:layout_height="68dp"
-            android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/image_view_revise_my_account"
+                    style="@style/Swipe_item"
+                    android:layout_width="@dimen/item_small_size"
+                    android:padding="8dp"
+                    android:background="@color/swipe_orange_level2"
+                    android:src="@drawable/revise_icon"/>
 
-            <ImageView
-                android:id="@+id/image_view_revise_my_account"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/revise_icon"/>
+                <ImageView
+                    android:id="@+id/image_view_delete_my_account"
+                    style="@style/Swipe_item"
+                    android:layout_width="@dimen/item_small_size"
+                    android:padding="8dp"
+                    android:background="@color/swipe_orange_level1"
+                    android:src="@drawable/delete_icon"/>
 
-        </RelativeLayout>
+            </LinearLayout>
 
-        <RelativeLayout
-            android:background="@drawable/swipe_red_delete"
-            android:layout_width="0dp"
-            android:layout_height="68dp"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/image_view_delete_my_account"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:src="@drawable/delete_icon"/>
-
-        </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
-
-    <!-- Top View,  Row itemView of RecyclerView -->
 
     <android.support.v7.widget.CardView
         xmlns:app="http://schemas.android.com/apk/res-auto"

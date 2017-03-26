@@ -104,7 +104,6 @@ public class RegisterFrequentlyUsedAccountActivity extends AppCompatActivity imp
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.add_frequently_used_account, menu);
         return super.onCreateOptionsMenu(menu);

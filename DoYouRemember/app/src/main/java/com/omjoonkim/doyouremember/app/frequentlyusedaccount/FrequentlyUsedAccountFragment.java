@@ -27,13 +27,11 @@ import com.omjoonkim.doyouremember.app.frequentlyusedaccount.registeraccount.Reg
 
 import java.util.List;
 
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * Created by owner on 2017-01-13.
- */
 
 public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoonkim.doyouremember.app.frequentlyusedaccount.FrequentlyUsedAccountView, DeleteMessageDialog.DeleteMessageListener {
 
@@ -51,6 +49,9 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
 
     @BindView(R.id.fab_writing_frequently_used_account)
     FloatingActionButton fab;
+
+    @BindString(R.string.text_frequently_used_delete_message)
+    String deleteMessage;
 
     @OnClick(R.id.fab_writing_frequently_used_account)
     public void onClick() {
@@ -194,7 +195,7 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
     public void showDeleteDialog(int position) {
         //Todo 2.삭제 다이얼로그 생성
 
-        DeleteMessageDialog deleteAccountDialog = DeleteMessageDialog.newDialogInstance();
+        DeleteMessageDialog deleteAccountDialog = DeleteMessageDialog.newDialogInstance(deleteMessage);
         deleteAccountDialog.setTargetFragment(FrequentlyUsedAccountFragment.this, 100);
         deleteAccountDialog.show(getFragmentManager(), "delete dialog");
 //        Toast.makeText(getContext(), "" + position, Toast.LENGTH_SHORT).show();

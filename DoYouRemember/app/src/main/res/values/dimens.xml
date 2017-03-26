@@ -12,7 +12,6 @@
     <dimen name="subtab_height">33dp</dimen>
 
     <!--home list-->
-    <dimen name="list_item_height">76dp</dimen>
     <dimen name="list_side_margin">15dp</dimen>
     <dimen name="list_top_padding">15dp</dimen>
     <dimen name="list_bottom_padding">12dp</dimen>
@@ -25,6 +24,14 @@
     <dimen name="frequent_list_bottom_margin">9dp</dimen>
     <dimen name="frequent_list_first_margin">23dp</dimen>
 
+    <!--마감시간 표시하는 프레임-->
     <dimen name="frame_deadline_width">58dp</dimen>
     <dimen name="frame_deadline_height">22dp</dimen>
+
+    <!--자주쓰는계좌, 내계좌의 item 사이즈-->
+    <dimen name="item_small_size">68dp</dimen>
+    <!--홈의 보내자 item 사이즈-->
+    <dimen name="item_send_size">82dp</dimen>
+    <!--홈의 보내자 item 사이즈-->
+    <dimen name="list_receive_height">76dp</dimen>
 </resources>

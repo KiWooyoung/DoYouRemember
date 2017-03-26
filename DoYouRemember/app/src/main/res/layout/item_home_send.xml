@@ -18,45 +18,38 @@
         android:paddingTop="11dp">
 
         <android.support.v7.widget.CardView
-            android:id="@+id/qwe"
             android:layout_width="wrap_content"
-            android:layout_height="82dp"
+            android:layout_height="@dimen/item_send_size"
+            app:cardElevation="0dp"
             app:cardCornerRadius="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:background="@color/white">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/imageView_copy"
-                    android:layout_width="82dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    style="@style/Swipe_item"
+                    android:layout_width="@dimen/item_send_size"
                     android:padding="13dp"
-                    android:background="#7db0eb"
-                    android:gravity="center"
+                    android:background="@color/swipe_orange_level3"
                     android:src="@drawable/accountcopy_icon"/>
 
                 <ImageView
                     android:id="@+id/imageView_edit"
-                    android:layout_width="82dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    style="@style/Swipe_item"
+                    android:layout_width="@dimen/item_send_size"
                     android:padding="13dp"
-                    android:background="#4990e2"
-                    android:gravity="center"
+                    android:background="@color/swipe_orange_level2"
                     android:src="@drawable/revise_icon"/>
 
                 <ImageView
                     android:id="@+id/imageView_delete"
-                    android:layout_width="82dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    style="@style/Swipe_item"
+                    android:layout_width="@dimen/item_send_size"
                     android:padding="13dp"
-                    android:background="#596ad8"
-                    android:gravity="center"
+                    android:background="@color/swipe_orange_level1"
                     android:src="@drawable/delete_icon"/>
 
             </LinearLayout>

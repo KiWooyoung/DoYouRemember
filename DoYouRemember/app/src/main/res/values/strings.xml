@@ -11,4 +11,11 @@
     <string name="text_writing_price_hint">금액 입력 (최대 천만원 미만)</string>
 
     <string name="search_view_hint"><font size="16">검색어를 입력하세요</font></string>
+
+    <string name="text_frequently_used_delete_message">리스트를 삭제하시겠습니까?</string>
+    <string name="text_my_account_delete_message">해당 계좌를 삭제하시겠습니까?</string>
+    <string name="text_send_delete_message">보내셨습니까? \n 리스트를 삭제하시겠습니까?</string>
+    <string name="text_receive_delete_message">모두 받으셨나요? \n 리스트를 삭제하시겠습니까?</string>
+
+
 </resources>

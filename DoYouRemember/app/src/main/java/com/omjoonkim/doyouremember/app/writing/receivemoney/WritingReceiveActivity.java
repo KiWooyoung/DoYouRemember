@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -269,6 +270,9 @@ public class WritingReceiveActivity extends AppCompatActivity {
 	public boolean onOptionsItemSelected( MenuItem item ) {
 
 		switch ( item.getItemId() ) {
+			case R.id.home:
+				finish();
+				Log.v(TAG,"받자 화면 뒤로가기 버튼 클릭");
 			case R.id.send_write_finish:
 				writeReceiveForm(  );
 				finish();

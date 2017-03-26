@@ -1,214 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="425dp"
     android:orientation="vertical">
 
-    <ScrollView
-        android:id="@+id/scroll_view_select_bank"
-        android:layout_width="240dp"
-        android:layout_height="404dp">
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="240dp"
-            android:layout_height="404dp"
-            android:orientation="vertical">
+            android:layout_height="45dp"
+            android:background="#ff9436">
 
-            <RelativeLayout
-                android:layout_width="240dp"
-                android:layout_height="45dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="은행 선택"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/image_view_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10.5dp"
+                android:clickable="true"
+                android:src="@drawable/x_button" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/scroll_view_select_bank"
+            android:layout_width="240dp"
+            android:layout_height="404dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="240dp"
-                    android:layout_height="45dp"
-                    android:layout_centerInParent="true"
-                    android:background="#ff9436"
-                    android:gravity="center"
-                    android:text="은행 선택"
-                    android:textColor="#FFFFFF"
-                    android:textSize="16sp" />
+                    android:id="@+id/text_view_kb"
+                    style="@style/Select_Bank_List_TextView"
+                    android:text="국민은행" />
 
-                <RelativeLayout
-                    android:id="@+id/relative_layout_cancel"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="206.5dp"
-                    android:clickable="true"
-                    >
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0" />
 
-                    <ImageView
-                        android:id="@+id/image_view_cancel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:clickable="true"
-                        android:src="@drawable/x_button" />
+                <TextView
+                    android:id="@+id/text_view_ibk"
+                    style="@style/Select_Bank_List_TextView"
+                    android:text="기업은행" />
 
-                </RelativeLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0" />
 
-                <!--<ImageView-->
-                    <!--android:id="@+id/image_view_cancel"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_centerVertical="true"-->
-                    <!--android:layout_marginLeft="206.5dp"-->
-                    <!--android:clickable="true"-->
-                    <!--android:src="@drawable/x_button" />-->
+                <TextView
+                    android:id="@+id/text_view_nonghyub"
+                    style="@style/Select_Bank_List_TextView"
+                    android:text="농협은행" />
 
-            </RelativeLayout>
-            <!-- ?attr/selectedBackgroundColor / Ripple -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0" />
 
-            <TextView
-                android:id="@+id/text_view_kb"
-                android:layout_width="240dp"
-                android:layout_height="45dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:text="국민은행"
-                android:textColor="#4a4a4a"
-                android:textSize="14sp"
-                android:clickable="true"
-                android:background="@drawable/ripple_effect"
-                />
+                <TextView
+                    android:id="@+id/text_view_city"
+                    style="@style/Select_Bank_List_TextView"
+                    android:text="시티은행" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#e0e0e0" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0" />
 
-            <TextView
-                android:id="@+id/text_view_woori"
-                android:layout_width="240dp"
-                android:layout_height="45dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:text="우리은행"
-                android:textColor="#4a4a4a"
-                android:textSize="14sp"
-                android:background="@drawable/ripple_effect"
-                />
-            신한은행,하나은행,시티은행,농협,기업은행,부산은행
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#e0e0e0" />
+                <TextView
+                    android:id="@+id/text_view_sinhan"
+                    style="@style/Select_Bank_List_TextView"
+                    android:text="신한은행" />
 
-            <TextView
-                android:id="@+id/text_view_sinhan"
-                android:layout_width="240dp"
-                android:layout_height="45dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:text="신한은행"
-                android:textColor="#4a4a4a"
-                android:textSize="14sp"
-                android:clickable="true"
-                android:background="@drawable/ripple_effect"
-                />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#e0e0e0" />
+                <TextView
+                    android:id="@+id/text_view_woori"
+                    style="@style/Select_Bank_List_TextView"
+                    android:text="우리은행" />
 
-            <TextView
-                android:id="@+id/text_view_hana"
-                android:layout_width="240dp"
-                android:layout_height="45dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:text="하나은행"
-                android:textColor="#4a4a4a"
-                android:textSize="14sp"
-                android:clickable="true"
-                android:background="@drawable/ripple_effect"
-                />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#e0e0e0" />
+                <TextView
+                    android:id="@+id/text_view_postOffice"
+                    style="@style/Select_Bank_List_TextView"
+                    android:text="우체국" />
 
-            <TextView
-                android:id="@+id/text_view_city"
-                android:layout_width="240dp"
-                android:layout_height="45dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:text="시티은행"
-                android:textColor="#4a4a4a"
-                android:textSize="14sp"
-                android:clickable="true"
-                android:background="@drawable/ripple_effect"
-                />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#e0e0e0" />
+                <TextView
+                    android:id="@+id/text_view_hana"
+                    style="@style/Select_Bank_List_TextView"
+                    android:text="하나은행" />
 
-            <TextView
-                android:id="@+id/text_view_nonghyub"
-                android:layout_width="240dp"
-                android:layout_height="45dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:text="농협"
-                android:textColor="#4a4a4a"
-                android:textSize="14sp"
-                android:clickable="true"
-                android:background="@drawable/ripple_effect"
-                />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#e0e0e0" />
+                <TextView
+                    android:id="@+id/text_view_busan"
+                    style="@style/Select_Bank_List_TextView"
+                    android:text="부산은행" />
 
-            <TextView
-                android:id="@+id/text_view_ibk"
-                android:layout_width="240dp"
-                android:layout_height="45dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:text="기업은행"
-                android:textColor="#4a4a4a"
-                android:textSize="14sp"
-                android:clickable="true"
-                android:background="@drawable/ripple_effect"
-                />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#e0e0e0" />
+                <TextView
+                    android:id="@+id/text_view_standardChartered"
+                    style="@style/Select_Bank_List_TextView"
+                    android:text="제일은행" />
 
-            <TextView
-                android:id="@+id/text_view_busan"
-                android:layout_width="240dp"
-                android:layout_height="45dp"
-                android:gravity="center_vertical"
-                android:paddingLeft="15dp"
-                android:text="부산은행"
-                android:textColor="#4a4a4a"
-                android:textSize="14sp"
-                android:clickable="true"
-                android:background="@drawable/ripple_effect"
-                />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#e0e0e0" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#e0e0e0" />
 
 
+            </LinearLayout>
 
-
-        </LinearLayout>
-
-
-    </ScrollView>
-
+        </ScrollView>
 
 </LinearLayout>

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -334,15 +335,14 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 
 	@Override
 	public boolean onOptionsItemSelected( MenuItem item ) {
-
-		switch ( item.getItemId() ) {
-			case R.id.send_write_finish:
-				writeSendForm( realm );
-				finish();
-				return true;
-			default:
-				return super.onOptionsItemSelected( item );
+		if (item.getItemId() == android.R.id.home) {
+			finish();
+		} else if (item.getItemId() == R.id.send_write_finish) {
+			writeSendForm( realm );
+			finish();
+			return true;
 		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	private String getTimeFormat( int isAMorPM, int hour, int minute ) {
