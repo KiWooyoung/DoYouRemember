@@ -1,5 +1,6 @@
 package com.omjoonkim.doyouremember.app.frequentlyusedaccount;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -38,8 +39,8 @@ public class FrequentlyUsedAccountPresenterImpl implements FrequentlyUsedAccount
     }
 
     @Override
-    public void setModel() {
-        model.loadData(this);
+    public void setModel(Context context) {
+        model.loadData(this, context);
     }
 
     @Override

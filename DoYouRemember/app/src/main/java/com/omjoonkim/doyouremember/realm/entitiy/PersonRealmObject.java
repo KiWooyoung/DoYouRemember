@@ -59,13 +59,15 @@ public class PersonRealmObject extends RealmObject {
 		return this;
 	}
 
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+
 	public String getProfileImage() {
 		return profileImage;
 	}
 
-	public void setProfileImage(String profileImage) {
-		this.profileImage = profileImage;
-	}
+
 
 //	public boolean isMine() {
 //

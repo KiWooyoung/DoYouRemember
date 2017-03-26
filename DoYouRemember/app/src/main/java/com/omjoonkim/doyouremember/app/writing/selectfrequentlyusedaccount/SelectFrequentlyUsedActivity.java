@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.writing.selectfrequentlyusedaccount.listener.OnItemClickListener;
+import com.omjoonkim.doyouremember.realm.entitiy.AccountRealmObject;
 import com.omjoonkim.doyouremember.realm.entitiy.PersonRealmObject;
 
 import butterknife.BindDimen;
@@ -20,8 +22,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
 public class SelectFrequentlyUsedActivity extends AppCompatActivity implements OnItemClickListener {
+
+    public static final String TAG = SelectFrequentlyUsedActivity.class.getSimpleName();
 
     @BindDimen(R.dimen.frequent_list_first_margin)
     int spacingFirstSize;
@@ -54,11 +59,14 @@ public class SelectFrequentlyUsedActivity extends AppCompatActivity implements O
         tbSelectUser.setNavigationIcon(R.drawable.back_icon);
 
         adapter = new SelectFrequentlyUsedAdapter(getApplicationContext(), this);
-        result = realm.where(PersonRealmObject.class).findAll();
+        result = realm.where(PersonRealmObject.class)
+                .equalTo("accountList.isMine", false)
+                .findAll();
         adapter.setData(result);
         recyclerView.addItemDecoration(new SelectFrequentUserItemDecoration(spacingFirstSize));
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(adapter);
+
     }
 
     @Override

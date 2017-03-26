@@ -1,5 +1,7 @@
 package com.omjoonkim.doyouremember.app.frequentlyusedaccount;
 
+import android.content.Context;
+
 import com.omjoonkim.doyouremember.app.frequentlyusedaccount.adapter.FrequentlyUesdAccountAdapter;
 
 import java.util.List;
@@ -13,7 +15,7 @@ public interface FrequentlyUsedAccountPresenter {
     void deleteAccount(int position, String info);
     void onAddFrequentlyUsedAccount();
     void modifyAccount();
-    void setModel();
+    void setModel(Context context);
     void setView(List<FrequentlyUesdAccountAdapter.ItemView> data);
 
     void swipeWriteList(int position);

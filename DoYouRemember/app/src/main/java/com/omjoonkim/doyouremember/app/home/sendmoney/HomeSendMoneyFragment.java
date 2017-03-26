@@ -20,6 +20,7 @@ import com.omjoonkim.doyouremember.app.home.sendmoney.listener.OnHomeSendClickLi
 import com.omjoonkim.doyouremember.app.home.sendmoney.presenter.HomeSendPresenter;
 import com.omjoonkim.doyouremember.app.home.sendmoney.presenter.HomeSendPresenterImpl;
 import com.omjoonkim.doyouremember.app.writing.sendmoney.WritingSendActivity;
+import com.omjoonkim.doyouremember.common.EmptyRecyclerView;
 import com.omjoonkim.doyouremember.realm.entitiy.SendMoneyRealmObject;
 
 import butterknife.BindDimen;
@@ -32,7 +33,10 @@ import io.realm.RealmResults;
 public class HomeSendMoneyFragment extends Fragment implements HomeSendPresenter.View {
 
     @BindView(R.id.recycler_home_send)
-    RecyclerView recyclerView;
+    EmptyRecyclerView recyclerView;
+
+    @BindView(R.id.empty_view_home_send)
+    View emptyView;
 
     @BindDimen(R.dimen.send_list_bottom_margin)
     int spacingBottomSize;
@@ -78,6 +82,7 @@ public class HomeSendMoneyFragment extends Fragment implements HomeSendPresenter
     private void initRecyclerViewInit() {
         adapter = new HomeSendAdapter(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
+        recyclerView.setEmptyView(emptyView);
         recyclerView.setAdapter(adapter);
         recyclerView.addItemDecoration(new HomeSendItemDecoration(spacingBottomSize, spacingFirstSize));
         sendMoneyRealmResults = realm.where(SendMoneyRealmObject.class).findAllSorted( "dateTime" );

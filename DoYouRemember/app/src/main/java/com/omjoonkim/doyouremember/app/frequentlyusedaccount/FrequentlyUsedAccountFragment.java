@@ -79,7 +79,7 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 //        "김범준".compareTo("기우영");
         adapter.setMode(Attributes.Mode.Single);
-        presenter.setModel();
+        presenter.setModel(getContext());
         return view;
     }
 
@@ -232,12 +232,12 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 0 && resultCode == Activity.RESULT_OK)
-            presenter.setModel();
+            presenter.setModel(getContext());
         if(requestCode == 1 && resultCode == Activity.RESULT_OK)
            new Thread(new Runnable() {
                @Override
                public void run() {
-                   presenter.setModel();
+                   presenter.setModel(getContext());
                }
            }).start();
     }

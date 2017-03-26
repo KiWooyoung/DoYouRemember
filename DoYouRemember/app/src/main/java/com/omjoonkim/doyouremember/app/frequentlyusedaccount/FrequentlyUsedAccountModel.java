@@ -1,5 +1,7 @@
 package com.omjoonkim.doyouremember.app.frequentlyusedaccount;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import com.omjoonkim.doyouremember.R;
@@ -15,16 +17,12 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.Sort;
 
-/**
- * Created by owner on 2017-01-17.
- */
 
 class FrequentlyUsedAccountModel {
 
     private Realm realm = null;
-    String temp;
 
-    void loadData(FrequentlyUsedAccountPresenterImpl presenter ) {
+    void loadData(FrequentlyUsedAccountPresenterImpl presenter, Context context) {
 
         List<FrequentlyUesdAccountAdapter.ItemView> items = new ArrayList<>();
         realm = AppRealm.get().DylRealm();
@@ -35,10 +33,11 @@ class FrequentlyUsedAccountModel {
         result = result.sort("id", Sort.ASCENDING);
 
         for (PersonRealmObject personRealmObject : result) {
-            temp = personRealmObject.getProfileImage();
+            String mDrawableName = personRealmObject.getProfileImage();
+            int resId = context.getResources().getIdentifier(mDrawableName ,"drawable",context.getPackageName());
             items.add(new FrequentlyUesdAccountAdapter.ItemView(personRealmObject.getId(), personRealmObject.getName()
                     , personRealmObject.getAccountList().get(0).getBankType() + " " + personRealmObject.getAccountList().get(0).getAccountNumber()
-                    , R.mipmap.ic_launcher));
+                    , resId));
             //Todo 랜덤이미지 넣기(사진받으면)
         }
 
