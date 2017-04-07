@@ -34,4 +34,6 @@
 	<color name="swipe_orange_level2">#ffad38</color>
 	<color name="swipe_orange_level3">#ffc63c</color>
 
+	<color name="message_gray">#e2e2e2</color>
+
 </resources>

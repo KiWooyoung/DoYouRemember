@@ -47,7 +47,10 @@ public class SelectFrequentlyUsedAdapter extends RecyclerView.Adapter<SelectFreq
                 + " "
                 + items.get(position).getAccountList().get(0).getAccountNumber();
         holder.txtAccountInfo.setText(accountInfo);
-        holder.imgProfileImage.setImageResource(R.mipmap.ic_launcher);
+        String mDrawableName = items.get(position).getProfileImage();
+        int resId = mContext.getResources().getIdentifier(mDrawableName ,"drawable",mContext.getPackageName());
+        holder.imgProfileImage.setImageResource(resId);
+
     }
 
     @Override

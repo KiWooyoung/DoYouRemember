@@ -241,18 +241,4 @@ public class FrequentlyUsedAccountFragment extends Fragment implements com.omjoo
                }
            }).start();
     }
-
-    //    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        inflater.inflate(R.menu.add_frequently_used_account,menu);
-//        super.onCreateOptionsMenu(menu, inflater);
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        if (item.getItemId() == R.id.add_account) {
-//            Toast.makeText(getContext(), "aaa", Toast.LENGTH_SHORT).show();
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
 }

@@ -1,8 +1,8 @@
 package com.omjoonkim.doyouremember.app.home.receivemoney;
 
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,8 +13,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.omjoonkim.doyouremember.R;
+import com.omjoonkim.doyouremember.app.home.receivemoney.dialog.SelectMessageDialog;
+import com.omjoonkim.doyouremember.app.home.receivemoney.listener.OnHomeReceiveClickListener;
 import com.omjoonkim.doyouremember.app.home.receivemoney.presenter.HomeReceivePresenter;
 import com.omjoonkim.doyouremember.app.home.receivemoney.presenter.HomeReceivePresenterImpl;
+import com.omjoonkim.doyouremember.app.writing.receivemoney.WritingReceiveActivity;
 import com.omjoonkim.doyouremember.model.HomeReceiveChildData;
 import com.omjoonkim.doyouremember.model.HomeReceiveParentData;
 import com.thoughtbot.expandablecheckrecyclerview.listeners.OnCheckChildClickListener;
@@ -37,6 +40,11 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
 
     private HomeReceiveAdapter adapter;
     private HomeReceivePresenter homeReceivePresenter;
+
+    @OnClick(R.id.fab_receive_writing)
+    void onFabReceiveClick(View view){
+        homeReceivePresenter.onClickFab();
+    }
 
     public static HomeReceiveMoneyFragment newInstance() {
         return new HomeReceiveMoneyFragment();
@@ -77,9 +85,22 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
         adapter.setChildClickListener(new OnCheckChildClickListener() {
             @Override
             public void onCheckChildCLick(View v, boolean checked, CheckedExpandableGroup group, int childIndex) {
+                // 부모 포지션 가져오기
                 int index = adapter.getGroups().indexOf(group);
-                Log.v(TAG, "부모 포지션~~"+String.valueOf(index));
                 adapter.notifyItemChanged(index);
+            }
+        });
+
+        adapter.setClickListener(new OnHomeReceiveClickListener() {
+
+            @Override
+            public void onSendKakaoLink(String receivePrice) {
+                homeReceivePresenter.onClickKakaoLink(receivePrice);
+            }
+
+            @Override
+            public void onCheckedDebtors(int parentPosition) {
+
             }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
@@ -88,25 +109,24 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
     }
 
     @Override
-    public void updateDebtorCount(final int parentPosition) {
-//        new Handler().post(new Runnable() {
-//            @Override
-//            public void run() {
-//                adapter.notifyParentChanged(parentPosition);
-//            }
-//        });
+    public void loadHomeReceiveWritingActivity() {
+        startActivity(new Intent(this.getContext(), WritingReceiveActivity.class));
     }
 
-    @OnClick(R.id.fab_send_writing)
-    public void onClickSendWriting(){
-        
+    @Override
+    public void updateDebtorCount(final int parentPosition) {
+
+    }
+
+    @Override
+    public void sendKaKaoLink(String receivePrice) {
+        SelectMessageDialog selectMessageDialog = SelectMessageDialog.newDialogInstance(receivePrice);
+        selectMessageDialog.show(getFragmentManager(), "message select dialog");
     }
 
     @Override
     public void onResume() {
-
         super.onResume();
-
     }
 
     @Override

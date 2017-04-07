@@ -6,6 +6,6 @@ import com.omjoonkim.doyouremember.model.HomeReceiveParentData;
 import java.util.List;
 
 public interface OnHomeReceiveClickListener {
-    void onSendKakaoLink();
+    void onSendKakaoLink(String receivePrice);
     void onCheckedDebtors(int parentPosition);
 }

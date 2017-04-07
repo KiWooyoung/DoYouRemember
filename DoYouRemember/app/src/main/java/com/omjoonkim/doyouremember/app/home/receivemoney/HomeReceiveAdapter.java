@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.omjoonkim.doyouremember.R;
+import com.omjoonkim.doyouremember.app.home.receivemoney.listener.OnHomeReceiveClickListener;
 import com.omjoonkim.doyouremember.model.HomeReceiveChildData;
 import com.omjoonkim.doyouremember.model.HomeReceiveParentData;
 import com.thoughtbot.expandablecheckrecyclerview.CheckableChildRecyclerViewAdapter;
@@ -18,9 +19,14 @@ public class HomeReceiveAdapter extends CheckableChildRecyclerViewAdapter
         <HomeReceiveMoneyParentViewHolder, HomeReceiveMoneyChildViewHolder> {
 
     public static final String TAG = HomeReceiveAdapter.class.getSimpleName();
+    private OnHomeReceiveClickListener listener;
 
     public HomeReceiveAdapter(List<HomeReceiveParentData> groups) {
         super(groups);
+    }
+
+    public void setClickListener(OnHomeReceiveClickListener listener) {
+        this.listener = listener;
     }
 
     @Override
@@ -32,7 +38,7 @@ public class HomeReceiveAdapter extends CheckableChildRecyclerViewAdapter
     @Override
     public void onBindCheckChildViewHolder(HomeReceiveMoneyChildViewHolder holder, int flatPosition, CheckedExpandableGroup group, int childIndex) {
         final HomeReceiveChildData childData = (HomeReceiveChildData) group.getItems().get(childIndex);
-        holder.bind(childData);
+        holder.bind(childData, listener);
     }
 
     @Override

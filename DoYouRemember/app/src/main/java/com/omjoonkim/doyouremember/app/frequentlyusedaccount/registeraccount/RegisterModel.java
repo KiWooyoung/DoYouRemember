@@ -21,7 +21,7 @@ public class RegisterModel {
         realm.executeTransaction(new Realm.Transaction() {
             @Override
             public void execute(Realm realm) { //Todo 자동 박싱 언박싱 공부 - 개념확실X , 2.기본키는 항상 필요햇다 맞다.
-                //Todo 아래 key추가하는거 왜저렇게 되는건지 알기. -알음
+                //Todo 아래 key 추가하는거 왜저렇게 되는건지 알기. -알음
                 Number num = realm.where(PersonRealmObject.class).max("id");
                 long ID;
                 if (num == null) {

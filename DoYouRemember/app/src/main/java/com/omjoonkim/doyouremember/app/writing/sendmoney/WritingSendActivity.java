@@ -16,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.nightonke.jellytogglebutton.JellyToggleButton;
 import com.nightonke.jellytogglebutton.State;
@@ -335,12 +336,18 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 
 	@Override
 	public boolean onOptionsItemSelected( MenuItem item ) {
-		if (item.getItemId() == android.R.id.home) {
-			finish();
-		} else if (item.getItemId() == R.id.send_write_finish) {
-			writeSendForm( realm );
-			finish();
-			return true;
+		switch (item.getItemId()){
+			case android.R.id.home:
+				finish();
+				return true;
+			case R.id.send_write_finish:
+				if (checkInput()){
+					writeSendForm( realm );
+					finish();
+					return true;
+				}else{
+					Toast.makeText(WritingSendActivity.this,"모두 입력해주세요",Toast.LENGTH_LONG).show();
+				}
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -392,15 +399,24 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 		} );
 	}
 
+	private boolean checkInput() {
+		if (tvSendBank.getText() != null
+				&& etWritingTitle.getText().toString() !=null
+				&& etWritingCreditor.getText().toString() != null
+				&& etEtWritingAccount.getText().toString() != null
+				&& etEtWritingPrice.getText().toString() != null){
+			return true;
+		}
+		return false;
+	}
+
 	@Override
 	public void onSelectBank( String bank ) {
-
 		tvSendBank.setText( bank );
 	}
 
 	@Override
 	protected void onDestroy() {
-
 		super.onDestroy();
 		realm.close();
 	}

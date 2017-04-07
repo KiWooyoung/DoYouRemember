@@ -51,11 +51,11 @@ public class HomeReceiveMoneyChildViewHolder extends CheckableChildViewHolder {
         return ctvDebtorName;
     }
 
-    public void bind(HomeReceiveChildData childData){
+    public void bind(HomeReceiveChildData childData, final OnHomeReceiveClickListener listener){
 
         ctvDebtorName.setText(childData.getDebtorName());
 
-        String priceReceiveIndividualKRW = NumberFormat.getInstance(Locale.KOREA).format(childData.getPriceIndividual());
+        final String priceReceiveIndividualKRW = NumberFormat.getInstance(Locale.KOREA).format(childData.getPriceIndividual());
         tvReceivePriceIndiIndividual.setText(priceReceiveIndividualKRW+"원");
 
         if (checkable.isChecked()){
@@ -70,7 +70,7 @@ public class HomeReceiveMoneyChildViewHolder extends CheckableChildViewHolder {
         imgKaKaoLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("imgKaKaoLink","========kakaolink===========");
+                listener.onSendKakaoLink(priceReceiveIndividualKRW);
             }
         });
     }

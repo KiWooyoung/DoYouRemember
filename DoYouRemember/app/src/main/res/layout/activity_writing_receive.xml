@@ -5,18 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.omjoonkim.doyouremember.app.writing.sendmoney.WritingSendActivity"
-  >
+    tools:context="com.omjoonkim.doyouremember.app.writing.sendmoney.WritingSendActivity">
 
     <include layout="@layout/appbar_writing_receive_tab"/>
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:background="@color/background_gray">
 
-        <include layout="@layout/content_writing_send"/>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </ScrollView>
+            <include layout="@layout/content_writing_receive"/>
+
+        </ScrollView>
+
+        <RelativeLayout
+            android:id="@+id/view_writing_receive_add_people"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/background_gray"
+            android:padding="14dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:text="항목 추가"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/writing_receive_add_button"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
 
 </android.support.design.widget.CoordinatorLayout>

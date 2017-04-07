@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager_message"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_gravity="bottom"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingEnd="@dimen/banner_padding"
+            android:paddingLeft="@dimen/banner_padding"
+            android:paddingRight="@dimen/banner_padding"
+            android:paddingStart="@dimen/banner_padding" />
+
+        <FrameLayout
+            android:id="@+id/view_send_message"
+            android:layout_marginTop="40dp"
+            style="?android:attr/buttonStyle"
+            android:background="@drawable/kakao_message_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/banner_padding"
+            android:layout_marginRight="@dimen/banner_padding"
+            android:layout_below="@id/viewPager_message">
+
+            <TextView
+                style="?android:attr/buttonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:clickable="false"
+                android:drawableLeft="@drawable/kakao_talk"
+                android:textSize="17sp"
+                android:textColor="#000"
+                android:focusable="false"
+                android:gravity="center"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:text="  알림 메세지 보내기" />
+
+        </FrameLayout>
+
+
+        <Button
+            android:id="@+id/btn_send_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kakao_message_quit"
+            android:text="취소"
+            android:textSize="17sp"
+            android:textColor="#000"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="@dimen/banner_padding"
+            android:layout_marginRight="@dimen/banner_padding"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/view_send_message"
+            android:layout_marginBottom="10dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

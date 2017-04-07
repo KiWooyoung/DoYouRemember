@@ -13,8 +13,13 @@ public class HomeReceivePresenterImpl implements HomeReceivePresenter {
     }
 
     @Override
-    public void onClickKakaoLink() {
+    public void onClickFab() {
+        this.view.loadHomeReceiveWritingActivity();
+    }
 
+    @Override
+    public void onClickKakaoLink(String receivePrice) {
+        this.view.sendKaKaoLink(receivePrice);
     }
 
     @Override

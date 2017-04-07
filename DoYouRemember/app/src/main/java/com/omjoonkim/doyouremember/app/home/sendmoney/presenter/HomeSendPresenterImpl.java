@@ -11,11 +11,6 @@ public class HomeSendPresenterImpl implements HomeSendPresenter {
     }
 
     @Override
-    public void onChangeItemCount() {
-        this.view.setRecyclerBackgroundImg();
-    }
-
-    @Override
     public void onClickFab() {
         this.view.loadHomeSendWritingActivity();
     }

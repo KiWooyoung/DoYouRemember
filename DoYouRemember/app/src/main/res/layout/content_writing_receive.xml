@@ -6,15 +6,15 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	app:layout_behavior="@string/appbar_scrolling_view_behavior"
-	tools:context="com.omjoonkim.doyouremember.app.writing.sendmoney.WritingSendActivity"
-	tools:showIn="@layout/activity_writing_send">
+	tools:context="com.omjoonkim.doyouremember.app.writing.receivemoney.WritingReceiveActivity"
+	tools:showIn="@layout/activity_writing_receive">
 
 	<android.support.v7.widget.CardView
-		android:id="@+id/cardView_writing_send_title"
-		style="@style/Home_Writing_CardView"
+		android:id="@+id/cardView_writing_receive_title"
 		android:layout_height="102dp"
 		android:layout_marginTop="20dp"
-		app:cardCornerRadius="5dp">
+		app:cardCornerRadius="5dp"
+		style="@style/Home_Writing_CardView">
 
 		<RelativeLayout
 			android:layout_width="match_parent"
@@ -23,29 +23,29 @@
 			android:paddingRight="20dp">
 
 			<TextView
-				android:id="@+id/textView_writing_send_title"
-				style="@style/Home_Writing_TextView"
+				android:id="@+id/textView_writing_receive_title"
 				android:layout_marginTop="15dp"
-				android:text="제목"/>
+				android:text="제목"
+				style="@style/Home_Writing_TextView"/>
 
 			<EditText
-				android:id="@+id/editText_writing_send_title"
-				style="@style/Home_Writing_EditText"
+				android:id="@+id/editText_writing_receive_title"
 				android:layout_width="match_parent"
-				android:layout_below="@id/textView_writing_send_title"
 				android:layout_marginTop="10dp"
-				android:hint="@string/text_writing_title_hint"/>
+				android:layout_below="@id/textView_writing_receive_title"
+				android:hint="@string/text_writing_title_hint"
+				style="@style/Home_Writing_EditText" />
 
 		</RelativeLayout>
 	</android.support.v7.widget.CardView>
 
 	<android.support.v7.widget.CardView
-		android:id="@+id/cardView_writing_send_deadline"
-		style="@style/Home_Writing_CardView"
+		android:id="@+id/cardView_writing_receive_deadline"
 		android:layout_height="wrap_content"
-		android:layout_below="@+id/cardView_writing_send_title"
 		android:layout_marginTop="20dp"
-		app:cardCornerRadius="5dp">
+		app:cardCornerRadius="5dp"
+		android:layout_below="@+id/cardView_writing_receive_title"
+		style="@style/Home_Writing_CardView">
 
 		<RelativeLayout
 			android:layout_width="match_parent"
@@ -54,158 +54,158 @@
 			android:paddingRight="20dp">
 
 			<TextView
-				android:id="@+id/textView_writing_send_deadline"
-				style="@style/Home_Writing_TextView"
+				android:id="@+id/textView_writing_receive_deadline"
 				android:layout_marginTop="15dp"
-				android:text="입금 기한"/>
+				android:text="입금 기한"
+				style="@style/Home_Writing_TextView"/>
 
 			<View
 				android:id="@+id/fakeView"
 				android:layout_width="10dp"
 				android:layout_height="40dp"
-				android:layout_below="@id/textView_writing_send_deadline"
+				android:layout_marginTop="5dp"
 				android:layout_centerInParent="true"
-				android:layout_marginTop="5dp"/>
+				android:layout_below="@id/textView_writing_receive_deadline"/>
 
 			<TextView
-				android:id="@+id/textView_writing_send_deadline_date"
+				android:id="@+id/textView_writing_receive_deadline_date"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
+				android:layout_marginTop="5dp"
+				android:layout_below="@id/textView_writing_receive_deadline"
+				android:textSize="16sp"
+				android:textColorHint="#aeaeaf"
+				android:textColor="#4a4a4a"
+				android:gravity="center"
 				android:layout_alignParentLeft="true"
-				android:layout_below="@id/textView_writing_send_deadline"
-				android:layout_marginTop="5dp"
-				android:layout_toStartOf="@+id/fakeView"
 				android:background="@drawable/back"
-				android:gravity="center"
-				android:textColor="#4a4a4a"
-				android:textColorHint="#aeaeaf"
-				android:textSize="16sp"/>
+				android:layout_toStartOf="@+id/fakeView" />
 
 			<ImageView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_below="@id/textView_writing_send_deadline"
 				android:layout_marginRight="13dp"
 				android:layout_marginTop="20dp"
-				android:layout_toLeftOf="@id/fakeView"
-				android:src="@drawable/red_triangle_copy_2"/>
+				android:src="@drawable/red_triangle_copy_2"
+				android:layout_below="@id/textView_writing_receive_deadline"
+				android:layout_toLeftOf="@id/fakeView" />
 
 			<TextView
-				android:id="@+id/textView_writing_send_deadline_time"
+				android:id="@+id/textView_writing_receive_deadline_time"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
-				android:layout_alignParentRight="true"
-				android:layout_below="@id/textView_writing_send_deadline"
 				android:layout_marginTop="5dp"
-				android:layout_toEndOf="@+id/fakeView"
-				android:background="@drawable/back"
-				android:gravity="center"
-				android:textColor="#4a4a4a"
+				android:layout_below="@id/textView_writing_receive_deadline"
+				android:layout_alignParentRight="true"
+				android:textSize="16sp"
 				android:textColorHint="#aeaeaf"
-				android:textSize="16sp"/>
+				android:textColor="#4a4a4a"
+				android:gravity="center"
+				android:background="@drawable/back"
+				android:layout_toEndOf="@+id/fakeView" />
 
 			<ImageView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_alignParentRight="true"
-				android:layout_below="@id/textView_writing_send_deadline"
-				android:layout_marginRight="13dp"
 				android:layout_marginTop="20dp"
-				android:layout_toLeftOf="@id/fakeView"
-				android:src="@drawable/red_triangle_copy_2"/>
+				android:layout_marginRight="13dp"
+				android:src="@drawable/red_triangle_copy_2"
+				android:layout_below="@id/textView_writing_receive_deadline"
+				android:layout_toLeftOf="@id/fakeView" />
 
 			<TextView
-				android:id="@+id/textView_writing_send_alarm"
-				style="@style/Home_Writing_TextView"
-				android:layout_below="@id/textView_writing_send_deadline_date"
+				android:id="@+id/textView_writing_receive_alarm"
 				android:layout_marginTop="25dp"
-				android:text="알람"/>
+				android:layout_below="@id/textView_writing_receive_deadline_date"
+				android:text="알람"
+				style="@style/Home_Writing_TextView"/>
 
 			<com.nightonke.jellytogglebutton.JellyToggleButton
 				android:id="@+id/toggle_alarm_activate"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_alignParentRight="true"
-				android:layout_below="@id/textView_writing_send_deadline_date"
-				android:layout_marginBottom="16dp"
 				android:layout_marginTop="22dp"
-				app:jtbJelly="itself"
+				android:layout_marginBottom="16dp"
+				android:layout_below="@id/textView_writing_receive_deadline_date"
 				app:jtbLeftBackgroundColor="@color/toggle_DarkGray"
 				app:jtbLeftThumbColor="@color/toggle_LightGray"
 				app:jtbRightBackgroundColor="@color/focus_red"
-				app:jtbRightThumbColor="@color/cursor"/>
+				app:jtbRightThumbColor="@color/cursor"
+				app:jtbJelly="itself" />
 
 			<View
+				android:visibility="gone"
 				android:id="@+id/fakeView2"
 				android:layout_width="10dp"
 				android:layout_height="40dp"
-				android:layout_below="@id/textView_writing_send_alarm"
-				android:layout_centerInParent="true"
 				android:layout_marginTop="5dp"
-				android:visibility="gone"/>
+				android:layout_centerInParent="true"
+				android:layout_below="@id/textView_writing_receive_alarm"/>
 
 			<TextView
-				android:id="@+id/textView_writing_send_alarm_date"
+				android:visibility="gone"
+				android:id="@+id/textView_writing_receive_alarm_date"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
+				android:layout_marginTop="12dp"
+				android:layout_below="@id/textView_writing_receive_alarm"
+				android:textSize="16sp"
+				android:textColorHint="#aeaeaf"
+				android:textColor="#4a4a4a"
+				android:gravity="center"
 				android:layout_alignParentLeft="true"
-				android:layout_below="@id/textView_writing_send_alarm"
-				android:layout_marginTop="12dp"
-				android:layout_toStartOf="@+id/fakeView"
 				android:background="@drawable/back"
-				android:gravity="center"
-				android:textColor="#4a4a4a"
-				android:textColorHint="#aeaeaf"
-				android:textSize="16sp"
-				android:visibility="gone"/>
+				android:layout_toStartOf="@+id/fakeView" />
 
 			<ImageView
-				android:id="@+id/imageView_sendAlarmDate"
+				android:visibility="gone"
+				android:id="@+id/imageView_receiveAlarmDate"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_below="@id/textView_writing_send_alarm"
 				android:layout_marginRight="13dp"
 				android:layout_marginTop="27dp"
-				android:layout_toLeftOf="@id/fakeView"
 				android:src="@drawable/red_triangle_copy_2"
-				android:visibility="gone"/>
+				android:layout_below="@id/textView_writing_receive_alarm"
+				android:layout_toLeftOf="@id/fakeView" />
 
 			<TextView
-				android:id="@+id/textView_writing_send_alarm_time"
+				android:visibility="gone"
+				android:layout_marginBottom="16dp"
+				android:id="@+id/textView_writing_receive_alarm_time"
 				android:layout_width="match_parent"
 				android:layout_height="40dp"
-				android:layout_alignParentRight="true"
-				android:layout_below="@id/textView_writing_send_alarm"
-				android:layout_marginBottom="16dp"
 				android:layout_marginTop="12dp"
-				android:layout_toEndOf="@+id/fakeView"
-				android:background="@drawable/back"
-				android:gravity="center"
-				android:textColor="#4a4a4a"
-				android:textColorHint="#aeaeaf"
+				android:layout_below="@id/textView_writing_receive_alarm"
+				android:layout_alignParentRight="true"
 				android:textSize="16sp"
-				android:visibility="gone"/>
+				android:textColorHint="#aeaeaf"
+				android:textColor="#4a4a4a"
+				android:gravity="center"
+				android:background="@drawable/back"
+				android:layout_toEndOf="@+id/fakeView" />
 
 			<ImageView
-				android:id="@+id/imageView_sendAlarmTime"
+				android:id="@+id/imageView_receiveAlarmTime"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_alignParentRight="true"
-				android:layout_below="@id/textView_writing_send_alarm"
-				android:layout_marginRight="13dp"
 				android:layout_marginTop="27dp"
-				android:layout_toLeftOf="@id/fakeView2"
+				android:layout_marginRight="13dp"
+				android:visibility="gone"
 				android:src="@drawable/red_triangle_copy_2"
-				android:visibility="gone"/>
+				android:layout_below="@id/textView_writing_receive_alarm"
+				android:layout_toLeftOf="@id/fakeView2" />
 
 		</RelativeLayout>
 	</android.support.v7.widget.CardView>
 
 	<android.support.v7.widget.RecyclerView
-		android:id="@+id/recyclerView"
+		android:id="@+id/recyclerView_writing_receive"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_below="@+id/cardView_writing_send_deadline"
+		android:layout_below="@+id/cardView_writing_receive_deadline"
 		android:layout_marginTop="20dp"/>
 
 </RelativeLayout>

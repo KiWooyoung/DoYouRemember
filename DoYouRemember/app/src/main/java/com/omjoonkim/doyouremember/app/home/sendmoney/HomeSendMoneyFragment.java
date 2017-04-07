@@ -88,10 +88,6 @@ public class HomeSendMoneyFragment extends Fragment implements HomeSendPresenter
         sendMoneyRealmResults = realm.where(SendMoneyRealmObject.class).findAllSorted( "dateTime" );
         adapter.setData(sendMoneyRealmResults);
         adapter.setClickListener(new OnHomeSendClickListener() {
-            @Override
-            public void onChangeItemCount() {
-                homeSendPresenter.onChangeItemCount();
-            }
 
             @Override
             public void onClickSendCopy(String account) {
@@ -140,17 +136,7 @@ public class HomeSendMoneyFragment extends Fragment implements HomeSendPresenter
     }
 
     @Override
-    public void setRecyclerBackgroundImg() {
-        if (adapter.getItemCount() != 0) {
-
-        } else {
-
-        }
-    }
-
-    @Override
     public void onResume() {
-
         super.onResume();
         RealmResults<SendMoneyRealmObject> sendMoneyRealmResults = realm.where(SendMoneyRealmObject.class).findAllSorted( "dateTime" );
         adapter.setData(sendMoneyRealmResults);

@@ -34,4 +34,6 @@
     <dimen name="item_send_size">82dp</dimen>
     <!--홈의 보내자 item 사이즈-->
     <dimen name="list_receive_height">76dp</dimen>
+
+    <dimen name="banner_padding">28dp</dimen>
 </resources>

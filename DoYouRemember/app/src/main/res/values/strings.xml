@@ -17,5 +17,9 @@
     <string name="text_send_delete_message">보내셨습니까? \n 리스트를 삭제하시겠습니까?</string>
     <string name="text_receive_delete_message">모두 받으셨나요? \n 리스트를 삭제하시겠습니까?</string>
 
+    <string name="kakao_message_1">혹시 까먹으셨나요? 핸드폰 켠 김에 %1$s은행 %2$s로 %3$s원 까먹지 망고 보내주세요!</string>
+    <string name="kakao_message_2">입금만 오매불망 기다리는 중! ლ(╹◡╹ლ) %1$s은행 %2$s로 %3$s원 지금 바로 보내주는 니 맘은 얼망고?</string>
+    <string name="kakao_message_3">%1$s은행 %2$s로 오늘 %3$s원을 보내는 자에게는 행운이 깃들 것이며 그렇지 않을 경우 길을 가다 망고 껍질을 밟게될 것입니다.</string>
+
 
 </resources>

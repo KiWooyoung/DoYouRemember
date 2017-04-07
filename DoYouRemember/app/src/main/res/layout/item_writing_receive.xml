@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView_writing_send_creditor"
+    android:layout_height="216dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="28dp"
+    app:cardCornerRadius="5dp"
+    android:layout_below="@+id/cardView_writing_send_deadline"
+    style="@style/Home_Writing_CardView">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:id="@+id/textView_send_people"
+            android:layout_marginTop="15dp"
+            android:textSize="15sp"
+            android:layout_alignParentLeft="true"
+            android:text="보낼사람1"
+            style="@style/Home_Writing_TextView"/>
+
+        <TextView
+            android:id="@+id/textView_writing_receive_debtor"
+            android:layout_marginTop="12dp"
+            android:layout_below="@+id/textView_send_people"
+            android:text="이름"
+            style="@style/Home_Writing_TextView"/>
+
+        <EditText
+            android:id="@+id/editText_writing_receive_debtor"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:hint="@string/text_writing_name_hint"
+            android:layout_below="@+id/textView_writing_receive_debtor"
+            style="@style/Home_Writing_EditText" />
+
+        <TextView
+            android:id="@+id/textView_writing_receive_price"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/editText_writing_receive_debtor"
+            android:text="금액"
+            style="@style/Home_Writing_TextView"/>
+
+        <TextView
+            android:id="@+id/textView_won"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginLeft="9dp"
+            android:textSize="15sp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textView_writing_receive_price"
+            android:text="원"
+            style="@style/Home_Writing_TextView"/>
+
+        <EditText
+            android:id="@+id/editText_writing_receive_price"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:hint="@string/text_writing_price_hint"
+            android:inputType="number"
+            android:layout_toLeftOf="@id/textView_won"
+            android:layout_below="@id/textView_writing_receive_price"
+            style="@style/Home_Writing_EditText" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
