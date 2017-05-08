@@ -199,6 +199,7 @@
 				android:layout_toLeftOf="@id/fakeView2" />
 
 		</RelativeLayout>
+
 	</android.support.v7.widget.CardView>
 
 	<android.support.v7.widget.RecyclerView
@@ -206,6 +207,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_below="@+id/cardView_writing_receive_deadline"
-		android:layout_marginTop="20dp"/>
+		android:layout_marginTop="19dp"
+		android:layout_marginBottom="65dp"/>
 
 </RelativeLayout>

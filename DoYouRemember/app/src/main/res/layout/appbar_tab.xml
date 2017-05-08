@@ -12,15 +12,7 @@
         android:layout_height="@dimen/actionbar_size"
         android:background="@color/colorPrimary"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        >
-
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:padding="7dp"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:src="@drawable/logo_example"/>-->
+        android:layout_alignParentStart="true">
         
         <TextView
         android:id="@+id/toolbar_title"

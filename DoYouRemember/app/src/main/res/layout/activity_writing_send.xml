@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.omjoonkim.doyouremember.app.writing.sendmoney.WritingSendActivity"
-  >
+    tools:context="com.omjoonkim.doyouremember.app.writing.sendmoney.WritingSendActivity">
 
     <include layout="@layout/appbar_writing_tab"/>
 

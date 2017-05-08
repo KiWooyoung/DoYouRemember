@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -401,10 +400,10 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 
 	private boolean checkInput() {
 		if (tvSendBank.getText() != null
-				&& etWritingTitle.getText().toString() !=null
-				&& etWritingCreditor.getText().toString() != null
-				&& etEtWritingAccount.getText().toString() != null
-				&& etEtWritingPrice.getText().toString() != null){
+				&& etWritingTitle.getText().toString().trim().length() > 0
+				&& etWritingCreditor.getText().toString().trim().length() > 0
+				&& etEtWritingAccount.getText().toString().trim().length() > 0
+				&& etEtWritingPrice.getText().toString().trim().length() > 0){
 			return true;
 		}
 		return false;
