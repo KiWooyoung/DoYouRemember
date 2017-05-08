@@ -54,6 +54,9 @@ public class WritingReceiveHolder extends RecyclerView.ViewHolder{
     }
 
     public void bind(String peopleTitle, final OnWritingReceiveClickListener listener, final int position){
+        if (position == 0){
+            imgDelPeople.setVisibility(View.INVISIBLE);
+        }
 
         tvPeopleTitle.setText(peopleTitle+(position+1));
         imgDelPeople.setOnClickListener(new View.OnClickListener() {

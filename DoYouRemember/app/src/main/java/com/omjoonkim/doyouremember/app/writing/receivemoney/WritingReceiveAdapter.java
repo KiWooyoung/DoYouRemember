@@ -45,13 +45,9 @@ public class WritingReceiveAdapter extends RecyclerView.Adapter<WritingReceiveHo
     }
 
     public void deleteData(int position) {
-        if (mItems.size() == 1){
-            Toast.makeText(mContext, "적어도 한 사람이상 있어야합니다.", Toast.LENGTH_SHORT).show();
-        }else{
-            mItems.remove(position);
-            notifyItemRemoved(position);
-            notifyDataSetChanged();
-        }
+        mItems.remove(position);
+        notifyItemRemoved(position);
+        notifyDataSetChanged();
     }
 
 
