@@ -5,12 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
 import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.home.sendmoney.listener.OnHomeSendClickListener;
-import com.omjoonkim.doyouremember.model.HomeSendData;
 import com.omjoonkim.doyouremember.realm.entitiy.SendMoneyRealmObject;
 
 import java.util.ArrayList;

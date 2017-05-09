@@ -51,7 +51,6 @@ public class AccountRealmObject extends RealmObject {
     }
 
     public AccountRealmObject setBankType(String bankType) {
-
         this.bankType = bankType;
         return this;
     }

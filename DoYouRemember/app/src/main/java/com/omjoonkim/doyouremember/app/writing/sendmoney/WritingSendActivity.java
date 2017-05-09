@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,6 +33,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnFocusChange;
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 
 public class WritingSendActivity extends AppCompatActivity implements SelectBankDialog.SelectBankListener {
@@ -265,6 +267,7 @@ public class WritingSendActivity extends AppCompatActivity implements SelectBank
 		// 오늘 날짜 및 시간 설정
 		alarmCalendar = Calendar.getInstance();
 		calendar = Calendar.getInstance();
+
 		if ( sendMoneyRealmObject != null ) {
 			alarmCalendar.setTime( sendMoneyRealmObject.getAlarmTime() );
 			calendar.setTime( sendMoneyRealmObject.getDateTime() );

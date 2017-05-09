@@ -5,14 +5,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.daimajia.swipe.SwipeLayout;
-import com.daimajia.swipe.implments.SwipeItemAdapterMangerImpl;
 import com.daimajia.swipe.implments.SwipeItemRecyclerMangerImpl;
 import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.home.sendmoney.listener.OnHomeSendClickListener;
-import com.omjoonkim.doyouremember.model.HomeSendData;
 import com.omjoonkim.doyouremember.realm.entitiy.SendMoneyRealmObject;
 
 import java.text.NumberFormat;

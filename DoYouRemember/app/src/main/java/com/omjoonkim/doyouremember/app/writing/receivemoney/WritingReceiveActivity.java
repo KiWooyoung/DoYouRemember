@@ -14,8 +14,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -26,15 +24,12 @@ import android.widget.Toast;
 import com.nightonke.jellytogglebutton.JellyToggleButton;
 import com.nightonke.jellytogglebutton.State;
 import com.omjoonkim.doyouremember.R;
-import com.omjoonkim.doyouremember.app.frequentlyusedaccount.dialog.SelectBankDialog;
 import com.omjoonkim.doyouremember.app.writing.receivemoney.listener.OnWritingReceiveClickListener;
 import com.omjoonkim.doyouremember.app.writing.receivemoney.presenter.WritingReceivePresenter;
 import com.omjoonkim.doyouremember.app.writing.receivemoney.presenter.WritingReceivePresenterImpl;
-import com.omjoonkim.doyouremember.app.writing.selectfrequentlyusedaccount.SelectFrequentlyUsedActivity;
-import com.omjoonkim.doyouremember.app.writing.sendmoney.WritingSendActivity;
-import com.omjoonkim.doyouremember.common.EmptyRecyclerView;
+import com.omjoonkim.doyouremember.realm.entitiy.DebtorRealmObject;
+import com.omjoonkim.doyouremember.realm.entitiy.NotificationRealmObject;
 import com.omjoonkim.doyouremember.realm.entitiy.ReceiveMoneyRealmObject;
-import com.omjoonkim.doyouremember.realm.entitiy.SendMoneyRealmObject;
 
 import java.util.Calendar;
 
@@ -43,7 +38,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnFocusChange;
 import io.realm.Realm;
-
 
 public class WritingReceiveActivity extends AppCompatActivity implements WritingReceivePresenter.View{
 
@@ -188,20 +182,15 @@ public class WritingReceiveActivity extends AppCompatActivity implements Writing
 	protected void onCreate( Bundle savedInstanceState ) {
 		super.onCreate( savedInstanceState );
 		setContentView( R.layout.activity_writing_receive );
+
 		ButterKnife.bind(this);
+		realm = Realm.getDefaultInstance();
 
 		presenter = new WritingReceivePresenterImpl();
 		presenter.setView(this);
 
 		initRecyclerViewInit();
 		initView();
-		realm = Realm.getDefaultInstance();
-//		if ( getIntent() != null ) {
-//			long id = getIntent().getLongExtra( "id", -1 );
-//			if ( id > -1 )
-//				sendMoneyRealmObject = realm.where( SendMoneyRealmObject.class ).equalTo( "id", id ).findFirst();
-//		}
-
 	}
 
 	private void initRecyclerViewInit() {
@@ -231,13 +220,6 @@ public class WritingReceiveActivity extends AppCompatActivity implements Writing
 		// 오늘 날짜 및 시간 설정
 		alarmCalendar = Calendar.getInstance();
 		calendar = Calendar.getInstance();
-
-//		if ( sendMoneyRealmObject != null ) {
-//			alarmCalendar.setTime( sendMoneyRealmObject.getAlarmTime() );
-//			calendar.setTime( sendMoneyRealmObject.getDateTime() );
-//			etWritingTitle.setText( sendMoneyRealmObject.getTitle() );
-//
-//		}
 
 		alarmYear = alarmCalendar.get( Calendar.YEAR );
 		alarmMonth = alarmCalendar.get( Calendar.MONTH );
@@ -303,6 +285,7 @@ public class WritingReceiveActivity extends AppCompatActivity implements Writing
 				return true;
 			case R.id.send_write_finish:
 				if (etWritingTitle.getText().toString().trim().length() > 0 && checkItem()){
+					writeReceiveForm(realm);
 					finish();
 					return true;
 				}else{
@@ -339,32 +322,55 @@ public class WritingReceiveActivity extends AppCompatActivity implements Writing
 		return false;
 	}
 
-//	private void writeReceiveForm( ) {
-//		realm.executeTransaction( new Realm.Transaction() {
-//
-//			@Override
-//			public void execute( Realm realm ) {
-//
-//				Number num = realm.where( SendMoneyRealmObject.class ).max( "id" );
-//				int nextID;
-//				if ( num == null ) {
-//					nextID = 1;
-//				}
-//				else {
-//					nextID = num.intValue() + 1;
-//				}
-//				if(sendMoneyRealmObject == null) {
-//					SendMoneyRealmObject sendMoneyRealmObject = new SendMoneyRealmObject();
-//					sendMoneyRealmObject.setId( nextID );
-//				}
-//				sendMoneyRealmObject.setTitle( etWritingTitle.getText().toString() );
-//				sendMoneyRealmObject.setDateTime( calendar.getTime() );
-//				sendMoneyRealmObject.setAlarmTime( alarmCalendar.getTime() );
-//				realm.copyToRealm( sendMoneyRealmObject );
-//
-//			}
-//		} );
-//	}
+	private void writeReceiveForm( Realm realm ) {
+		realm.executeTransaction( new Realm.Transaction() {
+			  @Override
+			  public void execute(Realm realm) {
+
+				  Number num = realm.where( ReceiveMoneyRealmObject.class ).max( "id" );
+				  int nextID;
+				  if ( num == null ) {
+					  nextID = 1;
+				  }
+				  else {
+					  nextID = num.intValue() + 1;
+				  }
+
+				  if(receiveMoneyRealmObject == null) {
+					  receiveMoneyRealmObject = realm.createObject(ReceiveMoneyRealmObject.class, nextID);
+				  }
+
+				  receiveMoneyRealmObject.setTitle(etWritingTitle.getText().toString());
+				  NotificationRealmObject notificationRealmObject = realm.createObject(NotificationRealmObject.class, nextID);
+				  notificationRealmObject.setWorkType("receive");
+				  notificationRealmObject.setDateTime(calendar.getTime());
+				  notificationRealmObject.setAlarmTime(alarmCalendar.getTime());
+
+				  receiveMoneyRealmObject.setNotification(notificationRealmObject);
+
+				  for (int i = 0; i < adapter.getItemCount(); i++) {
+					  View allView = recyclerView.getLayoutManager().findViewByPosition(i);
+					  EditText etReceiveDebtor = (EditText) allView.findViewById(R.id.editText_writing_receive_debtor);
+					  EditText etReceivePrice = (EditText) allView.findViewById(R.id.editText_writing_receive_price);
+
+					  Number debtorNum = realm.where( DebtorRealmObject.class ).max( "id" );
+					  int debtorID;
+
+					  if ( debtorNum == null ) {
+						  debtorID = 1;
+					  } else {
+						  debtorID = debtorNum.intValue() + 1;
+					  }
+
+					  DebtorRealmObject debtorRealmObject = realm.createObject(DebtorRealmObject.class, debtorID);
+					  debtorRealmObject.setName(etReceiveDebtor.getText().toString());
+					  long intPrice = Integer.valueOf(etReceivePrice.getText().toString());
+					  debtorRealmObject.setPrice(intPrice);
+					  receiveMoneyRealmObject.getDebtorList().add(debtorRealmObject);
+				  }
+			  }
+   	    });
+	}
 
 	@Override
 	protected void onDestroy() {

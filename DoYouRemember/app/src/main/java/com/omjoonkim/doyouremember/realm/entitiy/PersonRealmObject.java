@@ -68,7 +68,6 @@ public class PersonRealmObject extends RealmObject {
 	}
 
 
-
 //	public boolean isMine() {
 //
 //		return isMine;

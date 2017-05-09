@@ -138,5 +138,4 @@ public class SendMoneyRealmObject extends RealmObject {
 			return GRAY;
 	}
 
-
 }

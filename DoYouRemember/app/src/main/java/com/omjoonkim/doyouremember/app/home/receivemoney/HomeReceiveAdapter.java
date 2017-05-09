@@ -8,6 +8,8 @@ import com.omjoonkim.doyouremember.R;
 import com.omjoonkim.doyouremember.app.home.receivemoney.listener.OnHomeReceiveClickListener;
 import com.omjoonkim.doyouremember.model.HomeReceiveChildData;
 import com.omjoonkim.doyouremember.model.HomeReceiveParentData;
+import com.omjoonkim.doyouremember.realm.entitiy.DebtorRealmObject;
+import com.omjoonkim.doyouremember.realm.entitiy.ReceiveMoneyRealmObject;
 import com.thoughtbot.expandablecheckrecyclerview.CheckableChildRecyclerViewAdapter;
 import com.thoughtbot.expandablecheckrecyclerview.models.CheckedExpandableGroup;
 import com.thoughtbot.expandablerecyclerview.models.ExpandableGroup;
@@ -39,6 +41,7 @@ public class HomeReceiveAdapter extends CheckableChildRecyclerViewAdapter
     public void onBindCheckChildViewHolder(HomeReceiveMoneyChildViewHolder holder, int flatPosition, CheckedExpandableGroup group, int childIndex) {
         final HomeReceiveChildData childData = (HomeReceiveChildData) group.getItems().get(childIndex);
         holder.bind(childData, listener);
+
     }
 
     @Override

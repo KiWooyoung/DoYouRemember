@@ -20,15 +20,19 @@ import com.omjoonkim.doyouremember.app.home.receivemoney.presenter.HomeReceivePr
 import com.omjoonkim.doyouremember.app.writing.receivemoney.WritingReceiveActivity;
 import com.omjoonkim.doyouremember.model.HomeReceiveChildData;
 import com.omjoonkim.doyouremember.model.HomeReceiveParentData;
+import com.omjoonkim.doyouremember.realm.entitiy.ReceiveMoneyRealmObject;
 import com.thoughtbot.expandablecheckrecyclerview.listeners.OnCheckChildClickListener;
 import com.thoughtbot.expandablecheckrecyclerview.models.CheckedExpandableGroup;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 
 public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePresenter.View {
@@ -40,6 +44,8 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
 
     private HomeReceiveAdapter adapter;
     private HomeReceivePresenter homeReceivePresenter;
+    private Realm realm;
+    RealmResults<ReceiveMoneyRealmObject> receiveMoneyRealmResults;
 
     @OnClick(R.id.fab_receive_writing)
     void onFabReceiveClick(View view){
@@ -55,6 +61,7 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
         super.onCreate(savedInstanceState);
         homeReceivePresenter = new HomeReceivePresenterImpl();
         homeReceivePresenter.setView(this);
+        realm = Realm.getDefaultInstance();
     }
 
     @Override
@@ -72,14 +79,18 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
 
     private void initRecyclerViewInit() {
 
-        HomeReceiveChildData child1 = new HomeReceiveChildData("문소윤", 8000);
-        HomeReceiveChildData child2 = new HomeReceiveChildData("신선아", 15000);
-        HomeReceiveChildData child3 = new HomeReceiveChildData("박은명", 20000);
+        receiveMoneyRealmResults = realm.where(ReceiveMoneyRealmObject.class).findAll();
+        List<HomeReceiveParentData> parentDatas = new ArrayList<HomeReceiveParentData>();
 
-        HomeReceiveParentData parent1 = new HomeReceiveParentData("Mash-Up 신년파티DDDDDDDDDDD", Arrays.asList(child1, child2, child3));
-        HomeReceiveParentData parent2 = new HomeReceiveParentData("내일도 출근이다....ㅠㅠㅠ", Arrays.asList(child1, child2, child3));
-
-        final List<HomeReceiveParentData> parentDatas = Arrays.asList(parent1, parent2);
+        for(int i=0; i<receiveMoneyRealmResults.size(); i++){
+            List<HomeReceiveChildData> childDatas = new ArrayList<HomeReceiveChildData>();
+            for (int j=0; j<receiveMoneyRealmResults.get(i).getDebtorList().size(); j++){
+                childDatas.add(new HomeReceiveChildData(
+                        receiveMoneyRealmResults.get(i).getDebtorList().get(j).getName(),
+                        receiveMoneyRealmResults.get(i).getDebtorList().get(j).getPrice()));
+            }
+            parentDatas.add(new HomeReceiveParentData(receiveMoneyRealmResults.get(i).getTitle(),childDatas));
+        }
 
         adapter = new HomeReceiveAdapter(parentDatas);
         adapter.setChildClickListener(new OnCheckChildClickListener() {
@@ -139,5 +150,11 @@ public class HomeReceiveMoneyFragment extends Fragment implements HomeReceivePre
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         adapter.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        realm.close();
     }
 }

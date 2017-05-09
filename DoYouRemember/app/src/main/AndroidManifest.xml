@@ -43,15 +43,17 @@
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".app.writing.sendmoney.WritingSendActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".app.writing.selectfrequentlyusedaccount.SelectFrequentlyUsedActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity android:name=".app.writing.receivemoney.WritingReceiveActivity"
-            android:windowSoftInputMode="adjustNothing"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data android:name="com.kakao.sdk.AppKey" android:value="@string/kakao_app_key"/>

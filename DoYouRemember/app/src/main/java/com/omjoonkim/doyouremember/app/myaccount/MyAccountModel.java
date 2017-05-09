@@ -13,9 +13,6 @@ import io.realm.Realm;
 import io.realm.RealmResults;
 import io.realm.Sort;
 
-/**
- * Created by wooyoungki on 2017. 1. 29..
- */
 
 public class MyAccountModel {
 

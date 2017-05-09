@@ -6,9 +6,9 @@ import android.os.Parcelable;
 public class HomeReceiveChildData implements Parcelable {
     private boolean receiveChecked;
     private String debtorName;
-    private int priceIndividual;
+    private long priceIndividual;
 
-    public HomeReceiveChildData(String debtorName, int priceIndividual) {
+    public HomeReceiveChildData(String debtorName, long priceIndividual) {
         this.debtorName = debtorName;
         this.priceIndividual = priceIndividual;
         this.receiveChecked = false;
@@ -52,7 +52,7 @@ public class HomeReceiveChildData implements Parcelable {
         return debtorName;
     }
 
-    public int getPriceIndividual() {
+    public long getPriceIndividual() {
         return priceIndividual;
     }
 
@@ -65,6 +65,6 @@ public class HomeReceiveChildData implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeByte((byte) (receiveChecked ? 1 : 0));
         dest.writeString(debtorName);
-        dest.writeInt(priceIndividual);
+        dest.writeLong(priceIndividual);
     }
 }
